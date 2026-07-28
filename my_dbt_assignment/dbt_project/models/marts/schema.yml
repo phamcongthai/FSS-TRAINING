@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: fct_orders
+    description: "Fact table joining staged orders with their computed total order amount."
+    columns:
+      - name: order_id
+        description: "Unique identifier for an order."
+        tests:
+          - unique
+          - not_null
+      - name: customer_id
+        description: "Identifier of the customer who placed the order."
+      - name: order_date
+        description: "Date the order was placed."
+      - name: status
+        description: "Order status. Must be one of the accepted lifecycle values."
+        tests:
+          - accepted_values:
+              values: ['placed', 'shipped', 'completed', 'returned']
+      - name: total_amount
+        description: "Total monetary amount of the order, summed from its line items."

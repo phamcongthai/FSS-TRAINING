@@ -1,0 +1,34 @@
+version: 2
+
+models:
+  - name: stg_orders
+    description: "Staging model for raw orders. Casts order_date to DATE and filters out rows with a missing order_id."
+    columns:
+      - name: order_id
+        description: "Unique identifier for an order."
+        tests:
+          - unique
+          - not_null
+      - name: customer_id
+        description: "Identifier of the customer who placed the order."
+      - name: order_date
+        description: "Date the order was placed, cast to DATE."
+      - name: status
+        description: "Current status of the order as reported by the source system."
+
+  - name: stg_order_items
+    description: "Staging model for raw order line items. Casts price/quantity to numeric types and filters out rows missing id or order_id."
+    columns:
+      - name: id
+        description: "Unique identifier for an order line item."
+        tests:
+          - unique
+          - not_null
+      - name: order_id
+        description: "Identifier of the order this line item belongs to."
+      - name: product_id
+        description: "Identifier of the product purchased."
+      - name: price
+        description: "Unit price of the product, cast to decimal."
+      - name: quantity
+        description: "Quantity of the product purchased, cast to int."

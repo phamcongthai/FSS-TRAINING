@@ -1,0 +1,67 @@
+services:
+  spark-master:
+    image: apache/spark:3.5.1
+    container_name: spark-master
+    hostname: spark-master
+    user: root
+    entrypoint: ["/bin/bash", "-c"]
+    command:
+      - |
+        /opt/spark/sbin/start-master.sh --host spark-master --port 7077 --webui-port 8080 && \
+        /opt/spark/sbin/start-thriftserver.sh \
+          --master spark://spark-master:7077 \
+          --hiveconf hive.server2.thrift.port=10000 \
+          --hiveconf hive.server2.thrift.bind.host=0.0.0.0 \
+          --conf spark.sql.warehouse.dir=/opt/spark/warehouse && \
+        tail -f /opt/spark/logs/*.out
+    ports:
+      - "18080:8080"
+      - "11000:10000"
+    networks:
+      - dbt_spark_net
+
+  spark-worker:
+    image: apache/spark:3.5.1
+    container_name: spark-worker
+    hostname: spark-worker
+    user: root
+    depends_on:
+      - spark-master
+    entrypoint: ["/bin/bash", "-c"]
+    command:
+      - |
+        /opt/spark/sbin/start-worker.sh spark://spark-master:7077 --webui-port 8081 && \
+        tail -f /opt/spark/logs/*.out
+    ports:
+      - "18081:8081"
+    networks:
+      - dbt_spark_net
+
+  dbt:
+    image: python:slim
+    container_name: dbt
+    depends_on:
+      - spark-master
+      - spark-worker
+    working_dir: /usr/app/dbt_project
+    volumes:
+      - ./dbt_project:/usr/app/dbt_project
+      - ./profiles.yml:/root/.dbt/profiles.yml
+    environment:
+      - DBT_PROFILES_DIR=/root/.dbt
+    entrypoint: ["/bin/bash", "-c"]
+    command:
+      - |
+        apt-get update && \
+        apt-get install -y --no-install-recommends build-essential libsasl2-dev python3-dev && \
+        rm -rf /var/lib/apt/lists/* && \
+        pip install --no-cache-dir dbt-core dbt-spark[PyHive] && \
+        tail -f /dev/null
+    ports:
+      - "18888:8080"
+    networks:
+      - dbt_spark_net
+
+networks:
+  dbt_spark_net:
+    driver: bridge
