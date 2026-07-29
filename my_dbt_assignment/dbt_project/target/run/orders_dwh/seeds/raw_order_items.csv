@@ -1,0 +1,19 @@
+
+    
+    
+    
+    create table analytics.raw_order_items (`id` bigint,`order_id` bigint,`product_id` string,`price` double,`quantity` bigint)
+    
+    
+    
+    
+    
+  ;
+    -- dbt seed --
+    
+          insert into analytics.raw_order_items values
+          (cast(%s as bigint),cast(%s as bigint),cast(%s as string),cast(%s as double),cast(%s as bigint)),(cast(%s as bigint),cast(%s as bigint),cast(%s as string),cast(%s as double),cast(%s as bigint)),(cast(%s as bigint),cast(%s as bigint),cast(%s as string),cast(%s as double),cast(%s as bigint)),(cast(%s as bigint),cast(%s as bigint),cast(%s as string),cast(%s as double),cast(%s as bigint)),(cast(%s as bigint),cast(%s as bigint),cast(%s as string),cast(%s as double),cast(%s as bigint)),(cast(%s as bigint),cast(%s as bigint),cast(%s as string),cast(%s as double),cast(%s as bigint)),(cast(%s as bigint),cast(%s as bigint),cast(%s as string),cast(%s as double),cast(%s as bigint)),(cast(%s as bigint),cast(%s as bigint),cast(%s as string),cast(%s as double),cast(%s as bigint)),(cast(%s as bigint),cast(%s as bigint),cast(%s as string),cast(%s as double),cast(%s as bigint)),(cast(%s as bigint),cast(%s as bigint),cast(%s as string),cast(%s as double),cast(%s as bigint)),(cast(%s as bigint),cast(%s as bigint),cast(%s as string),cast(%s as double),cast(%s as bigint)),(cast(%s as bigint),cast(%s as bigint),cast(%s as string),cast(%s as double),cast(%s as bigint)),(cast(%s as bigint),cast(%s as bigint),cast(%s as string),cast(%s as double),cast(%s as bigint)),(cast(%s as bigint),cast(%s as bigint),cast(%s as string),cast(%s as double),cast(%s as bigint)),(cast(%s as bigint),cast(%s as bigint),cast(%s as string),cast(%s as double),cast(%s as bigint)),(cast(%s as bigint),cast(%s as bigint),cast(%s as string),cast(%s as double),cast(%s as bigint)),(cast(%s as bigint),cast(%s as bigint),cast(%s as string),cast(%s as double),cast(%s as bigint)),(cast(%s as bigint),cast(%s as bigint),cast(%s as string),cast(%s as double),cast(%s as bigint)),(cast(%s as bigint),cast(%s as bigint),cast(%s as string),cast(%s as double),cast(%s as bigint)),(cast(%s as bigint),cast(%s as bigint),cast(%s as string),cast(%s as double),cast(%s as bigint)),(cast(%s as bigint),cast(%s as bigint),cast(%s as string),cast(%s as double),cast(%s as bigint)),(cast(%s as bigint),cast(%s as bigint),cast(%s as string),cast(%s as double),cast(%s as bigint)),(cast(%s as bigint),cast(%s as bigint),cast(%s as string),cast(%s as double),cast(%s as bigint)),(cast(%s as bigint),cast(%s as bigint),cast(%s as string),cast(%s as double),cast(%s as bigint)),(cast(%s as bigint),cast(%s as bigint),cast(%s as string),cast(%s as double),cast(%s as bigint)),(cast(%s as bigint),cast(%s as bigint),cast(%s as string),cast(%s as double),cast(%s as bigint)),(cast(%s as bigint),cast(%s as bigint),cast(%s as string),cast(%s as double),cast(%s as bigint)),(cast(%s as bigint),cast(%s as bigint),cast(%s as string),cast(%s as double),cast(%s as bigint))
+      
+
+;
+  

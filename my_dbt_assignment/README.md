@@ -176,3 +176,13 @@ docker-compose down
   không phải port `11000` đã map ra host), `schema: analytics`.
 - Nếu `dbt run`/`dbt seed` báo lỗi kết nối tới Spark, khả năng cao là Thrift Server
   chưa kịp khởi động xong — quay lại bước 2 để kiểm tra log trước khi thử lại.
+
+## Ghi chú / Known issues
+
+Lưu ý: Spark Standalone cluster (master/worker tách container) cần shared volume
+cho `/opt/spark/warehouse`. Ban đầu chưa mount volume dùng chung, khiến executor
+(chạy trên `spark-worker`) ghi dữ liệu ra đĩa cục bộ của worker, còn driver/Thrift
+Server (trên `spark-master`) đọc từ đĩa cục bộ riêng của nó — dẫn tới `dbt test`
+PASS giả trên các bảng thực tế có 0 dòng dữ liệu. Đã khắc phục bằng cách thêm
+named volume `spark-warehouse` mount vào `/opt/spark/warehouse` ở cả 2 service
+`spark-master` và `spark-worker`.

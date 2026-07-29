@@ -17,6 +17,8 @@ services:
     ports:
       - "18080:8080"
       - "11000:10000"
+    volumes:
+      - spark-warehouse:/opt/spark/warehouse
     networks:
       - dbt_spark_net
 
@@ -34,6 +36,8 @@ services:
         tail -f /opt/spark/logs/*.out
     ports:
       - "18081:8081"
+    volumes:
+      - spark-warehouse:/opt/spark/warehouse
     networks:
       - dbt_spark_net
 
@@ -65,3 +69,6 @@ services:
 networks:
   dbt_spark_net:
     driver: bridge
+
+volumes:
+  spark-warehouse:

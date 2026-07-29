@@ -1,0 +1,2375 @@
+
+
+============================== 01:36:37.088869 | 1c23a422-c534-4822-97aa-5c6d2681ab77 ==============================
+[0m01:36:37.088869 [info ] [MainThread]: Running with dbt=1.12.0
+[0m01:36:37.099268 [debug] [MainThread]: running dbt with arguments {'introspect': 'True', 'use_colors': 'True', 'maximum_seed_size_mib': '1', 'printer_width': '80', 'debug': 'False', 'warn_error': 'None', 'use_experimental_parser': 'False', 'log_cache_events': 'False', 'write_json': 'True', 'fail_fast': 'False', 'cache_selected_only': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'hints_enabled': 'True', 'partial_parse': 'True', 'empty': 'False', 'log_path': '/usr/app/dbt_project/logs', 'static_parser': 'True', 'no_print': 'None', 'quiet': 'False', 'version_check': 'True', 'indirect_selection': 'eager', 'log_format': 'default', 'profiles_dir': '/root/.dbt', 'send_anonymous_usage_stats': 'False', 'invocation_command': 'dbt seed'}
+[0m01:36:37.100212 [warn ] [MainThread]: [[33mWARNING[0m]: Deprecated functionality
+
+User config should be moved from the 'config' key in profiles.yml to the 'flags' key in dbt_project.yml.
+[0m01:36:37.140730 [debug] [MainThread]: Spark adapter: Setting pyhive.hive logging to ERROR
+[0m01:36:37.141715 [debug] [MainThread]: Spark adapter: Setting thrift.transport logging to ERROR
+[0m01:36:37.142610 [debug] [MainThread]: Spark adapter: Setting thrift.protocol logging to ERROR
+[0m01:36:37.308444 [info ] [MainThread]: Registered adapter: spark=1.11.0
+[0m01:36:37.368247 [debug] [MainThread]: checksum: 7a7ad752a32e432a2666de9dec42887c2f87be6e7c94b3a673280801e11675b1, vars: {}, profile: orders_dwh, target: dev, version: 1.12.0
+[0m01:36:37.370506 [info ] [MainThread]: Unable to do partial parsing because saved manifest not found. Starting full parse.
+[0m01:36:38.452087 [warn ] [MainThread]: [[33mWARNING[0m][MissingArgumentsPropertyInGenericTestDeprecation]: Deprecated
+functionality
+Found top-level arguments to test `accepted_values` defined on 'fct_orders' in
+package 'orders_dwh' (models/marts/schema.yml). Arguments to generic tests
+should be nested under the `arguments` property.
+[0m01:36:38.642042 [debug] [MainThread]: Wrote artifact WritableManifest to /usr/app/dbt_project/target/manifest.json
+[0m01:36:38.649941 [debug] [MainThread]: Wrote artifact SemanticManifest to /usr/app/dbt_project/target/semantic_manifest.json
+[0m01:36:38.668205 [debug] [MainThread]: Wrote artifact OsiDocument to /usr/app/dbt_project/target/osi_document.json
+[0m01:36:38.690918 [info ] [MainThread]: Found 4 models, 2 seeds, 7 data tests, 515 macros
+[0m01:36:38.694751 [info ] [MainThread]: 
+[0m01:36:38.696839 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m01:36:38.698127 [info ] [MainThread]: 
+[0m01:36:38.699225 [debug] [MainThread]: Acquiring new spark connection 'master'
+[0m01:36:38.707300 [debug] [ThreadPool]: Acquiring new spark connection 'list_schemas'
+[0m01:36:38.717032 [debug] [ThreadPool]: Using spark connection "list_schemas"
+[0m01:36:38.718183 [debug] [ThreadPool]: On list_schemas: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "orders_dwh", "target_name": "dev", "connection_name": "list_schemas"} */
+
+    show databases
+  
+[0m01:36:38.719245 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m01:36:40.874615 [debug] [ThreadPool]: Spark adapter: Poll status: 2, query complete
+[0m01:36:40.875504 [debug] [ThreadPool]: SQL status: OK in 2.156 seconds
+[0m01:36:40.930993 [debug] [ThreadPool]: On list_schemas: Close
+[0m01:36:40.955639 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_schemas, now create__analytics)
+[0m01:36:40.956834 [debug] [ThreadPool]: Creating schema "schema: "analytics"
+"
+[0m01:36:40.959887 [debug] [ThreadPool]: Spark adapter: NotImplemented: add_begin_query
+[0m01:36:40.960899 [debug] [ThreadPool]: Using spark connection "create__analytics"
+[0m01:36:40.961851 [debug] [ThreadPool]: On create__analytics: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "orders_dwh", "target_name": "dev", "connection_name": "create__analytics"} */
+create schema if not exists analytics
+  
+[0m01:36:40.962465 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m01:36:41.207298 [debug] [ThreadPool]: Spark adapter: Poll status: 2, query complete
+[0m01:36:41.208499 [debug] [ThreadPool]: SQL status: OK in 0.246 seconds
+[0m01:36:41.209888 [debug] [ThreadPool]: Spark adapter: NotImplemented: commit
+[0m01:36:41.210980 [debug] [ThreadPool]: On create__analytics: ROLLBACK
+[0m01:36:41.212029 [debug] [ThreadPool]: Spark adapter: NotImplemented: rollback
+[0m01:36:41.212843 [debug] [ThreadPool]: On create__analytics: Close
+[0m01:36:41.224829 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly create__analytics, now list_None_analytics)
+[0m01:36:41.231142 [debug] [ThreadPool]: Spark adapter: NotImplemented: add_begin_query
+[0m01:36:41.232311 [debug] [ThreadPool]: Using spark connection "list_None_analytics"
+[0m01:36:41.233070 [debug] [ThreadPool]: On list_None_analytics: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "orders_dwh", "target_name": "dev", "connection_name": "list_None_analytics"} */
+show table extended in analytics like '*'
+  
+[0m01:36:41.233626 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m01:36:41.393687 [debug] [ThreadPool]: Spark adapter: Poll status: 2, query complete
+[0m01:36:41.395547 [debug] [ThreadPool]: SQL status: OK in 0.162 seconds
+[0m01:36:41.402642 [debug] [ThreadPool]: On list_None_analytics: ROLLBACK
+[0m01:36:41.403624 [debug] [ThreadPool]: Spark adapter: NotImplemented: rollback
+[0m01:36:41.404270 [debug] [ThreadPool]: On list_None_analytics: Close
+[0m01:36:41.416254 [debug] [MainThread]: Spark adapter: NotImplemented: add_begin_query
+[0m01:36:41.417186 [debug] [MainThread]: Spark adapter: NotImplemented: commit
+[0m01:36:41.422852 [debug] [Thread-1 (]: Began running node seed.orders_dwh.raw_order_items
+[0m01:36:41.423844 [info ] [Thread-1 (]: 1 of 2 START seed file analytics.raw_order_items ............................... [RUN]
+[0m01:36:41.424697 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_None_analytics, now seed.orders_dwh.raw_order_items)
+[0m01:36:41.423254 [debug] [Thread-2 (]: Began running node seed.orders_dwh.raw_orders
+[0m01:36:41.426022 [info ] [Thread-2 (]: 2 of 2 START seed file analytics.raw_orders .................................... [RUN]
+[0m01:36:41.425336 [debug] [Thread-1 (]: Began compiling node seed.orders_dwh.raw_order_items
+[0m01:36:41.428325 [debug] [Thread-1 (]: Began executing node seed.orders_dwh.raw_order_items
+[0m01:36:41.427077 [debug] [Thread-2 (]: Acquiring new spark connection 'seed.orders_dwh.raw_orders'
+[0m01:36:41.440623 [debug] [Thread-2 (]: Began compiling node seed.orders_dwh.raw_orders
+[0m01:36:41.442998 [debug] [Thread-2 (]: Began executing node seed.orders_dwh.raw_orders
+[0m01:36:41.475042 [debug] [Thread-2 (]: Spark adapter: NotImplemented: add_begin_query
+[0m01:36:41.475992 [debug] [Thread-2 (]: Using spark connection "seed.orders_dwh.raw_orders"
+[0m01:36:41.476738 [debug] [Thread-2 (]: On seed.orders_dwh.raw_orders: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "orders_dwh", "target_name": "dev", "node_id": "seed.orders_dwh.raw_orders"} */
+
+    create table analytics.raw_orders (`order_id` bigint,`customer_id` string,`order_date` date,`status` string)
+    
+    
+    
+    
+    
+  
+[0m01:36:41.475688 [debug] [Thread-1 (]: Spark adapter: NotImplemented: add_begin_query
+[0m01:36:41.478397 [debug] [Thread-1 (]: Using spark connection "seed.orders_dwh.raw_order_items"
+[0m01:36:41.477388 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m01:36:41.479100 [debug] [Thread-1 (]: On seed.orders_dwh.raw_order_items: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "orders_dwh", "target_name": "dev", "node_id": "seed.orders_dwh.raw_order_items"} */
+
+    create table analytics.raw_order_items (`id` bigint,`order_id` bigint,`product_id` string,`price` double,`quantity` bigint)
+    
+    
+    
+    
+    
+  
+[0m01:36:41.480103 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m01:36:42.243791 [debug] [Thread-2 (]: Spark adapter: Poll status: 2, query complete
+[0m01:36:42.245546 [debug] [Thread-2 (]: SQL status: OK in 0.768 seconds
+[0m01:36:42.271854 [debug] [Thread-2 (]: Using spark connection "seed.orders_dwh.raw_orders"
+[0m01:36:42.274203 [debug] [Thread-2 (]: On seed.orders_dwh.raw_orders: 
+          insert into analytics.raw_orders values
+          (cast(%s as bigint),cast(%s as string),cast(%s as date),cast(%s as string)),(cast(%s as bigint),cast(%s as string),cast(%s as date),cast(%s as string)),(cast(%s as bigint),cast(%s as string),cast(%s as date),cast(%s as string)),(cast(%s as bigint),cast(%s as string),cast(%s as date),cast(%s as string)),(cast(%s as bigint),cast(%s as string),cast(%s as date),cast(%s as string)),(cast(%s as bigint),cast(%s as string),cast(%s as date),cast(%s as stri...
+[0m01:36:42.355266 [debug] [Thread-1 (]: Spark adapter: Poll status: 2, query complete
+[0m01:36:42.356232 [debug] [Thread-1 (]: SQL status: OK in 0.876 seconds
+[0m01:36:42.382925 [debug] [Thread-1 (]: Using spark connection "seed.orders_dwh.raw_order_items"
+[0m01:36:42.384145 [debug] [Thread-1 (]: On seed.orders_dwh.raw_order_items: 
+          insert into analytics.raw_order_items values
+          (cast(%s as bigint),cast(%s as bigint),cast(%s as string),cast(%s as double),cast(%s as bigint)),(cast(%s as bigint),cast(%s as bigint),cast(%s as string),cast(%s as double),cast(%s as bigint)),(cast(%s as bigint),cast(%s as bigint),cast(%s as string),cast(%s as double),cast(%s as bigint)),(cast(%s as bigint),cast(%s as bigint),cast(%s as string),cast(%s as double),cast(%s as bigint)),(cast(%s as bigint),cast(%s as bigint),cast(%s as string),...
+[0m01:36:44.892039 [debug] [Thread-2 (]: Spark adapter: Poll status: 2, query complete
+[0m01:36:44.893685 [debug] [Thread-2 (]: SQL status: OK in 2.618 seconds
+[0m01:36:44.901146 [debug] [Thread-2 (]: Writing runtime SQL for node "seed.orders_dwh.raw_orders"
+[0m01:36:44.931977 [debug] [Thread-2 (]: Spark adapter: NotImplemented: commit
+[0m01:36:44.934254 [debug] [Thread-2 (]: On seed.orders_dwh.raw_orders: ROLLBACK
+[0m01:36:44.935084 [debug] [Thread-2 (]: Spark adapter: NotImplemented: rollback
+[0m01:36:44.935724 [debug] [Thread-2 (]: On seed.orders_dwh.raw_orders: Close
+[0m01:36:44.942086 [debug] [Thread-1 (]: Spark adapter: Poll status: 2, query complete
+[0m01:36:44.943272 [debug] [Thread-1 (]: SQL status: OK in 2.558 seconds
+[0m01:36:44.944638 [debug] [Thread-1 (]: Writing runtime SQL for node "seed.orders_dwh.raw_order_items"
+[0m01:36:44.947530 [info ] [Thread-2 (]: 2 of 2 OK loaded seed file analytics.raw_orders ................................ [[32mINSERT 18[0m in 3.52s]
+[0m01:36:44.948631 [debug] [Thread-2 (]: Finished running node seed.orders_dwh.raw_orders
+[0m01:36:44.952295 [debug] [Thread-1 (]: Spark adapter: NotImplemented: commit
+[0m01:36:44.953413 [debug] [Thread-1 (]: On seed.orders_dwh.raw_order_items: ROLLBACK
+[0m01:36:44.953997 [debug] [Thread-1 (]: Spark adapter: NotImplemented: rollback
+[0m01:36:44.954514 [debug] [Thread-1 (]: On seed.orders_dwh.raw_order_items: Close
+[0m01:36:44.963218 [info ] [Thread-1 (]: 1 of 2 OK loaded seed file analytics.raw_order_items ........................... [[32mINSERT 28[0m in 3.54s]
+[0m01:36:44.964341 [debug] [Thread-1 (]: Finished running node seed.orders_dwh.raw_order_items
+[0m01:36:44.966210 [debug] [MainThread]: On master: ROLLBACK
+[0m01:36:44.966839 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m01:36:45.009934 [debug] [MainThread]: Spark adapter: NotImplemented: rollback
+[0m01:36:45.011206 [debug] [MainThread]: Spark adapter: NotImplemented: add_begin_query
+[0m01:36:45.012436 [debug] [MainThread]: Spark adapter: NotImplemented: commit
+[0m01:36:45.013369 [debug] [MainThread]: On master: ROLLBACK
+[0m01:36:45.014045 [debug] [MainThread]: Spark adapter: NotImplemented: rollback
+[0m01:36:45.014680 [debug] [MainThread]: On master: Close
+[0m01:36:45.022045 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m01:36:45.023060 [debug] [MainThread]: Connection 'seed.orders_dwh.raw_order_items' was properly closed.
+[0m01:36:45.023632 [debug] [MainThread]: Connection 'seed.orders_dwh.raw_orders' was properly closed.
+[0m01:36:45.024196 [info ] [MainThread]: 
+[0m01:36:45.024798 [info ] [MainThread]: Finished running 2 seeds in 0 hours 0 minutes and 6.33 seconds (6.33s).
+[0m01:36:45.025889 [debug] [MainThread]: Command end result
+[0m01:36:45.052869 [debug] [MainThread]: Wrote artifact WritableManifest to /usr/app/dbt_project/target/manifest.json
+[0m01:36:45.056843 [debug] [MainThread]: Wrote artifact SemanticManifest to /usr/app/dbt_project/target/semantic_manifest.json
+[0m01:36:45.060723 [debug] [MainThread]: Wrote artifact OsiDocument to /usr/app/dbt_project/target/osi_document.json
+[0m01:36:45.067950 [debug] [MainThread]: Wrote artifact RunExecutionResult to /usr/app/dbt_project/target/run_results.json
+[0m01:36:45.068528 [info ] [MainThread]: 
+[0m01:36:45.069199 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m01:36:45.069839 [info ] [MainThread]: 
+[0m01:36:45.070456 [info ] [MainThread]: Done. PASS=2 WARN=0 ERROR=0 SKIP=0 NO-OP=0 REUSED=0 TOTAL=2
+[0m01:36:45.071259 [warn ] [MainThread]: [[33mWARNING[0m][DeprecationsSummary]: Deprecated functionality
+Summary of encountered deprecations:
+- ProjectFlagsMovedDeprecation: 1 occurrence
+- MissingArgumentsPropertyInGenericTestDeprecation: 1 occurrence
+To see all deprecation instances instead of just the first occurrence of each,
+run command again with the `--show-all-deprecations` flag. You may also need to
+run with `--no-partial-parse` as some deprecations are only encountered during
+parsing.
+[0m01:36:45.072415 [debug] [MainThread]: Resource report: {"command_name": "seed", "command_success": true, "command_wall_clock_time": 8.102919, "process_in_blocks": "19", "process_kernel_time": 0.211194, "process_mem_max_rss": "153160", "process_out_blocks": "1928", "process_user_time": 2.705679}
+[0m01:36:45.073113 [debug] [MainThread]: Command `dbt seed` succeeded at 01:36:45.073011 after 8.10 seconds
+[0m01:36:45.073703 [debug] [MainThread]: Flushing usage events
+
+
+============================== 01:36:51.550201 | 2670d1c5-91dc-4adc-8b47-c6400aebe79e ==============================
+[0m01:36:51.550201 [info ] [MainThread]: Running with dbt=1.12.0
+[0m01:36:51.552908 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'log_path': '/usr/app/dbt_project/logs', 'static_parser': 'True', 'profiles_dir': '/root/.dbt', 'log_format': 'default', 'use_experimental_parser': 'False', 'printer_width': '80', 'invocation_command': 'dbt run', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'introspect': 'True', 'use_colors': 'True', 'debug': 'False', 'log_cache_events': 'False', 'quiet': 'False', 'fail_fast': 'False', 'hints_enabled': 'True', 'partial_parse': 'True', 'no_print': 'None', 'indirect_selection': 'eager', 'cache_selected_only': 'False', 'empty': 'False', 'write_json': 'True', 'maximum_seed_size_mib': '1', 'send_anonymous_usage_stats': 'False', 'warn_error': 'None'}
+[0m01:36:51.553499 [warn ] [MainThread]: [[33mWARNING[0m]: Deprecated functionality
+
+User config should be moved from the 'config' key in profiles.yml to the 'flags' key in dbt_project.yml.
+[0m01:36:51.592944 [debug] [MainThread]: Spark adapter: Setting pyhive.hive logging to ERROR
+[0m01:36:51.594440 [debug] [MainThread]: Spark adapter: Setting thrift.transport logging to ERROR
+[0m01:36:51.595705 [debug] [MainThread]: Spark adapter: Setting thrift.protocol logging to ERROR
+[0m01:36:51.773353 [info ] [MainThread]: Registered adapter: spark=1.11.0
+[0m01:36:51.810988 [debug] [MainThread]: checksum: 7a7ad752a32e432a2666de9dec42887c2f87be6e7c94b3a673280801e11675b1, vars: {}, profile: orders_dwh, target: dev, version: 1.12.0
+[0m01:36:51.950442 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m01:36:51.951315 [debug] [MainThread]: Nothing changed, skipping partial parsing.
+[0m01:36:51.951878 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m01:36:52.054456 [debug] [MainThread]: Wrote artifact WritableManifest to /usr/app/dbt_project/target/manifest.json
+[0m01:36:52.058138 [debug] [MainThread]: Wrote artifact SemanticManifest to /usr/app/dbt_project/target/semantic_manifest.json
+[0m01:36:52.070186 [debug] [MainThread]: Wrote artifact OsiDocument to /usr/app/dbt_project/target/osi_document.json
+[0m01:36:52.083858 [info ] [MainThread]: Found 4 models, 2 seeds, 7 data tests, 515 macros
+[0m01:36:52.086792 [info ] [MainThread]: 
+[0m01:36:52.087827 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m01:36:52.088655 [info ] [MainThread]: 
+[0m01:36:52.089749 [debug] [MainThread]: Acquiring new spark connection 'master'
+[0m01:36:52.097190 [debug] [ThreadPool]: Acquiring new spark connection 'list_schemas'
+[0m01:36:52.105323 [debug] [ThreadPool]: Using spark connection "list_schemas"
+[0m01:36:52.106134 [debug] [ThreadPool]: On list_schemas: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "orders_dwh", "target_name": "dev", "connection_name": "list_schemas"} */
+
+    show databases
+  
+[0m01:36:52.106737 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m01:36:52.215600 [debug] [ThreadPool]: Spark adapter: Poll status: 2, query complete
+[0m01:36:52.216579 [debug] [ThreadPool]: SQL status: OK in 0.110 seconds
+[0m01:36:52.219925 [debug] [ThreadPool]: On list_schemas: Close
+[0m01:36:52.225772 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_schemas, now list_None_analytics)
+[0m01:36:52.230308 [debug] [ThreadPool]: Spark adapter: NotImplemented: add_begin_query
+[0m01:36:52.231097 [debug] [ThreadPool]: Using spark connection "list_None_analytics"
+[0m01:36:52.231664 [debug] [ThreadPool]: On list_None_analytics: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "orders_dwh", "target_name": "dev", "connection_name": "list_None_analytics"} */
+show table extended in analytics like '*'
+  
+[0m01:36:52.232154 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m01:36:52.373028 [debug] [ThreadPool]: Spark adapter: Poll status: 2, query complete
+[0m01:36:52.374122 [debug] [ThreadPool]: SQL status: OK in 0.142 seconds
+[0m01:36:52.381736 [debug] [ThreadPool]: On list_None_analytics: ROLLBACK
+[0m01:36:52.382742 [debug] [ThreadPool]: Spark adapter: NotImplemented: rollback
+[0m01:36:52.383404 [debug] [ThreadPool]: On list_None_analytics: Close
+[0m01:36:52.390423 [debug] [MainThread]: Spark adapter: NotImplemented: add_begin_query
+[0m01:36:52.393306 [debug] [MainThread]: Spark adapter: NotImplemented: commit
+[0m01:36:52.396862 [debug] [Thread-1 (]: Began running node model.orders_dwh.stg_order_items
+[0m01:36:52.397823 [info ] [Thread-1 (]: 1 of 4 START sql view model analytics.stg_order_items .......................... [RUN]
+[0m01:36:52.398705 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_None_analytics, now model.orders_dwh.stg_order_items)
+[0m01:36:52.397265 [debug] [Thread-2 (]: Began running node model.orders_dwh.stg_orders
+[0m01:36:52.400252 [info ] [Thread-2 (]: 2 of 4 START sql view model analytics.stg_orders ............................... [RUN]
+[0m01:36:52.399419 [debug] [Thread-1 (]: Began compiling node model.orders_dwh.stg_order_items
+[0m01:36:52.406305 [debug] [Thread-1 (]: Writing injected SQL for node "model.orders_dwh.stg_order_items"
+[0m01:36:52.401324 [debug] [Thread-2 (]: Acquiring new spark connection 'model.orders_dwh.stg_orders'
+[0m01:36:52.407733 [debug] [Thread-2 (]: Began compiling node model.orders_dwh.stg_orders
+[0m01:36:52.409955 [debug] [Thread-2 (]: Writing injected SQL for node "model.orders_dwh.stg_orders"
+[0m01:36:52.416444 [debug] [Thread-1 (]: Began executing node model.orders_dwh.stg_order_items
+[0m01:36:52.423272 [debug] [Thread-2 (]: Began executing node model.orders_dwh.stg_orders
+[0m01:36:52.437405 [debug] [Thread-1 (]: Writing runtime sql for node "model.orders_dwh.stg_order_items"
+[0m01:36:52.439844 [debug] [Thread-2 (]: Writing runtime sql for node "model.orders_dwh.stg_orders"
+[0m01:36:52.448447 [debug] [Thread-1 (]: Spark adapter: NotImplemented: add_begin_query
+[0m01:36:52.449628 [debug] [Thread-1 (]: Using spark connection "model.orders_dwh.stg_order_items"
+[0m01:36:52.450929 [debug] [Thread-1 (]: On model.orders_dwh.stg_order_items: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "orders_dwh", "target_name": "dev", "node_id": "model.orders_dwh.stg_order_items"} */
+create or replace view analytics.stg_order_items
+  
+  
+  as
+    -- Staging model for raw order items: casts price/quantity to numeric types and drops rows missing id or order_id.
+select
+    id,
+    order_id,
+    product_id,
+    cast(price as decimal(18, 2)) as price,
+    cast(quantity as int) as quantity
+from analytics.raw_order_items
+where id is not null
+  and order_id is not null
+
+[0m01:36:52.450390 [debug] [Thread-2 (]: Spark adapter: NotImplemented: add_begin_query
+[0m01:36:52.452818 [debug] [Thread-2 (]: Using spark connection "model.orders_dwh.stg_orders"
+[0m01:36:52.451933 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m01:36:52.453496 [debug] [Thread-2 (]: On model.orders_dwh.stg_orders: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "orders_dwh", "target_name": "dev", "node_id": "model.orders_dwh.stg_orders"} */
+create or replace view analytics.stg_orders
+  
+  
+  as
+    -- Staging model for raw orders: casts order_date to DATE and drops rows with a missing order_id.
+select
+    order_id,
+    customer_id,
+    cast(order_date as date) as order_date,
+    status
+from analytics.raw_orders
+where order_id is not null
+
+[0m01:36:52.454646 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m01:36:52.766170 [debug] [Thread-2 (]: Spark adapter: Poll status: 2, query complete
+[0m01:36:52.767464 [debug] [Thread-2 (]: SQL status: OK in 0.313 seconds
+[0m01:36:52.806735 [debug] [Thread-2 (]: On model.orders_dwh.stg_orders: ROLLBACK
+[0m01:36:52.807963 [debug] [Thread-2 (]: Spark adapter: NotImplemented: rollback
+[0m01:36:52.808843 [debug] [Thread-2 (]: On model.orders_dwh.stg_orders: Close
+[0m01:36:52.819778 [info ] [Thread-2 (]: 2 of 4 OK created sql view model analytics.stg_orders .......................... [[32mOK[0m in 0.42s]
+[0m01:36:52.821177 [debug] [Thread-2 (]: Finished running node model.orders_dwh.stg_orders
+[0m01:36:52.827199 [debug] [Thread-1 (]: Spark adapter: Poll status: 2, query complete
+[0m01:36:52.828335 [debug] [Thread-1 (]: SQL status: OK in 0.376 seconds
+[0m01:36:52.829941 [debug] [Thread-1 (]: On model.orders_dwh.stg_order_items: ROLLBACK
+[0m01:36:52.830498 [debug] [Thread-1 (]: Spark adapter: NotImplemented: rollback
+[0m01:36:52.831018 [debug] [Thread-1 (]: On model.orders_dwh.stg_order_items: Close
+[0m01:36:52.836120 [info ] [Thread-1 (]: 1 of 4 OK created sql view model analytics.stg_order_items ..................... [[32mOK[0m in 0.44s]
+[0m01:36:52.837110 [debug] [Thread-1 (]: Finished running node model.orders_dwh.stg_order_items
+[0m01:36:52.838163 [debug] [Thread-3 (]: Began running node model.orders_dwh.int_order_amounts
+[0m01:36:52.838826 [info ] [Thread-3 (]: 3 of 4 START sql view model analytics.int_order_amounts ........................ [RUN]
+[0m01:36:52.839524 [debug] [Thread-3 (]: Acquiring new spark connection 'model.orders_dwh.int_order_amounts'
+[0m01:36:52.840002 [debug] [Thread-3 (]: Began compiling node model.orders_dwh.int_order_amounts
+[0m01:36:52.841810 [debug] [Thread-3 (]: Writing injected SQL for node "model.orders_dwh.int_order_amounts"
+[0m01:36:52.847363 [debug] [Thread-3 (]: Began executing node model.orders_dwh.int_order_amounts
+[0m01:36:52.849220 [debug] [Thread-3 (]: Writing runtime sql for node "model.orders_dwh.int_order_amounts"
+[0m01:36:52.854984 [debug] [Thread-3 (]: Spark adapter: NotImplemented: add_begin_query
+[0m01:36:52.855621 [debug] [Thread-3 (]: Using spark connection "model.orders_dwh.int_order_amounts"
+[0m01:36:52.856214 [debug] [Thread-3 (]: On model.orders_dwh.int_order_amounts: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "orders_dwh", "target_name": "dev", "node_id": "model.orders_dwh.int_order_amounts"} */
+create or replace view analytics.int_order_amounts
+  
+  
+  as
+    -- Materialization choice: 'view' vs 'ephemeral'
+-- Chosen 'view' (not 'ephemeral') so this model can be queried directly in
+-- Spark for debugging/inspection and appears as its own node in dbt docs
+-- lineage with its own compiled object, instead of being inlined as a CTE
+-- inside fct_orders. Spark views are cheap to compute, so favoring
+-- inspectability over hiding the intermediate logic is the better trade-off
+-- for this assignment.
+
+
+select
+    order_id,
+    sum(total_item_price) as total_amount
+from (
+    select
+        order_id,
+        price * quantity as total_item_price
+    from analytics.stg_order_items
+) item_totals
+group by order_id
+
+[0m01:36:52.856752 [debug] [Thread-3 (]: Opening a new connection, currently in state init
+[0m01:36:53.085144 [debug] [Thread-3 (]: Spark adapter: Poll status: 2, query complete
+[0m01:36:53.086404 [debug] [Thread-3 (]: SQL status: OK in 0.230 seconds
+[0m01:36:53.088406 [debug] [Thread-3 (]: On model.orders_dwh.int_order_amounts: ROLLBACK
+[0m01:36:53.089337 [debug] [Thread-3 (]: Spark adapter: NotImplemented: rollback
+[0m01:36:53.090125 [debug] [Thread-3 (]: On model.orders_dwh.int_order_amounts: Close
+[0m01:36:53.103895 [info ] [Thread-3 (]: 3 of 4 OK created sql view model analytics.int_order_amounts ................... [[32mOK[0m in 0.26s]
+[0m01:36:53.105423 [debug] [Thread-3 (]: Finished running node model.orders_dwh.int_order_amounts
+[0m01:36:53.106855 [debug] [Thread-4 (]: Began running node model.orders_dwh.fct_orders
+[0m01:36:53.107711 [info ] [Thread-4 (]: 4 of 4 START sql table model analytics.fct_orders .............................. [RUN]
+[0m01:36:53.108725 [debug] [Thread-4 (]: Acquiring new spark connection 'model.orders_dwh.fct_orders'
+[0m01:36:53.109393 [debug] [Thread-4 (]: Began compiling node model.orders_dwh.fct_orders
+[0m01:36:53.112000 [debug] [Thread-4 (]: Writing injected SQL for node "model.orders_dwh.fct_orders"
+[0m01:36:53.117901 [debug] [Thread-4 (]: Began executing node model.orders_dwh.fct_orders
+[0m01:36:53.138162 [debug] [Thread-4 (]: Using spark connection "model.orders_dwh.fct_orders"
+[0m01:36:53.139304 [debug] [Thread-4 (]: On model.orders_dwh.fct_orders: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "orders_dwh", "target_name": "dev", "node_id": "model.orders_dwh.fct_orders"} */
+drop table if exists analytics.fct_orders
+[0m01:36:53.140158 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m01:36:53.220674 [debug] [Thread-4 (]: Spark adapter: Poll status: 2, query complete
+[0m01:36:53.221654 [debug] [Thread-4 (]: SQL status: OK in 0.082 seconds
+[0m01:36:53.246003 [debug] [Thread-4 (]: Writing runtime sql for node "model.orders_dwh.fct_orders"
+[0m01:36:53.252401 [debug] [Thread-4 (]: Spark adapter: NotImplemented: add_begin_query
+[0m01:36:53.253153 [debug] [Thread-4 (]: Using spark connection "model.orders_dwh.fct_orders"
+[0m01:36:53.253825 [debug] [Thread-4 (]: On model.orders_dwh.fct_orders: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "orders_dwh", "target_name": "dev", "node_id": "model.orders_dwh.fct_orders"} */
+
+  
+    
+        create table analytics.fct_orders
+      
+      
+      
+      
+      
+      
+      
+      
+
+      as
+      select
+    o.order_id,
+    o.customer_id,
+    o.order_date,
+    o.status,
+    a.total_amount
+from analytics.stg_orders o
+left join analytics.int_order_amounts a
+    on o.order_id = a.order_id
+  
+[0m01:36:54.275186 [debug] [Thread-4 (]: Spark adapter: Poll status: 2, query complete
+[0m01:36:54.277191 [debug] [Thread-4 (]: SQL status: OK in 1.023 seconds
+[0m01:36:54.289408 [debug] [Thread-4 (]: On model.orders_dwh.fct_orders: ROLLBACK
+[0m01:36:54.291033 [debug] [Thread-4 (]: Spark adapter: NotImplemented: rollback
+[0m01:36:54.292343 [debug] [Thread-4 (]: On model.orders_dwh.fct_orders: Close
+[0m01:36:54.303144 [info ] [Thread-4 (]: 4 of 4 OK created sql table model analytics.fct_orders ......................... [[32mOK[0m in 1.19s]
+[0m01:36:54.304985 [debug] [Thread-4 (]: Finished running node model.orders_dwh.fct_orders
+[0m01:36:54.308195 [debug] [MainThread]: On master: ROLLBACK
+[0m01:36:54.309333 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m01:36:54.360241 [debug] [MainThread]: Spark adapter: NotImplemented: rollback
+[0m01:36:54.361918 [debug] [MainThread]: Spark adapter: NotImplemented: add_begin_query
+[0m01:36:54.363355 [debug] [MainThread]: Spark adapter: NotImplemented: commit
+[0m01:36:54.364090 [debug] [MainThread]: On master: ROLLBACK
+[0m01:36:54.364712 [debug] [MainThread]: Spark adapter: NotImplemented: rollback
+[0m01:36:54.365261 [debug] [MainThread]: On master: Close
+[0m01:36:54.369947 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m01:36:54.370880 [debug] [MainThread]: Connection 'model.orders_dwh.stg_order_items' was properly closed.
+[0m01:36:54.371488 [debug] [MainThread]: Connection 'model.orders_dwh.stg_orders' was properly closed.
+[0m01:36:54.371982 [debug] [MainThread]: Connection 'model.orders_dwh.int_order_amounts' was properly closed.
+[0m01:36:54.372430 [debug] [MainThread]: Connection 'model.orders_dwh.fct_orders' was properly closed.
+[0m01:36:54.372946 [info ] [MainThread]: 
+[0m01:36:54.373473 [info ] [MainThread]: Finished running 1 table model, 3 view models in 0 hours 0 minutes and 2.28 seconds (2.28s).
+[0m01:36:54.374733 [debug] [MainThread]: Command end result
+[0m01:36:54.402528 [debug] [MainThread]: Wrote artifact WritableManifest to /usr/app/dbt_project/target/manifest.json
+[0m01:36:54.406619 [debug] [MainThread]: Wrote artifact SemanticManifest to /usr/app/dbt_project/target/semantic_manifest.json
+[0m01:36:54.411408 [debug] [MainThread]: Wrote artifact OsiDocument to /usr/app/dbt_project/target/osi_document.json
+[0m01:36:54.419550 [debug] [MainThread]: Wrote artifact RunExecutionResult to /usr/app/dbt_project/target/run_results.json
+[0m01:36:54.420280 [info ] [MainThread]: 
+[0m01:36:54.421024 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m01:36:54.421880 [info ] [MainThread]: 
+[0m01:36:54.422601 [info ] [MainThread]: Done. PASS=4 WARN=0 ERROR=0 SKIP=0 NO-OP=0 REUSED=0 TOTAL=4
+[0m01:36:54.423473 [warn ] [MainThread]: [[33mWARNING[0m][DeprecationsSummary]: Deprecated functionality
+Summary of encountered deprecations:
+- ProjectFlagsMovedDeprecation: 1 occurrence
+To see all deprecation instances instead of just the first occurrence of each,
+run command again with the `--show-all-deprecations` flag. You may also need to
+run with `--no-partial-parse` as some deprecations are only encountered during
+parsing.
+[0m01:36:54.424868 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 2.9889202, "process_in_blocks": "1151", "process_kernel_time": 0.138397, "process_mem_max_rss": "143280", "process_out_blocks": "0", "process_user_time": 1.65263}
+[0m01:36:54.425843 [debug] [MainThread]: Command `dbt run` succeeded at 01:36:54.425731 after 2.99 seconds
+[0m01:36:54.426442 [debug] [MainThread]: Flushing usage events
+
+
+============================== 01:37:00.972027 | 1cb4d9ae-74ba-4620-a284-6a0b2c8c6b17 ==============================
+[0m01:37:00.972027 [info ] [MainThread]: Running with dbt=1.12.0
+[0m01:37:00.975264 [debug] [MainThread]: running dbt with arguments {'log_cache_events': 'False', 'profiles_dir': '/root/.dbt', 'printer_width': '80', 'send_anonymous_usage_stats': 'False', 'write_json': 'True', 'no_print': 'None', 'warn_error': 'None', 'version_check': 'True', 'target_path': 'None', 'hints_enabled': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'introspect': 'True', 'fail_fast': 'False', 'cache_selected_only': 'False', 'invocation_command': 'dbt test', 'quiet': 'False', 'empty': 'None', 'log_format': 'default', 'debug': 'False', 'static_parser': 'True', 'partial_parse': 'True', 'indirect_selection': 'eager', 'log_path': '/usr/app/dbt_project/logs', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'maximum_seed_size_mib': '1'}
+[0m01:37:00.975940 [warn ] [MainThread]: [[33mWARNING[0m]: Deprecated functionality
+
+User config should be moved from the 'config' key in profiles.yml to the 'flags' key in dbt_project.yml.
+[0m01:37:01.013154 [debug] [MainThread]: Spark adapter: Setting pyhive.hive logging to ERROR
+[0m01:37:01.014043 [debug] [MainThread]: Spark adapter: Setting thrift.transport logging to ERROR
+[0m01:37:01.014820 [debug] [MainThread]: Spark adapter: Setting thrift.protocol logging to ERROR
+[0m01:37:01.176771 [info ] [MainThread]: Registered adapter: spark=1.11.0
+[0m01:37:01.217999 [debug] [MainThread]: checksum: 7a7ad752a32e432a2666de9dec42887c2f87be6e7c94b3a673280801e11675b1, vars: {}, profile: orders_dwh, target: dev, version: 1.12.0
+[0m01:37:01.353805 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m01:37:01.354470 [debug] [MainThread]: Nothing changed, skipping partial parsing.
+[0m01:37:01.355144 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m01:37:01.457446 [debug] [MainThread]: Wrote artifact WritableManifest to /usr/app/dbt_project/target/manifest.json
+[0m01:37:01.461579 [debug] [MainThread]: Wrote artifact SemanticManifest to /usr/app/dbt_project/target/semantic_manifest.json
+[0m01:37:01.474515 [debug] [MainThread]: Wrote artifact OsiDocument to /usr/app/dbt_project/target/osi_document.json
+[0m01:37:01.494570 [info ] [MainThread]: Found 4 models, 2 seeds, 7 data tests, 515 macros
+[0m01:37:01.497152 [info ] [MainThread]: 
+[0m01:37:01.498085 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m01:37:01.498908 [info ] [MainThread]: 
+[0m01:37:01.499896 [debug] [MainThread]: Acquiring new spark connection 'master'
+[0m01:37:01.508560 [debug] [ThreadPool]: Acquiring new spark connection 'list_None_analytics'
+[0m01:37:01.537025 [debug] [ThreadPool]: Spark adapter: NotImplemented: add_begin_query
+[0m01:37:01.538436 [debug] [ThreadPool]: Using spark connection "list_None_analytics"
+[0m01:37:01.539752 [debug] [ThreadPool]: On list_None_analytics: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "orders_dwh", "target_name": "dev", "connection_name": "list_None_analytics"} */
+show table extended in analytics like '*'
+  
+[0m01:37:01.540377 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m01:37:01.670534 [debug] [ThreadPool]: Spark adapter: Poll status: 2, query complete
+[0m01:37:01.671657 [debug] [ThreadPool]: SQL status: OK in 0.131 seconds
+[0m01:37:01.677642 [debug] [ThreadPool]: On list_None_analytics: ROLLBACK
+[0m01:37:01.678847 [debug] [ThreadPool]: Spark adapter: NotImplemented: rollback
+[0m01:37:01.679574 [debug] [ThreadPool]: On list_None_analytics: Close
+[0m01:37:01.686042 [debug] [MainThread]: Spark adapter: NotImplemented: add_begin_query
+[0m01:37:01.686774 [debug] [MainThread]: Spark adapter: NotImplemented: commit
+[0m01:37:01.690803 [debug] [Thread-1 (]: Began running node test.orders_dwh.accepted_values_fct_orders_status__placed__shipped__completed__returned.7d365032e1
+[0m01:37:01.691625 [debug] [Thread-2 (]: Began running node test.orders_dwh.not_null_fct_orders_order_id.4e687af8d0
+[0m01:37:01.692116 [debug] [Thread-4 (]: Began running node test.orders_dwh.not_null_stg_orders_order_id.81cfe2fe64
+[0m01:37:01.692472 [debug] [Thread-3 (]: Began running node test.orders_dwh.not_null_stg_order_items_id.1f392c3036
+[0m01:37:01.692801 [info ] [Thread-1 (]: 1 of 7 START test accepted_values_fct_orders_status__placed__shipped__completed__returned  [RUN]
+[0m01:37:01.693609 [info ] [Thread-2 (]: 2 of 7 START test not_null_fct_orders_order_id ................................. [RUN]
+[0m01:37:01.694300 [info ] [Thread-4 (]: 4 of 7 START test not_null_stg_orders_order_id ................................. [RUN]
+[0m01:37:01.695028 [info ] [Thread-3 (]: 3 of 7 START test not_null_stg_order_items_id .................................. [RUN]
+[0m01:37:01.695816 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_None_analytics, now test.orders_dwh.accepted_values_fct_orders_status__placed__shipped__completed__returned.7d365032e1)
+[0m01:37:01.696523 [debug] [Thread-2 (]: Acquiring new spark connection 'test.orders_dwh.not_null_fct_orders_order_id.4e687af8d0'
+[0m01:37:01.697238 [debug] [Thread-4 (]: Acquiring new spark connection 'test.orders_dwh.not_null_stg_orders_order_id.81cfe2fe64'
+[0m01:37:01.697909 [debug] [Thread-3 (]: Acquiring new spark connection 'test.orders_dwh.not_null_stg_order_items_id.1f392c3036'
+[0m01:37:01.698482 [debug] [Thread-1 (]: Began compiling node test.orders_dwh.accepted_values_fct_orders_status__placed__shipped__completed__returned.7d365032e1
+[0m01:37:01.698990 [debug] [Thread-2 (]: Began compiling node test.orders_dwh.not_null_fct_orders_order_id.4e687af8d0
+[0m01:37:01.699469 [debug] [Thread-4 (]: Began compiling node test.orders_dwh.not_null_stg_orders_order_id.81cfe2fe64
+[0m01:37:01.699967 [debug] [Thread-3 (]: Began compiling node test.orders_dwh.not_null_stg_order_items_id.1f392c3036
+[0m01:37:01.726061 [debug] [Thread-2 (]: Writing injected SQL for node "test.orders_dwh.not_null_fct_orders_order_id.4e687af8d0"
+[0m01:37:01.730688 [debug] [Thread-1 (]: Writing injected SQL for node "test.orders_dwh.accepted_values_fct_orders_status__placed__shipped__completed__returned.7d365032e1"
+[0m01:37:01.734732 [debug] [Thread-4 (]: Writing injected SQL for node "test.orders_dwh.not_null_stg_orders_order_id.81cfe2fe64"
+[0m01:37:01.739799 [debug] [Thread-3 (]: Writing injected SQL for node "test.orders_dwh.not_null_stg_order_items_id.1f392c3036"
+[0m01:37:01.745344 [debug] [Thread-2 (]: Began executing node test.orders_dwh.not_null_fct_orders_order_id.4e687af8d0
+[0m01:37:01.756901 [debug] [Thread-1 (]: Began executing node test.orders_dwh.accepted_values_fct_orders_status__placed__shipped__completed__returned.7d365032e1
+[0m01:37:01.757412 [debug] [Thread-4 (]: Began executing node test.orders_dwh.not_null_stg_orders_order_id.81cfe2fe64
+[0m01:37:01.762368 [debug] [Thread-2 (]: Writing runtime sql for node "test.orders_dwh.not_null_fct_orders_order_id.4e687af8d0"
+[0m01:37:01.764004 [debug] [Thread-1 (]: Writing runtime sql for node "test.orders_dwh.accepted_values_fct_orders_status__placed__shipped__completed__returned.7d365032e1"
+[0m01:37:01.766397 [debug] [Thread-4 (]: Writing runtime sql for node "test.orders_dwh.not_null_stg_orders_order_id.81cfe2fe64"
+[0m01:37:01.766817 [debug] [Thread-3 (]: Began executing node test.orders_dwh.not_null_stg_order_items_id.1f392c3036
+[0m01:37:01.769523 [debug] [Thread-3 (]: Writing runtime sql for node "test.orders_dwh.not_null_stg_order_items_id.1f392c3036"
+[0m01:37:01.774844 [debug] [Thread-1 (]: Spark adapter: NotImplemented: add_begin_query
+[0m01:37:01.775906 [debug] [Thread-1 (]: Using spark connection "test.orders_dwh.accepted_values_fct_orders_status__placed__shipped__completed__returned.7d365032e1"
+[0m01:37:01.776687 [debug] [Thread-1 (]: On test.orders_dwh.accepted_values_fct_orders_status__placed__shipped__completed__returned.7d365032e1: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "orders_dwh", "target_name": "dev", "node_id": "test.orders_dwh.accepted_values_fct_orders_status__placed__shipped__completed__returned.7d365032e1"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+with all_values as (
+
+    select
+        status as value_field,
+        count(*) as n_records
+
+    from analytics.fct_orders
+    group by status
+
+)
+
+select *
+from all_values
+where value_field not in (
+    'placed','shipped','completed','returned'
+)
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m01:37:01.777568 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m01:37:01.775469 [debug] [Thread-4 (]: Spark adapter: NotImplemented: add_begin_query
+[0m01:37:01.779002 [debug] [Thread-4 (]: Using spark connection "test.orders_dwh.not_null_stg_orders_order_id.81cfe2fe64"
+[0m01:37:01.777080 [debug] [Thread-3 (]: Spark adapter: NotImplemented: add_begin_query
+[0m01:37:01.778050 [debug] [Thread-2 (]: Spark adapter: NotImplemented: add_begin_query
+[0m01:37:01.780238 [debug] [Thread-4 (]: On test.orders_dwh.not_null_stg_orders_order_id.81cfe2fe64: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "orders_dwh", "target_name": "dev", "node_id": "test.orders_dwh.not_null_stg_orders_order_id.81cfe2fe64"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select order_id
+from analytics.stg_orders
+where order_id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m01:37:01.781135 [debug] [Thread-3 (]: Using spark connection "test.orders_dwh.not_null_stg_order_items_id.1f392c3036"
+[0m01:37:01.782013 [debug] [Thread-2 (]: Using spark connection "test.orders_dwh.not_null_fct_orders_order_id.4e687af8d0"
+[0m01:37:01.782911 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m01:37:01.784046 [debug] [Thread-3 (]: On test.orders_dwh.not_null_stg_order_items_id.1f392c3036: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "orders_dwh", "target_name": "dev", "node_id": "test.orders_dwh.not_null_stg_order_items_id.1f392c3036"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select id
+from analytics.stg_order_items
+where id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m01:37:01.784985 [debug] [Thread-2 (]: On test.orders_dwh.not_null_fct_orders_order_id.4e687af8d0: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "orders_dwh", "target_name": "dev", "node_id": "test.orders_dwh.not_null_fct_orders_order_id.4e687af8d0"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select order_id
+from analytics.fct_orders
+where order_id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m01:37:01.788702 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m01:37:01.787128 [debug] [Thread-3 (]: Opening a new connection, currently in state init
+[0m01:37:02.857603 [debug] [Thread-1 (]: Spark adapter: Poll status: 2, query complete
+[0m01:37:02.858307 [debug] [Thread-2 (]: Spark adapter: Poll status: 2, query complete
+[0m01:37:02.861763 [debug] [Thread-4 (]: Spark adapter: Poll status: 2, query complete
+[0m01:37:02.862923 [debug] [Thread-3 (]: Spark adapter: Poll status: 2, query complete
+[0m01:37:02.863520 [debug] [Thread-1 (]: SQL status: OK in 1.086 seconds
+[0m01:37:02.865646 [debug] [Thread-2 (]: SQL status: OK in 1.077 seconds
+[0m01:37:02.866694 [debug] [Thread-4 (]: SQL status: OK in 1.084 seconds
+[0m01:37:02.867537 [debug] [Thread-3 (]: SQL status: OK in 1.080 seconds
+[0m01:37:02.883387 [debug] [Thread-1 (]: On test.orders_dwh.accepted_values_fct_orders_status__placed__shipped__completed__returned.7d365032e1: ROLLBACK
+[0m01:37:02.884766 [debug] [Thread-3 (]: On test.orders_dwh.not_null_stg_order_items_id.1f392c3036: ROLLBACK
+[0m01:37:02.885086 [debug] [Thread-2 (]: On test.orders_dwh.not_null_fct_orders_order_id.4e687af8d0: ROLLBACK
+[0m01:37:02.886156 [debug] [Thread-4 (]: On test.orders_dwh.not_null_stg_orders_order_id.81cfe2fe64: ROLLBACK
+[0m01:37:02.886488 [debug] [Thread-1 (]: Spark adapter: NotImplemented: rollback
+[0m01:37:02.887487 [debug] [Thread-3 (]: Spark adapter: NotImplemented: rollback
+[0m01:37:02.888353 [debug] [Thread-2 (]: Spark adapter: NotImplemented: rollback
+[0m01:37:02.889219 [debug] [Thread-4 (]: Spark adapter: NotImplemented: rollback
+[0m01:37:02.890206 [debug] [Thread-1 (]: On test.orders_dwh.accepted_values_fct_orders_status__placed__shipped__completed__returned.7d365032e1: Close
+[0m01:37:02.890870 [debug] [Thread-3 (]: On test.orders_dwh.not_null_stg_order_items_id.1f392c3036: Close
+[0m01:37:02.891447 [debug] [Thread-2 (]: On test.orders_dwh.not_null_fct_orders_order_id.4e687af8d0: Close
+[0m01:37:02.891950 [debug] [Thread-4 (]: On test.orders_dwh.not_null_stg_orders_order_id.81cfe2fe64: Close
+[0m01:37:02.899279 [info ] [Thread-3 (]: 3 of 7 PASS not_null_stg_order_items_id ........................................ [[32mPASS[0m in 1.20s]
+[0m01:37:02.901154 [debug] [Thread-3 (]: Finished running node test.orders_dwh.not_null_stg_order_items_id.1f392c3036
+[0m01:37:02.903087 [debug] [Thread-3 (]: Began running node test.orders_dwh.unique_fct_orders_order_id.523ddb6ce5
+[0m01:37:02.902296 [info ] [Thread-2 (]: 2 of 7 PASS not_null_fct_orders_order_id ....................................... [[32mPASS[0m in 1.21s]
+[0m01:37:02.909047 [debug] [Thread-2 (]: Finished running node test.orders_dwh.not_null_fct_orders_order_id.4e687af8d0
+[0m01:37:02.907033 [info ] [Thread-3 (]: 5 of 7 START test unique_fct_orders_order_id ................................... [RUN]
+[0m01:37:02.905275 [info ] [Thread-1 (]: 1 of 7 PASS accepted_values_fct_orders_status__placed__shipped__completed__returned  [[32mPASS[0m in 1.21s]
+[0m01:37:02.910538 [debug] [Thread-2 (]: Began running node test.orders_dwh.unique_stg_order_items_id.1320d7aef8
+[0m01:37:02.910032 [info ] [Thread-4 (]: 4 of 7 PASS not_null_stg_orders_order_id ....................................... [[32mPASS[0m in 1.21s]
+[0m01:37:02.911605 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.orders_dwh.not_null_stg_order_items_id.1f392c3036, now test.orders_dwh.unique_fct_orders_order_id.523ddb6ce5)
+[0m01:37:02.912393 [debug] [Thread-1 (]: Finished running node test.orders_dwh.accepted_values_fct_orders_status__placed__shipped__completed__returned.7d365032e1
+[0m01:37:02.913019 [info ] [Thread-2 (]: 6 of 7 START test unique_stg_order_items_id .................................... [RUN]
+[0m01:37:02.913893 [debug] [Thread-4 (]: Finished running node test.orders_dwh.not_null_stg_orders_order_id.81cfe2fe64
+[0m01:37:02.914621 [debug] [Thread-3 (]: Began compiling node test.orders_dwh.unique_fct_orders_order_id.523ddb6ce5
+[0m01:37:02.915313 [debug] [Thread-1 (]: Began running node test.orders_dwh.unique_stg_orders_order_id.e3b841c71a
+[0m01:37:02.915952 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.orders_dwh.not_null_fct_orders_order_id.4e687af8d0, now test.orders_dwh.unique_stg_order_items_id.1320d7aef8)
+[0m01:37:02.923402 [debug] [Thread-3 (]: Writing injected SQL for node "test.orders_dwh.unique_fct_orders_order_id.523ddb6ce5"
+[0m01:37:02.923916 [info ] [Thread-1 (]: 7 of 7 START test unique_stg_orders_order_id ................................... [RUN]
+[0m01:37:02.925986 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.orders_dwh.accepted_values_fct_orders_status__placed__shipped__completed__returned.7d365032e1, now test.orders_dwh.unique_stg_orders_order_id.e3b841c71a)
+[0m01:37:02.924870 [debug] [Thread-2 (]: Began compiling node test.orders_dwh.unique_stg_order_items_id.1320d7aef8
+[0m01:37:02.931819 [debug] [Thread-2 (]: Writing injected SQL for node "test.orders_dwh.unique_stg_order_items_id.1320d7aef8"
+[0m01:37:02.926638 [debug] [Thread-1 (]: Began compiling node test.orders_dwh.unique_stg_orders_order_id.e3b841c71a
+[0m01:37:02.937089 [debug] [Thread-1 (]: Writing injected SQL for node "test.orders_dwh.unique_stg_orders_order_id.e3b841c71a"
+[0m01:37:02.937667 [debug] [Thread-3 (]: Began executing node test.orders_dwh.unique_fct_orders_order_id.523ddb6ce5
+[0m01:37:02.940658 [debug] [Thread-3 (]: Writing runtime sql for node "test.orders_dwh.unique_fct_orders_order_id.523ddb6ce5"
+[0m01:37:02.942831 [debug] [Thread-2 (]: Began executing node test.orders_dwh.unique_stg_order_items_id.1320d7aef8
+[0m01:37:02.946210 [debug] [Thread-2 (]: Writing runtime sql for node "test.orders_dwh.unique_stg_order_items_id.1320d7aef8"
+[0m01:37:02.946899 [debug] [Thread-1 (]: Began executing node test.orders_dwh.unique_stg_orders_order_id.e3b841c71a
+[0m01:37:02.950611 [debug] [Thread-1 (]: Writing runtime sql for node "test.orders_dwh.unique_stg_orders_order_id.e3b841c71a"
+[0m01:37:02.953167 [debug] [Thread-3 (]: Spark adapter: NotImplemented: add_begin_query
+[0m01:37:02.955448 [debug] [Thread-3 (]: Using spark connection "test.orders_dwh.unique_fct_orders_order_id.523ddb6ce5"
+[0m01:37:02.957288 [debug] [Thread-3 (]: On test.orders_dwh.unique_fct_orders_order_id.523ddb6ce5: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "orders_dwh", "target_name": "dev", "node_id": "test.orders_dwh.unique_fct_orders_order_id.523ddb6ce5"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+select
+    order_id as unique_field,
+    count(*) as n_records
+
+from analytics.fct_orders
+where order_id is not null
+group by order_id
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m01:37:02.956653 [debug] [Thread-2 (]: Spark adapter: NotImplemented: add_begin_query
+[0m01:37:02.959894 [debug] [Thread-2 (]: Using spark connection "test.orders_dwh.unique_stg_order_items_id.1320d7aef8"
+[0m01:37:02.960797 [debug] [Thread-2 (]: On test.orders_dwh.unique_stg_order_items_id.1320d7aef8: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "orders_dwh", "target_name": "dev", "node_id": "test.orders_dwh.unique_stg_order_items_id.1320d7aef8"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+select
+    id as unique_field,
+    count(*) as n_records
+
+from analytics.stg_order_items
+where id is not null
+group by id
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m01:37:02.958567 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m01:37:02.959293 [debug] [Thread-1 (]: Spark adapter: NotImplemented: add_begin_query
+[0m01:37:02.961756 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m01:37:02.963320 [debug] [Thread-1 (]: Using spark connection "test.orders_dwh.unique_stg_orders_order_id.e3b841c71a"
+[0m01:37:02.965609 [debug] [Thread-1 (]: On test.orders_dwh.unique_stg_orders_order_id.e3b841c71a: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "orders_dwh", "target_name": "dev", "node_id": "test.orders_dwh.unique_stg_orders_order_id.e3b841c71a"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+select
+    order_id as unique_field,
+    count(*) as n_records
+
+from analytics.stg_orders
+where order_id is not null
+group by order_id
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m01:37:02.966793 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m01:37:03.510443 [debug] [Thread-1 (]: Spark adapter: Poll status: 2, query complete
+[0m01:37:03.515000 [debug] [Thread-1 (]: SQL status: OK in 0.548 seconds
+[0m01:37:03.533083 [debug] [Thread-1 (]: On test.orders_dwh.unique_stg_orders_order_id.e3b841c71a: ROLLBACK
+[0m01:37:03.535096 [debug] [Thread-1 (]: Spark adapter: NotImplemented: rollback
+[0m01:37:03.534259 [debug] [Thread-3 (]: Spark adapter: Poll status: 2, query complete
+[0m01:37:03.537783 [debug] [Thread-3 (]: SQL status: OK in 0.579 seconds
+[0m01:37:03.536423 [debug] [Thread-1 (]: On test.orders_dwh.unique_stg_orders_order_id.e3b841c71a: Close
+[0m01:37:03.565425 [debug] [Thread-3 (]: On test.orders_dwh.unique_fct_orders_order_id.523ddb6ce5: ROLLBACK
+[0m01:37:03.567753 [debug] [Thread-3 (]: Spark adapter: NotImplemented: rollback
+[0m01:37:03.570981 [debug] [Thread-3 (]: On test.orders_dwh.unique_fct_orders_order_id.523ddb6ce5: Close
+[0m01:37:03.618622 [info ] [Thread-1 (]: 7 of 7 PASS unique_stg_orders_order_id ......................................... [[32mPASS[0m in 0.69s]
+[0m01:37:03.621277 [debug] [Thread-1 (]: Finished running node test.orders_dwh.unique_stg_orders_order_id.e3b841c71a
+[0m01:37:03.630697 [info ] [Thread-3 (]: 5 of 7 PASS unique_fct_orders_order_id ......................................... [[32mPASS[0m in 0.72s]
+[0m01:37:03.632900 [debug] [Thread-3 (]: Finished running node test.orders_dwh.unique_fct_orders_order_id.523ddb6ce5
+[0m01:37:03.668763 [debug] [Thread-2 (]: Spark adapter: Poll status: 2, query complete
+[0m01:37:03.670226 [debug] [Thread-2 (]: SQL status: OK in 0.708 seconds
+[0m01:37:03.682846 [debug] [Thread-2 (]: On test.orders_dwh.unique_stg_order_items_id.1320d7aef8: ROLLBACK
+[0m01:37:03.684903 [debug] [Thread-2 (]: Spark adapter: NotImplemented: rollback
+[0m01:37:03.686738 [debug] [Thread-2 (]: On test.orders_dwh.unique_stg_order_items_id.1320d7aef8: Close
+[0m01:37:03.704828 [info ] [Thread-2 (]: 6 of 7 PASS unique_stg_order_items_id .......................................... [[32mPASS[0m in 0.79s]
+[0m01:37:03.707807 [debug] [Thread-2 (]: Finished running node test.orders_dwh.unique_stg_order_items_id.1320d7aef8
+[0m01:37:03.715650 [debug] [MainThread]: On master: ROLLBACK
+[0m01:37:03.717585 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m01:37:03.796909 [debug] [MainThread]: Spark adapter: NotImplemented: rollback
+[0m01:37:03.798530 [debug] [MainThread]: Spark adapter: NotImplemented: add_begin_query
+[0m01:37:03.800292 [debug] [MainThread]: Spark adapter: NotImplemented: commit
+[0m01:37:03.801201 [debug] [MainThread]: On master: ROLLBACK
+[0m01:37:03.802041 [debug] [MainThread]: Spark adapter: NotImplemented: rollback
+[0m01:37:03.802769 [debug] [MainThread]: On master: Close
+[0m01:37:03.811318 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m01:37:03.812837 [debug] [MainThread]: Connection 'test.orders_dwh.unique_stg_orders_order_id.e3b841c71a' was properly closed.
+[0m01:37:03.813535 [debug] [MainThread]: Connection 'test.orders_dwh.unique_stg_order_items_id.1320d7aef8' was properly closed.
+[0m01:37:03.814087 [debug] [MainThread]: Connection 'test.orders_dwh.not_null_stg_orders_order_id.81cfe2fe64' was properly closed.
+[0m01:37:03.814588 [debug] [MainThread]: Connection 'test.orders_dwh.unique_fct_orders_order_id.523ddb6ce5' was properly closed.
+[0m01:37:03.815204 [info ] [MainThread]: 
+[0m01:37:03.815924 [info ] [MainThread]: Finished running 7 data tests in 0 hours 0 minutes and 2.32 seconds (2.32s).
+[0m01:37:03.817378 [debug] [MainThread]: Command end result
+[0m01:37:03.845945 [debug] [MainThread]: Wrote artifact WritableManifest to /usr/app/dbt_project/target/manifest.json
+[0m01:37:03.850570 [debug] [MainThread]: Wrote artifact SemanticManifest to /usr/app/dbt_project/target/semantic_manifest.json
+[0m01:37:03.854872 [debug] [MainThread]: Wrote artifact OsiDocument to /usr/app/dbt_project/target/osi_document.json
+[0m01:37:03.863841 [debug] [MainThread]: Wrote artifact RunExecutionResult to /usr/app/dbt_project/target/run_results.json
+[0m01:37:03.864523 [info ] [MainThread]: 
+[0m01:37:03.865215 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m01:37:03.865968 [info ] [MainThread]: 
+[0m01:37:03.866608 [info ] [MainThread]: Done. PASS=7 WARN=0 ERROR=0 SKIP=0 NO-OP=0 REUSED=0 TOTAL=7
+[0m01:37:03.867407 [warn ] [MainThread]: [[33mWARNING[0m][DeprecationsSummary]: Deprecated functionality
+Summary of encountered deprecations:
+- ProjectFlagsMovedDeprecation: 1 occurrence
+To see all deprecation instances instead of just the first occurrence of each,
+run command again with the `--show-all-deprecations` flag. You may also need to
+run with `--no-partial-parse` as some deprecations are only encountered during
+parsing.
+[0m01:37:03.868596 [debug] [MainThread]: Resource report: {"command_name": "test", "command_success": true, "command_wall_clock_time": 3.0017846, "process_in_blocks": "1151", "process_kernel_time": 0.179067, "process_mem_max_rss": "143680", "process_out_blocks": "0", "process_user_time": 1.62354}
+[0m01:37:03.869308 [debug] [MainThread]: Command `dbt test` succeeded at 01:37:03.869203 after 3.00 seconds
+[0m01:37:03.869962 [debug] [MainThread]: Flushing usage events
+
+
+============================== 01:45:39.989327 | 67ef239e-cb7d-40b0-b1c0-02303bacb9c1 ==============================
+[0m01:45:39.989327 [info ] [MainThread]: Running with dbt=1.12.0
+[0m01:45:39.993283 [debug] [MainThread]: running dbt with arguments {'maximum_seed_size_mib': '1', 'hints_enabled': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'log_format': 'default', 'log_cache_events': 'False', 'log_path': '/usr/app/dbt_project/logs', 'cache_selected_only': 'False', 'send_anonymous_usage_stats': 'False', 'static_parser': 'True', 'warn_error': 'None', 'write_json': 'True', 'fail_fast': 'False', 'introspect': 'True', 'printer_width': '80', 'use_experimental_parser': 'False', 'profiles_dir': '/root/.dbt', 'quiet': 'False', 'invocation_command': 'dbt seed --full-refresh', 'version_check': 'True', 'empty': 'False', 'no_print': 'None', 'debug': 'False', 'target_path': 'None', 'indirect_selection': 'eager', 'partial_parse': 'True', 'use_colors': 'True'}
+[0m01:45:39.994038 [warn ] [MainThread]: [[33mWARNING[0m]: Deprecated functionality
+
+User config should be moved from the 'config' key in profiles.yml to the 'flags' key in dbt_project.yml.
+[0m01:45:40.035187 [debug] [MainThread]: Spark adapter: Setting pyhive.hive logging to ERROR
+[0m01:45:40.036277 [debug] [MainThread]: Spark adapter: Setting thrift.transport logging to ERROR
+[0m01:45:40.037031 [debug] [MainThread]: Spark adapter: Setting thrift.protocol logging to ERROR
+[0m01:45:40.200252 [info ] [MainThread]: Registered adapter: spark=1.11.0
+[0m01:45:40.240946 [debug] [MainThread]: checksum: 7a7ad752a32e432a2666de9dec42887c2f87be6e7c94b3a673280801e11675b1, vars: {}, profile: orders_dwh, target: dev, version: 1.12.0
+[0m01:45:40.381176 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m01:45:40.381919 [debug] [MainThread]: Nothing changed, skipping partial parsing.
+[0m01:45:40.382464 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m01:45:40.492864 [debug] [MainThread]: Wrote artifact WritableManifest to /usr/app/dbt_project/target/manifest.json
+[0m01:45:40.497330 [debug] [MainThread]: Wrote artifact SemanticManifest to /usr/app/dbt_project/target/semantic_manifest.json
+[0m01:45:40.509717 [debug] [MainThread]: Wrote artifact OsiDocument to /usr/app/dbt_project/target/osi_document.json
+[0m01:45:40.523755 [info ] [MainThread]: Found 4 models, 2 seeds, 7 data tests, 515 macros
+[0m01:45:40.526921 [info ] [MainThread]: 
+[0m01:45:40.527948 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m01:45:40.528881 [info ] [MainThread]: 
+[0m01:45:40.529860 [debug] [MainThread]: Acquiring new spark connection 'master'
+[0m01:45:40.535741 [debug] [ThreadPool]: Acquiring new spark connection 'list_schemas'
+[0m01:45:40.544275 [debug] [ThreadPool]: Using spark connection "list_schemas"
+[0m01:45:40.545025 [debug] [ThreadPool]: On list_schemas: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "orders_dwh", "target_name": "dev", "connection_name": "list_schemas"} */
+
+    show databases
+  
+[0m01:45:40.545566 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m01:45:42.665642 [debug] [ThreadPool]: Spark adapter: Poll status: 2, query complete
+[0m01:45:42.666546 [debug] [ThreadPool]: SQL status: OK in 2.121 seconds
+[0m01:45:42.717623 [debug] [ThreadPool]: On list_schemas: Close
+[0m01:45:42.772861 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_schemas, now create__analytics)
+[0m01:45:42.781158 [debug] [ThreadPool]: Creating schema "schema: "analytics"
+"
+[0m01:45:42.785201 [debug] [ThreadPool]: Spark adapter: NotImplemented: add_begin_query
+[0m01:45:42.786007 [debug] [ThreadPool]: Using spark connection "create__analytics"
+[0m01:45:42.786932 [debug] [ThreadPool]: On create__analytics: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "orders_dwh", "target_name": "dev", "connection_name": "create__analytics"} */
+create schema if not exists analytics
+  
+[0m01:45:42.787468 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m01:45:42.970074 [debug] [ThreadPool]: Spark adapter: Poll status: 2, query complete
+[0m01:45:42.971116 [debug] [ThreadPool]: SQL status: OK in 0.184 seconds
+[0m01:45:42.972494 [debug] [ThreadPool]: Spark adapter: NotImplemented: commit
+[0m01:45:42.973319 [debug] [ThreadPool]: On create__analytics: ROLLBACK
+[0m01:45:42.974044 [debug] [ThreadPool]: Spark adapter: NotImplemented: rollback
+[0m01:45:42.974676 [debug] [ThreadPool]: On create__analytics: Close
+[0m01:45:42.984763 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly create__analytics, now list_None_analytics)
+[0m01:45:42.988293 [debug] [ThreadPool]: Spark adapter: NotImplemented: add_begin_query
+[0m01:45:42.988858 [debug] [ThreadPool]: Using spark connection "list_None_analytics"
+[0m01:45:42.989279 [debug] [ThreadPool]: On list_None_analytics: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "orders_dwh", "target_name": "dev", "connection_name": "list_None_analytics"} */
+show table extended in analytics like '*'
+  
+[0m01:45:42.989644 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m01:45:43.112595 [debug] [ThreadPool]: Spark adapter: Poll status: 2, query complete
+[0m01:45:43.113544 [debug] [ThreadPool]: SQL status: OK in 0.124 seconds
+[0m01:45:43.118393 [debug] [ThreadPool]: On list_None_analytics: ROLLBACK
+[0m01:45:43.119246 [debug] [ThreadPool]: Spark adapter: NotImplemented: rollback
+[0m01:45:43.119864 [debug] [ThreadPool]: On list_None_analytics: Close
+[0m01:45:43.129478 [debug] [MainThread]: Spark adapter: NotImplemented: add_begin_query
+[0m01:45:43.130288 [debug] [MainThread]: Spark adapter: NotImplemented: commit
+[0m01:45:43.133004 [debug] [Thread-1 (]: Began running node seed.orders_dwh.raw_order_items
+[0m01:45:43.133861 [info ] [Thread-1 (]: 1 of 2 START seed file analytics.raw_order_items ............................... [RUN]
+[0m01:45:43.134708 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_None_analytics, now seed.orders_dwh.raw_order_items)
+[0m01:45:43.133367 [debug] [Thread-2 (]: Began running node seed.orders_dwh.raw_orders
+[0m01:45:43.135934 [info ] [Thread-2 (]: 2 of 2 START seed file analytics.raw_orders .................................... [RUN]
+[0m01:45:43.135287 [debug] [Thread-1 (]: Began compiling node seed.orders_dwh.raw_order_items
+[0m01:45:43.137307 [debug] [Thread-1 (]: Began executing node seed.orders_dwh.raw_order_items
+[0m01:45:43.136737 [debug] [Thread-2 (]: Acquiring new spark connection 'seed.orders_dwh.raw_orders'
+[0m01:45:43.148974 [debug] [Thread-2 (]: Began compiling node seed.orders_dwh.raw_orders
+[0m01:45:43.149791 [debug] [Thread-2 (]: Began executing node seed.orders_dwh.raw_orders
+[0m01:45:43.177642 [debug] [Thread-2 (]: Spark adapter: NotImplemented: add_begin_query
+[0m01:45:43.178665 [debug] [Thread-2 (]: Using spark connection "seed.orders_dwh.raw_orders"
+[0m01:45:43.179408 [debug] [Thread-2 (]: On seed.orders_dwh.raw_orders: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "orders_dwh", "target_name": "dev", "node_id": "seed.orders_dwh.raw_orders"} */
+
+    create table analytics.raw_orders (`order_id` bigint,`customer_id` string,`order_date` date,`status` string)
+    
+    
+    
+    
+    
+  
+[0m01:45:43.178280 [debug] [Thread-1 (]: Spark adapter: NotImplemented: add_begin_query
+[0m01:45:43.180522 [debug] [Thread-1 (]: Using spark connection "seed.orders_dwh.raw_order_items"
+[0m01:45:43.181027 [debug] [Thread-1 (]: On seed.orders_dwh.raw_order_items: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "orders_dwh", "target_name": "dev", "node_id": "seed.orders_dwh.raw_order_items"} */
+
+    create table analytics.raw_order_items (`id` bigint,`order_id` bigint,`product_id` string,`price` double,`quantity` bigint)
+    
+    
+    
+    
+    
+  
+[0m01:45:43.179964 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m01:45:43.181528 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m01:45:43.862190 [debug] [Thread-1 (]: Spark adapter: Poll status: 2, query complete
+[0m01:45:43.863591 [debug] [Thread-1 (]: SQL status: OK in 0.682 seconds
+[0m01:45:43.910353 [debug] [Thread-1 (]: Using spark connection "seed.orders_dwh.raw_order_items"
+[0m01:45:43.911529 [debug] [Thread-1 (]: On seed.orders_dwh.raw_order_items: 
+          insert into analytics.raw_order_items values
+          (cast(%s as bigint),cast(%s as bigint),cast(%s as string),cast(%s as double),cast(%s as bigint)),(cast(%s as bigint),cast(%s as bigint),cast(%s as string),cast(%s as double),cast(%s as bigint)),(cast(%s as bigint),cast(%s as bigint),cast(%s as string),cast(%s as double),cast(%s as bigint)),(cast(%s as bigint),cast(%s as bigint),cast(%s as string),cast(%s as double),cast(%s as bigint)),(cast(%s as bigint),cast(%s as bigint),cast(%s as string),...
+[0m01:45:43.960415 [debug] [Thread-2 (]: Spark adapter: Poll status: 2, query complete
+[0m01:45:43.962052 [debug] [Thread-2 (]: SQL status: OK in 0.782 seconds
+[0m01:45:43.977013 [debug] [Thread-2 (]: Using spark connection "seed.orders_dwh.raw_orders"
+[0m01:45:43.978713 [debug] [Thread-2 (]: On seed.orders_dwh.raw_orders: 
+          insert into analytics.raw_orders values
+          (cast(%s as bigint),cast(%s as string),cast(%s as date),cast(%s as string)),(cast(%s as bigint),cast(%s as string),cast(%s as date),cast(%s as string)),(cast(%s as bigint),cast(%s as string),cast(%s as date),cast(%s as string)),(cast(%s as bigint),cast(%s as string),cast(%s as date),cast(%s as string)),(cast(%s as bigint),cast(%s as string),cast(%s as date),cast(%s as string)),(cast(%s as bigint),cast(%s as string),cast(%s as date),cast(%s as stri...
+[0m01:45:46.066219 [debug] [Thread-1 (]: Spark adapter: Poll status: 2, query complete
+[0m01:45:46.067784 [debug] [Thread-1 (]: SQL status: OK in 2.155 seconds
+[0m01:45:46.075586 [debug] [Thread-1 (]: Writing runtime SQL for node "seed.orders_dwh.raw_order_items"
+[0m01:45:46.094703 [debug] [Thread-1 (]: Spark adapter: NotImplemented: commit
+[0m01:45:46.100435 [debug] [Thread-1 (]: On seed.orders_dwh.raw_order_items: ROLLBACK
+[0m01:45:46.101439 [debug] [Thread-1 (]: Spark adapter: NotImplemented: rollback
+[0m01:45:46.102364 [debug] [Thread-1 (]: On seed.orders_dwh.raw_order_items: Close
+[0m01:45:46.119086 [info ] [Thread-1 (]: 1 of 2 OK loaded seed file analytics.raw_order_items ........................... [[32mCREATE 28[0m in 2.98s]
+[0m01:45:46.121439 [debug] [Thread-1 (]: Finished running node seed.orders_dwh.raw_order_items
+[0m01:45:46.311578 [debug] [Thread-2 (]: Spark adapter: Poll status: 2, query complete
+[0m01:45:46.312801 [debug] [Thread-2 (]: SQL status: OK in 2.333 seconds
+[0m01:45:46.313780 [debug] [Thread-2 (]: Writing runtime SQL for node "seed.orders_dwh.raw_orders"
+[0m01:45:46.319480 [debug] [Thread-2 (]: Spark adapter: NotImplemented: commit
+[0m01:45:46.320901 [debug] [Thread-2 (]: On seed.orders_dwh.raw_orders: ROLLBACK
+[0m01:45:46.321612 [debug] [Thread-2 (]: Spark adapter: NotImplemented: rollback
+[0m01:45:46.322238 [debug] [Thread-2 (]: On seed.orders_dwh.raw_orders: Close
+[0m01:45:46.330741 [info ] [Thread-2 (]: 2 of 2 OK loaded seed file analytics.raw_orders ................................ [[32mCREATE 18[0m in 3.19s]
+[0m01:45:46.332279 [debug] [Thread-2 (]: Finished running node seed.orders_dwh.raw_orders
+[0m01:45:46.334297 [debug] [MainThread]: On master: ROLLBACK
+[0m01:45:46.335030 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m01:45:46.373409 [debug] [MainThread]: Spark adapter: NotImplemented: rollback
+[0m01:45:46.376874 [debug] [MainThread]: Spark adapter: NotImplemented: add_begin_query
+[0m01:45:46.377748 [debug] [MainThread]: Spark adapter: NotImplemented: commit
+[0m01:45:46.378439 [debug] [MainThread]: On master: ROLLBACK
+[0m01:45:46.379067 [debug] [MainThread]: Spark adapter: NotImplemented: rollback
+[0m01:45:46.379670 [debug] [MainThread]: On master: Close
+[0m01:45:46.385343 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m01:45:46.386508 [debug] [MainThread]: Connection 'seed.orders_dwh.raw_order_items' was properly closed.
+[0m01:45:46.387257 [debug] [MainThread]: Connection 'seed.orders_dwh.raw_orders' was properly closed.
+[0m01:45:46.388012 [info ] [MainThread]: 
+[0m01:45:46.388752 [info ] [MainThread]: Finished running 2 seeds in 0 hours 0 minutes and 5.86 seconds (5.86s).
+[0m01:45:46.390239 [debug] [MainThread]: Command end result
+[0m01:45:46.419164 [debug] [MainThread]: Wrote artifact WritableManifest to /usr/app/dbt_project/target/manifest.json
+[0m01:45:46.422983 [debug] [MainThread]: Wrote artifact SemanticManifest to /usr/app/dbt_project/target/semantic_manifest.json
+[0m01:45:46.427894 [debug] [MainThread]: Wrote artifact OsiDocument to /usr/app/dbt_project/target/osi_document.json
+[0m01:45:46.434476 [debug] [MainThread]: Wrote artifact RunExecutionResult to /usr/app/dbt_project/target/run_results.json
+[0m01:45:46.435035 [info ] [MainThread]: 
+[0m01:45:46.435716 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m01:45:46.436450 [info ] [MainThread]: 
+[0m01:45:46.437140 [info ] [MainThread]: Done. PASS=2 WARN=0 ERROR=0 SKIP=0 NO-OP=0 REUSED=0 TOTAL=2
+[0m01:45:46.437926 [warn ] [MainThread]: [[33mWARNING[0m][DeprecationsSummary]: Deprecated functionality
+Summary of encountered deprecations:
+- ProjectFlagsMovedDeprecation: 1 occurrence
+To see all deprecation instances instead of just the first occurrence of each,
+run command again with the `--show-all-deprecations` flag. You may also need to
+run with `--no-partial-parse` as some deprecations are only encountered during
+parsing.
+[0m01:45:46.439065 [debug] [MainThread]: Resource report: {"command_name": "seed", "command_success": true, "command_wall_clock_time": 6.5558524, "process_in_blocks": "1155", "process_kernel_time": 0.167063, "process_mem_max_rss": "142636", "process_out_blocks": "0", "process_user_time": 1.634836}
+[0m01:45:46.439728 [debug] [MainThread]: Command `dbt seed` succeeded at 01:45:46.439636 after 6.56 seconds
+[0m01:45:46.440387 [debug] [MainThread]: Flushing usage events
+
+
+============================== 01:46:03.834894 | 514e0ab7-0206-4b0d-904d-baae0aae0bd7 ==============================
+[0m01:46:03.834894 [info ] [MainThread]: Running with dbt=1.12.0
+[0m01:46:03.837637 [debug] [MainThread]: running dbt with arguments {'maximum_seed_size_mib': '1', 'use_colors': 'True', 'log_path': '/usr/app/dbt_project/logs', 'partial_parse': 'True', 'printer_width': '80', 'empty': 'False', 'fail_fast': 'False', 'profiles_dir': '/root/.dbt', 'warn_error': 'None', 'indirect_selection': 'eager', 'log_format': 'default', 'debug': 'False', 'write_json': 'True', 'introspect': 'True', 'hints_enabled': 'True', 'use_experimental_parser': 'False', 'version_check': 'True', 'invocation_command': 'dbt run --full-refresh', 'log_cache_events': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'no_print': 'None', 'static_parser': 'True', 'send_anonymous_usage_stats': 'False', 'cache_selected_only': 'False', 'quiet': 'False'}
+[0m01:46:03.838304 [warn ] [MainThread]: [[33mWARNING[0m]: Deprecated functionality
+
+User config should be moved from the 'config' key in profiles.yml to the 'flags' key in dbt_project.yml.
+[0m01:46:03.878286 [debug] [MainThread]: Spark adapter: Setting pyhive.hive logging to ERROR
+[0m01:46:03.879381 [debug] [MainThread]: Spark adapter: Setting thrift.transport logging to ERROR
+[0m01:46:03.880315 [debug] [MainThread]: Spark adapter: Setting thrift.protocol logging to ERROR
+[0m01:46:04.042805 [info ] [MainThread]: Registered adapter: spark=1.11.0
+[0m01:46:04.086114 [debug] [MainThread]: checksum: 7a7ad752a32e432a2666de9dec42887c2f87be6e7c94b3a673280801e11675b1, vars: {}, profile: orders_dwh, target: dev, version: 1.12.0
+[0m01:46:04.225594 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m01:46:04.226678 [debug] [MainThread]: Nothing changed, skipping partial parsing.
+[0m01:46:04.227405 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m01:46:04.331231 [debug] [MainThread]: Wrote artifact WritableManifest to /usr/app/dbt_project/target/manifest.json
+[0m01:46:04.335157 [debug] [MainThread]: Wrote artifact SemanticManifest to /usr/app/dbt_project/target/semantic_manifest.json
+[0m01:46:04.348761 [debug] [MainThread]: Wrote artifact OsiDocument to /usr/app/dbt_project/target/osi_document.json
+[0m01:46:04.363665 [info ] [MainThread]: Found 4 models, 2 seeds, 7 data tests, 515 macros
+[0m01:46:04.367095 [info ] [MainThread]: 
+[0m01:46:04.368316 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m01:46:04.369058 [info ] [MainThread]: 
+[0m01:46:04.369965 [debug] [MainThread]: Acquiring new spark connection 'master'
+[0m01:46:04.377357 [debug] [ThreadPool]: Acquiring new spark connection 'list_schemas'
+[0m01:46:04.386064 [debug] [ThreadPool]: Using spark connection "list_schemas"
+[0m01:46:04.387189 [debug] [ThreadPool]: On list_schemas: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "orders_dwh", "target_name": "dev", "connection_name": "list_schemas"} */
+
+    show databases
+  
+[0m01:46:04.387785 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m01:46:04.470299 [debug] [ThreadPool]: Spark adapter: Poll status: 2, query complete
+[0m01:46:04.471318 [debug] [ThreadPool]: SQL status: OK in 0.083 seconds
+[0m01:46:04.476311 [debug] [ThreadPool]: On list_schemas: Close
+[0m01:46:04.483398 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_schemas, now list_None_analytics)
+[0m01:46:04.487385 [debug] [ThreadPool]: Spark adapter: NotImplemented: add_begin_query
+[0m01:46:04.488005 [debug] [ThreadPool]: Using spark connection "list_None_analytics"
+[0m01:46:04.488506 [debug] [ThreadPool]: On list_None_analytics: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "orders_dwh", "target_name": "dev", "connection_name": "list_None_analytics"} */
+show table extended in analytics like '*'
+  
+[0m01:46:04.488960 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m01:46:04.662844 [debug] [ThreadPool]: Spark adapter: Poll status: 2, query complete
+[0m01:46:04.663880 [debug] [ThreadPool]: SQL status: OK in 0.175 seconds
+[0m01:46:04.669465 [debug] [ThreadPool]: On list_None_analytics: ROLLBACK
+[0m01:46:04.670630 [debug] [ThreadPool]: Spark adapter: NotImplemented: rollback
+[0m01:46:04.671436 [debug] [ThreadPool]: On list_None_analytics: Close
+[0m01:46:04.678981 [debug] [MainThread]: Spark adapter: NotImplemented: add_begin_query
+[0m01:46:04.682059 [debug] [MainThread]: Spark adapter: NotImplemented: commit
+[0m01:46:04.685920 [debug] [Thread-1 (]: Began running node model.orders_dwh.stg_order_items
+[0m01:46:04.687115 [info ] [Thread-1 (]: 1 of 4 START sql view model analytics.stg_order_items .......................... [RUN]
+[0m01:46:04.686416 [debug] [Thread-2 (]: Began running node model.orders_dwh.stg_orders
+[0m01:46:04.688147 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_None_analytics, now model.orders_dwh.stg_order_items)
+[0m01:46:04.690785 [debug] [Thread-1 (]: Began compiling node model.orders_dwh.stg_order_items
+[0m01:46:04.689229 [info ] [Thread-2 (]: 2 of 4 START sql view model analytics.stg_orders ............................... [RUN]
+[0m01:46:04.697363 [debug] [Thread-2 (]: Acquiring new spark connection 'model.orders_dwh.stg_orders'
+[0m01:46:04.696202 [debug] [Thread-1 (]: Writing injected SQL for node "model.orders_dwh.stg_order_items"
+[0m01:46:04.698207 [debug] [Thread-2 (]: Began compiling node model.orders_dwh.stg_orders
+[0m01:46:04.700976 [debug] [Thread-2 (]: Writing injected SQL for node "model.orders_dwh.stg_orders"
+[0m01:46:04.704588 [debug] [Thread-2 (]: Began executing node model.orders_dwh.stg_orders
+[0m01:46:04.705492 [debug] [Thread-1 (]: Began executing node model.orders_dwh.stg_order_items
+[0m01:46:04.735658 [debug] [Thread-2 (]: Writing runtime sql for node "model.orders_dwh.stg_orders"
+[0m01:46:04.736208 [debug] [Thread-1 (]: Writing runtime sql for node "model.orders_dwh.stg_order_items"
+[0m01:46:04.740379 [debug] [Thread-2 (]: Spark adapter: NotImplemented: add_begin_query
+[0m01:46:04.741654 [debug] [Thread-2 (]: Using spark connection "model.orders_dwh.stg_orders"
+[0m01:46:04.741151 [debug] [Thread-1 (]: Spark adapter: NotImplemented: add_begin_query
+[0m01:46:04.743990 [debug] [Thread-1 (]: Using spark connection "model.orders_dwh.stg_order_items"
+[0m01:46:04.742905 [debug] [Thread-2 (]: On model.orders_dwh.stg_orders: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "orders_dwh", "target_name": "dev", "node_id": "model.orders_dwh.stg_orders"} */
+create or replace view analytics.stg_orders
+  
+  
+  as
+    -- Staging model for raw orders: casts order_date to DATE and drops rows with a missing order_id.
+select
+    order_id,
+    customer_id,
+    cast(order_date as date) as order_date,
+    status
+from analytics.raw_orders
+where order_id is not null
+
+[0m01:46:04.745693 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m01:46:04.744921 [debug] [Thread-1 (]: On model.orders_dwh.stg_order_items: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "orders_dwh", "target_name": "dev", "node_id": "model.orders_dwh.stg_order_items"} */
+create or replace view analytics.stg_order_items
+  
+  
+  as
+    -- Staging model for raw order items: casts price/quantity to numeric types and drops rows missing id or order_id.
+select
+    id,
+    order_id,
+    product_id,
+    cast(price as decimal(18, 2)) as price,
+    cast(quantity as int) as quantity
+from analytics.raw_order_items
+where id is not null
+  and order_id is not null
+
+[0m01:46:04.746865 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m01:46:05.042381 [debug] [Thread-1 (]: Spark adapter: Poll status: 2, query complete
+[0m01:46:05.043612 [debug] [Thread-1 (]: SQL status: OK in 0.297 seconds
+[0m01:46:05.053253 [debug] [Thread-1 (]: On model.orders_dwh.stg_order_items: ROLLBACK
+[0m01:46:05.057561 [debug] [Thread-1 (]: Spark adapter: NotImplemented: rollback
+[0m01:46:05.059556 [debug] [Thread-1 (]: On model.orders_dwh.stg_order_items: Close
+[0m01:46:05.068098 [info ] [Thread-1 (]: 1 of 4 OK created sql view model analytics.stg_order_items ..................... [[32mOK[0m in 0.38s]
+[0m01:46:05.070217 [debug] [Thread-1 (]: Finished running node model.orders_dwh.stg_order_items
+[0m01:46:05.071864 [debug] [Thread-3 (]: Began running node model.orders_dwh.int_order_amounts
+[0m01:46:05.073380 [info ] [Thread-3 (]: 3 of 4 START sql view model analytics.int_order_amounts ........................ [RUN]
+[0m01:46:05.075997 [debug] [Thread-3 (]: Acquiring new spark connection 'model.orders_dwh.int_order_amounts'
+[0m01:46:05.077979 [debug] [Thread-3 (]: Began compiling node model.orders_dwh.int_order_amounts
+[0m01:46:05.081359 [debug] [Thread-3 (]: Writing injected SQL for node "model.orders_dwh.int_order_amounts"
+[0m01:46:05.081876 [debug] [Thread-2 (]: Spark adapter: Poll status: 2, query complete
+[0m01:46:05.082940 [debug] [Thread-2 (]: SQL status: OK in 0.337 seconds
+[0m01:46:05.084914 [debug] [Thread-2 (]: On model.orders_dwh.stg_orders: ROLLBACK
+[0m01:46:05.085531 [debug] [Thread-2 (]: Spark adapter: NotImplemented: rollback
+[0m01:46:05.086040 [debug] [Thread-2 (]: On model.orders_dwh.stg_orders: Close
+[0m01:46:05.088614 [debug] [Thread-3 (]: Began executing node model.orders_dwh.int_order_amounts
+[0m01:46:05.091376 [debug] [Thread-3 (]: Writing runtime sql for node "model.orders_dwh.int_order_amounts"
+[0m01:46:05.095222 [info ] [Thread-2 (]: 2 of 4 OK created sql view model analytics.stg_orders .......................... [[32mOK[0m in 0.40s]
+[0m01:46:05.096627 [debug] [Thread-2 (]: Finished running node model.orders_dwh.stg_orders
+[0m01:46:05.098754 [debug] [Thread-3 (]: Spark adapter: NotImplemented: add_begin_query
+[0m01:46:05.099356 [debug] [Thread-3 (]: Using spark connection "model.orders_dwh.int_order_amounts"
+[0m01:46:05.099905 [debug] [Thread-3 (]: On model.orders_dwh.int_order_amounts: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "orders_dwh", "target_name": "dev", "node_id": "model.orders_dwh.int_order_amounts"} */
+create or replace view analytics.int_order_amounts
+  
+  
+  as
+    -- Materialization choice: 'view' vs 'ephemeral'
+-- Chosen 'view' (not 'ephemeral') so this model can be queried directly in
+-- Spark for debugging/inspection and appears as its own node in dbt docs
+-- lineage with its own compiled object, instead of being inlined as a CTE
+-- inside fct_orders. Spark views are cheap to compute, so favoring
+-- inspectability over hiding the intermediate logic is the better trade-off
+-- for this assignment.
+
+
+select
+    order_id,
+    sum(total_item_price) as total_amount
+from (
+    select
+        order_id,
+        price * quantity as total_item_price
+    from analytics.stg_order_items
+) item_totals
+group by order_id
+
+[0m01:46:05.100451 [debug] [Thread-3 (]: Opening a new connection, currently in state init
+[0m01:46:05.360675 [debug] [Thread-3 (]: Spark adapter: Poll status: 2, query complete
+[0m01:46:05.361821 [debug] [Thread-3 (]: SQL status: OK in 0.261 seconds
+[0m01:46:05.363615 [debug] [Thread-3 (]: On model.orders_dwh.int_order_amounts: ROLLBACK
+[0m01:46:05.364390 [debug] [Thread-3 (]: Spark adapter: NotImplemented: rollback
+[0m01:46:05.364997 [debug] [Thread-3 (]: On model.orders_dwh.int_order_amounts: Close
+[0m01:46:05.371022 [info ] [Thread-3 (]: 3 of 4 OK created sql view model analytics.int_order_amounts ................... [[32mOK[0m in 0.30s]
+[0m01:46:05.372439 [debug] [Thread-3 (]: Finished running node model.orders_dwh.int_order_amounts
+[0m01:46:05.373977 [debug] [Thread-4 (]: Began running node model.orders_dwh.fct_orders
+[0m01:46:05.374869 [info ] [Thread-4 (]: 4 of 4 START sql table model analytics.fct_orders .............................. [RUN]
+[0m01:46:05.375831 [debug] [Thread-4 (]: Acquiring new spark connection 'model.orders_dwh.fct_orders'
+[0m01:46:05.376616 [debug] [Thread-4 (]: Began compiling node model.orders_dwh.fct_orders
+[0m01:46:05.379294 [debug] [Thread-4 (]: Writing injected SQL for node "model.orders_dwh.fct_orders"
+[0m01:46:05.383634 [debug] [Thread-4 (]: Began executing node model.orders_dwh.fct_orders
+[0m01:46:05.396272 [debug] [Thread-4 (]: Using spark connection "model.orders_dwh.fct_orders"
+[0m01:46:05.397220 [debug] [Thread-4 (]: On model.orders_dwh.fct_orders: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "orders_dwh", "target_name": "dev", "node_id": "model.orders_dwh.fct_orders"} */
+drop table if exists analytics.fct_orders
+[0m01:46:05.397889 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m01:46:05.468380 [debug] [Thread-4 (]: Spark adapter: Poll status: 2, query complete
+[0m01:46:05.469505 [debug] [Thread-4 (]: SQL status: OK in 0.072 seconds
+[0m01:46:05.493519 [debug] [Thread-4 (]: Writing runtime sql for node "model.orders_dwh.fct_orders"
+[0m01:46:05.498003 [debug] [Thread-4 (]: Spark adapter: NotImplemented: add_begin_query
+[0m01:46:05.498633 [debug] [Thread-4 (]: Using spark connection "model.orders_dwh.fct_orders"
+[0m01:46:05.499210 [debug] [Thread-4 (]: On model.orders_dwh.fct_orders: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "orders_dwh", "target_name": "dev", "node_id": "model.orders_dwh.fct_orders"} */
+
+  
+    
+        create table analytics.fct_orders
+      
+      
+      
+      
+      
+      
+      
+      
+
+      as
+      select
+    o.order_id,
+    o.customer_id,
+    o.order_date,
+    o.status,
+    a.total_amount
+from analytics.stg_orders o
+left join analytics.int_order_amounts a
+    on o.order_id = a.order_id
+  
+[0m01:46:07.466074 [debug] [Thread-4 (]: Spark adapter: Poll status: 2, query complete
+[0m01:46:07.467443 [debug] [Thread-4 (]: SQL status: OK in 1.968 seconds
+[0m01:46:07.480468 [debug] [Thread-4 (]: On model.orders_dwh.fct_orders: ROLLBACK
+[0m01:46:07.482050 [debug] [Thread-4 (]: Spark adapter: NotImplemented: rollback
+[0m01:46:07.483123 [debug] [Thread-4 (]: On model.orders_dwh.fct_orders: Close
+[0m01:46:07.491932 [info ] [Thread-4 (]: 4 of 4 OK created sql table model analytics.fct_orders ......................... [[32mOK[0m in 2.12s]
+[0m01:46:07.494419 [debug] [Thread-4 (]: Finished running node model.orders_dwh.fct_orders
+[0m01:46:07.497151 [debug] [MainThread]: On master: ROLLBACK
+[0m01:46:07.498138 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m01:46:07.534721 [debug] [MainThread]: Spark adapter: NotImplemented: rollback
+[0m01:46:07.535822 [debug] [MainThread]: Spark adapter: NotImplemented: add_begin_query
+[0m01:46:07.536576 [debug] [MainThread]: Spark adapter: NotImplemented: commit
+[0m01:46:07.537198 [debug] [MainThread]: On master: ROLLBACK
+[0m01:46:07.537765 [debug] [MainThread]: Spark adapter: NotImplemented: rollback
+[0m01:46:07.538229 [debug] [MainThread]: On master: Close
+[0m01:46:07.542910 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m01:46:07.543754 [debug] [MainThread]: Connection 'model.orders_dwh.stg_order_items' was properly closed.
+[0m01:46:07.544333 [debug] [MainThread]: Connection 'model.orders_dwh.stg_orders' was properly closed.
+[0m01:46:07.544788 [debug] [MainThread]: Connection 'model.orders_dwh.int_order_amounts' was properly closed.
+[0m01:46:07.545278 [debug] [MainThread]: Connection 'model.orders_dwh.fct_orders' was properly closed.
+[0m01:46:07.545864 [info ] [MainThread]: 
+[0m01:46:07.546572 [info ] [MainThread]: Finished running 1 table model, 3 view models in 0 hours 0 minutes and 3.18 seconds (3.18s).
+[0m01:46:07.547679 [debug] [MainThread]: Command end result
+[0m01:46:07.571382 [debug] [MainThread]: Wrote artifact WritableManifest to /usr/app/dbt_project/target/manifest.json
+[0m01:46:07.575619 [debug] [MainThread]: Wrote artifact SemanticManifest to /usr/app/dbt_project/target/semantic_manifest.json
+[0m01:46:07.579572 [debug] [MainThread]: Wrote artifact OsiDocument to /usr/app/dbt_project/target/osi_document.json
+[0m01:46:07.587218 [debug] [MainThread]: Wrote artifact RunExecutionResult to /usr/app/dbt_project/target/run_results.json
+[0m01:46:07.587832 [info ] [MainThread]: 
+[0m01:46:07.588463 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m01:46:07.589235 [info ] [MainThread]: 
+[0m01:46:07.589910 [info ] [MainThread]: Done. PASS=4 WARN=0 ERROR=0 SKIP=0 NO-OP=0 REUSED=0 TOTAL=4
+[0m01:46:07.590946 [warn ] [MainThread]: [[33mWARNING[0m][DeprecationsSummary]: Deprecated functionality
+Summary of encountered deprecations:
+- ProjectFlagsMovedDeprecation: 1 occurrence
+To see all deprecation instances instead of just the first occurrence of each,
+run command again with the `--show-all-deprecations` flag. You may also need to
+run with `--no-partial-parse` as some deprecations are only encountered during
+parsing.
+[0m01:46:07.592259 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 3.8720417, "process_in_blocks": "1151", "process_kernel_time": 0.156765, "process_mem_max_rss": "143452", "process_out_blocks": "0", "process_user_time": 1.627945}
+[0m01:46:07.592926 [debug] [MainThread]: Command `dbt run` succeeded at 01:46:07.592828 after 3.87 seconds
+[0m01:46:07.593451 [debug] [MainThread]: Flushing usage events
+
+
+============================== 01:46:28.267029 | 54f3d55f-ee0f-4a91-a3fc-14d106dc7815 ==============================
+[0m01:46:28.267029 [info ] [MainThread]: Running with dbt=1.12.0
+[0m01:46:28.269747 [debug] [MainThread]: running dbt with arguments {'quiet': 'False', 'no_print': 'None', 'use_experimental_parser': 'False', 'fail_fast': 'False', 'cache_selected_only': 'False', 'write_json': 'True', 'empty': 'None', 'version_check': 'True', 'use_colors': 'True', 'debug': 'False', 'introspect': 'True', 'target_path': 'None', 'warn_error': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'log_path': '/usr/app/dbt_project/logs', 'profiles_dir': '/root/.dbt', 'log_cache_events': 'False', 'invocation_command': 'dbt test', 'send_anonymous_usage_stats': 'False', 'log_format': 'default', 'indirect_selection': 'eager', 'printer_width': '80', 'static_parser': 'True', 'maximum_seed_size_mib': '1', 'hints_enabled': 'True', 'partial_parse': 'True'}
+[0m01:46:28.270417 [warn ] [MainThread]: [[33mWARNING[0m]: Deprecated functionality
+
+User config should be moved from the 'config' key in profiles.yml to the 'flags' key in dbt_project.yml.
+[0m01:46:28.309862 [debug] [MainThread]: Spark adapter: Setting pyhive.hive logging to ERROR
+[0m01:46:28.310931 [debug] [MainThread]: Spark adapter: Setting thrift.transport logging to ERROR
+[0m01:46:28.311733 [debug] [MainThread]: Spark adapter: Setting thrift.protocol logging to ERROR
+[0m01:46:28.478356 [info ] [MainThread]: Registered adapter: spark=1.11.0
+[0m01:46:28.520318 [debug] [MainThread]: checksum: 7a7ad752a32e432a2666de9dec42887c2f87be6e7c94b3a673280801e11675b1, vars: {}, profile: orders_dwh, target: dev, version: 1.12.0
+[0m01:46:28.658322 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m01:46:28.659170 [debug] [MainThread]: Nothing changed, skipping partial parsing.
+[0m01:46:28.659726 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m01:46:28.763692 [debug] [MainThread]: Wrote artifact WritableManifest to /usr/app/dbt_project/target/manifest.json
+[0m01:46:28.767861 [debug] [MainThread]: Wrote artifact SemanticManifest to /usr/app/dbt_project/target/semantic_manifest.json
+[0m01:46:28.782030 [debug] [MainThread]: Wrote artifact OsiDocument to /usr/app/dbt_project/target/osi_document.json
+[0m01:46:28.803828 [info ] [MainThread]: Found 4 models, 2 seeds, 7 data tests, 515 macros
+[0m01:46:28.807336 [info ] [MainThread]: 
+[0m01:46:28.808815 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m01:46:28.810561 [info ] [MainThread]: 
+[0m01:46:28.811754 [debug] [MainThread]: Acquiring new spark connection 'master'
+[0m01:46:28.817216 [debug] [ThreadPool]: Acquiring new spark connection 'list_None_analytics'
+[0m01:46:28.825854 [debug] [ThreadPool]: Spark adapter: NotImplemented: add_begin_query
+[0m01:46:28.826736 [debug] [ThreadPool]: Using spark connection "list_None_analytics"
+[0m01:46:28.827318 [debug] [ThreadPool]: On list_None_analytics: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "orders_dwh", "target_name": "dev", "connection_name": "list_None_analytics"} */
+show table extended in analytics like '*'
+  
+[0m01:46:28.827802 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m01:46:28.959697 [debug] [ThreadPool]: Spark adapter: Poll status: 2, query complete
+[0m01:46:28.960821 [debug] [ThreadPool]: SQL status: OK in 0.133 seconds
+[0m01:46:28.965330 [debug] [ThreadPool]: On list_None_analytics: ROLLBACK
+[0m01:46:28.966219 [debug] [ThreadPool]: Spark adapter: NotImplemented: rollback
+[0m01:46:28.966786 [debug] [ThreadPool]: On list_None_analytics: Close
+[0m01:46:28.974698 [debug] [MainThread]: Spark adapter: NotImplemented: add_begin_query
+[0m01:46:28.976426 [debug] [MainThread]: Spark adapter: NotImplemented: commit
+[0m01:46:29.001185 [debug] [Thread-2 (]: Began running node test.orders_dwh.not_null_fct_orders_order_id.4e687af8d0
+[0m01:46:29.002714 [info ] [Thread-2 (]: 2 of 7 START test not_null_fct_orders_order_id ................................. [RUN]
+[0m01:46:29.002090 [debug] [Thread-3 (]: Began running node test.orders_dwh.not_null_stg_order_items_id.1f392c3036
+[0m01:46:29.002374 [debug] [Thread-4 (]: Began running node test.orders_dwh.not_null_stg_orders_order_id.81cfe2fe64
+[0m01:46:29.001696 [debug] [Thread-1 (]: Began running node test.orders_dwh.accepted_values_fct_orders_status__placed__shipped__completed__returned.7d365032e1
+[0m01:46:29.003862 [debug] [Thread-2 (]: Acquiring new spark connection 'test.orders_dwh.not_null_fct_orders_order_id.4e687af8d0'
+[0m01:46:29.004764 [info ] [Thread-3 (]: 3 of 7 START test not_null_stg_order_items_id .................................. [RUN]
+[0m01:46:29.005540 [info ] [Thread-4 (]: 4 of 7 START test not_null_stg_orders_order_id ................................. [RUN]
+[0m01:46:29.011171 [info ] [Thread-1 (]: 1 of 7 START test accepted_values_fct_orders_status__placed__shipped__completed__returned  [RUN]
+[0m01:46:29.012784 [debug] [Thread-2 (]: Began compiling node test.orders_dwh.not_null_fct_orders_order_id.4e687af8d0
+[0m01:46:29.013701 [debug] [Thread-3 (]: Acquiring new spark connection 'test.orders_dwh.not_null_stg_order_items_id.1f392c3036'
+[0m01:46:29.014387 [debug] [Thread-4 (]: Acquiring new spark connection 'test.orders_dwh.not_null_stg_orders_order_id.81cfe2fe64'
+[0m01:46:29.015043 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_None_analytics, now test.orders_dwh.accepted_values_fct_orders_status__placed__shipped__completed__returned.7d365032e1)
+[0m01:46:29.026510 [debug] [Thread-3 (]: Began compiling node test.orders_dwh.not_null_stg_order_items_id.1f392c3036
+[0m01:46:29.029093 [debug] [Thread-2 (]: Writing injected SQL for node "test.orders_dwh.not_null_fct_orders_order_id.4e687af8d0"
+[0m01:46:29.029896 [debug] [Thread-4 (]: Began compiling node test.orders_dwh.not_null_stg_orders_order_id.81cfe2fe64
+[0m01:46:29.030536 [debug] [Thread-1 (]: Began compiling node test.orders_dwh.accepted_values_fct_orders_status__placed__shipped__completed__returned.7d365032e1
+[0m01:46:29.034912 [debug] [Thread-3 (]: Writing injected SQL for node "test.orders_dwh.not_null_stg_order_items_id.1f392c3036"
+[0m01:46:29.039697 [debug] [Thread-4 (]: Writing injected SQL for node "test.orders_dwh.not_null_stg_orders_order_id.81cfe2fe64"
+[0m01:46:29.060220 [debug] [Thread-1 (]: Writing injected SQL for node "test.orders_dwh.accepted_values_fct_orders_status__placed__shipped__completed__returned.7d365032e1"
+[0m01:46:29.061409 [debug] [Thread-2 (]: Began executing node test.orders_dwh.not_null_fct_orders_order_id.4e687af8d0
+[0m01:46:29.075806 [debug] [Thread-2 (]: Writing runtime sql for node "test.orders_dwh.not_null_fct_orders_order_id.4e687af8d0"
+[0m01:46:29.077221 [debug] [Thread-3 (]: Began executing node test.orders_dwh.not_null_stg_order_items_id.1f392c3036
+[0m01:46:29.078897 [debug] [Thread-3 (]: Writing runtime sql for node "test.orders_dwh.not_null_stg_order_items_id.1f392c3036"
+[0m01:46:29.076705 [debug] [Thread-4 (]: Began executing node test.orders_dwh.not_null_stg_orders_order_id.81cfe2fe64
+[0m01:46:29.080697 [debug] [Thread-4 (]: Writing runtime sql for node "test.orders_dwh.not_null_stg_orders_order_id.81cfe2fe64"
+[0m01:46:29.079235 [debug] [Thread-1 (]: Began executing node test.orders_dwh.accepted_values_fct_orders_status__placed__shipped__completed__returned.7d365032e1
+[0m01:46:29.082496 [debug] [Thread-1 (]: Writing runtime sql for node "test.orders_dwh.accepted_values_fct_orders_status__placed__shipped__completed__returned.7d365032e1"
+[0m01:46:29.083335 [debug] [Thread-2 (]: Spark adapter: NotImplemented: add_begin_query
+[0m01:46:29.084410 [debug] [Thread-2 (]: Using spark connection "test.orders_dwh.not_null_fct_orders_order_id.4e687af8d0"
+[0m01:46:29.085152 [debug] [Thread-2 (]: On test.orders_dwh.not_null_fct_orders_order_id.4e687af8d0: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "orders_dwh", "target_name": "dev", "node_id": "test.orders_dwh.not_null_fct_orders_order_id.4e687af8d0"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select order_id
+from analytics.fct_orders
+where order_id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m01:46:29.085741 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m01:46:29.084088 [debug] [Thread-4 (]: Spark adapter: NotImplemented: add_begin_query
+[0m01:46:29.084816 [debug] [Thread-3 (]: Spark adapter: NotImplemented: add_begin_query
+[0m01:46:29.087762 [debug] [Thread-3 (]: Using spark connection "test.orders_dwh.not_null_stg_order_items_id.1f392c3036"
+[0m01:46:29.087063 [debug] [Thread-4 (]: Using spark connection "test.orders_dwh.not_null_stg_orders_order_id.81cfe2fe64"
+[0m01:46:29.086788 [debug] [Thread-1 (]: Spark adapter: NotImplemented: add_begin_query
+[0m01:46:29.088362 [debug] [Thread-3 (]: On test.orders_dwh.not_null_stg_order_items_id.1f392c3036: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "orders_dwh", "target_name": "dev", "node_id": "test.orders_dwh.not_null_stg_order_items_id.1f392c3036"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select id
+from analytics.stg_order_items
+where id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m01:46:29.089072 [debug] [Thread-4 (]: On test.orders_dwh.not_null_stg_orders_order_id.81cfe2fe64: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "orders_dwh", "target_name": "dev", "node_id": "test.orders_dwh.not_null_stg_orders_order_id.81cfe2fe64"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select order_id
+from analytics.stg_orders
+where order_id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m01:46:29.089855 [debug] [Thread-1 (]: Using spark connection "test.orders_dwh.accepted_values_fct_orders_status__placed__shipped__completed__returned.7d365032e1"
+[0m01:46:29.090662 [debug] [Thread-3 (]: Opening a new connection, currently in state init
+[0m01:46:29.091576 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m01:46:29.092208 [debug] [Thread-1 (]: On test.orders_dwh.accepted_values_fct_orders_status__placed__shipped__completed__returned.7d365032e1: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "orders_dwh", "target_name": "dev", "node_id": "test.orders_dwh.accepted_values_fct_orders_status__placed__shipped__completed__returned.7d365032e1"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+with all_values as (
+
+    select
+        status as value_field,
+        count(*) as n_records
+
+    from analytics.fct_orders
+    group by status
+
+)
+
+select *
+from all_values
+where value_field not in (
+    'placed','shipped','completed','returned'
+)
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m01:46:29.094044 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m01:46:30.284648 [debug] [Thread-3 (]: Spark adapter: Poll status: 2, query complete
+[0m01:46:30.293656 [debug] [Thread-3 (]: SQL status: OK in 1.203 seconds
+[0m01:46:30.300589 [debug] [Thread-2 (]: Spark adapter: Poll status: 2, query complete
+[0m01:46:30.315489 [debug] [Thread-2 (]: SQL status: OK in 1.230 seconds
+[0m01:46:30.332671 [debug] [Thread-3 (]: On test.orders_dwh.not_null_stg_order_items_id.1f392c3036: ROLLBACK
+[0m01:46:30.335219 [debug] [Thread-3 (]: Spark adapter: NotImplemented: rollback
+[0m01:46:30.342528 [debug] [Thread-3 (]: On test.orders_dwh.not_null_stg_order_items_id.1f392c3036: Close
+[0m01:46:30.402266 [debug] [Thread-4 (]: Spark adapter: Poll status: 2, query complete
+[0m01:46:30.410359 [debug] [Thread-4 (]: SQL status: OK in 1.319 seconds
+[0m01:46:30.416908 [debug] [Thread-2 (]: On test.orders_dwh.not_null_fct_orders_order_id.4e687af8d0: ROLLBACK
+[0m01:46:30.418853 [debug] [Thread-2 (]: Spark adapter: NotImplemented: rollback
+[0m01:46:30.420739 [debug] [Thread-2 (]: On test.orders_dwh.not_null_fct_orders_order_id.4e687af8d0: Close
+[0m01:46:30.423309 [info ] [Thread-3 (]: 3 of 7 PASS not_null_stg_order_items_id ........................................ [[32mPASS[0m in 1.41s]
+[0m01:46:30.430882 [debug] [Thread-3 (]: Finished running node test.orders_dwh.not_null_stg_order_items_id.1f392c3036
+[0m01:46:30.432459 [debug] [Thread-3 (]: Began running node test.orders_dwh.unique_fct_orders_order_id.523ddb6ce5
+[0m01:46:30.433912 [info ] [Thread-3 (]: 5 of 7 START test unique_fct_orders_order_id ................................... [RUN]
+[0m01:46:30.440433 [debug] [Thread-4 (]: On test.orders_dwh.not_null_stg_orders_order_id.81cfe2fe64: ROLLBACK
+[0m01:46:30.443790 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.orders_dwh.not_null_stg_order_items_id.1f392c3036, now test.orders_dwh.unique_fct_orders_order_id.523ddb6ce5)
+[0m01:46:30.448202 [debug] [Thread-3 (]: Began compiling node test.orders_dwh.unique_fct_orders_order_id.523ddb6ce5
+[0m01:46:30.446219 [info ] [Thread-2 (]: 2 of 7 PASS not_null_fct_orders_order_id ....................................... [[32mPASS[0m in 1.44s]
+[0m01:46:30.446850 [debug] [Thread-4 (]: Spark adapter: NotImplemented: rollback
+[0m01:46:30.460597 [debug] [Thread-2 (]: Finished running node test.orders_dwh.not_null_fct_orders_order_id.4e687af8d0
+[0m01:46:30.462445 [debug] [Thread-3 (]: Writing injected SQL for node "test.orders_dwh.unique_fct_orders_order_id.523ddb6ce5"
+[0m01:46:30.463823 [debug] [Thread-4 (]: On test.orders_dwh.not_null_stg_orders_order_id.81cfe2fe64: Close
+[0m01:46:30.465194 [debug] [Thread-2 (]: Began running node test.orders_dwh.unique_stg_order_items_id.1320d7aef8
+[0m01:46:30.468629 [info ] [Thread-2 (]: 6 of 7 START test unique_stg_order_items_id .................................... [RUN]
+[0m01:46:30.472680 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.orders_dwh.not_null_fct_orders_order_id.4e687af8d0, now test.orders_dwh.unique_stg_order_items_id.1320d7aef8)
+[0m01:46:30.474828 [debug] [Thread-2 (]: Began compiling node test.orders_dwh.unique_stg_order_items_id.1320d7aef8
+[0m01:46:30.488519 [debug] [Thread-2 (]: Writing injected SQL for node "test.orders_dwh.unique_stg_order_items_id.1320d7aef8"
+[0m01:46:30.490522 [info ] [Thread-4 (]: 4 of 7 PASS not_null_stg_orders_order_id ....................................... [[32mPASS[0m in 1.48s]
+[0m01:46:30.495296 [debug] [Thread-4 (]: Finished running node test.orders_dwh.not_null_stg_orders_order_id.81cfe2fe64
+[0m01:46:30.498228 [debug] [Thread-4 (]: Began running node test.orders_dwh.unique_stg_orders_order_id.e3b841c71a
+[0m01:46:30.497271 [debug] [Thread-3 (]: Began executing node test.orders_dwh.unique_fct_orders_order_id.523ddb6ce5
+[0m01:46:30.500636 [info ] [Thread-4 (]: 7 of 7 START test unique_stg_orders_order_id ................................... [RUN]
+[0m01:46:30.506598 [debug] [Thread-3 (]: Writing runtime sql for node "test.orders_dwh.unique_fct_orders_order_id.523ddb6ce5"
+[0m01:46:30.509393 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.orders_dwh.not_null_stg_orders_order_id.81cfe2fe64, now test.orders_dwh.unique_stg_orders_order_id.e3b841c71a)
+[0m01:46:30.521039 [debug] [Thread-4 (]: Began compiling node test.orders_dwh.unique_stg_orders_order_id.e3b841c71a
+[0m01:46:30.528116 [debug] [Thread-2 (]: Began executing node test.orders_dwh.unique_stg_order_items_id.1320d7aef8
+[0m01:46:30.538531 [debug] [Thread-4 (]: Writing injected SQL for node "test.orders_dwh.unique_stg_orders_order_id.e3b841c71a"
+[0m01:46:30.545163 [debug] [Thread-2 (]: Writing runtime sql for node "test.orders_dwh.unique_stg_order_items_id.1320d7aef8"
+[0m01:46:30.549786 [debug] [Thread-3 (]: Spark adapter: NotImplemented: add_begin_query
+[0m01:46:30.551910 [debug] [Thread-3 (]: Using spark connection "test.orders_dwh.unique_fct_orders_order_id.523ddb6ce5"
+[0m01:46:30.554217 [debug] [Thread-3 (]: On test.orders_dwh.unique_fct_orders_order_id.523ddb6ce5: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "orders_dwh", "target_name": "dev", "node_id": "test.orders_dwh.unique_fct_orders_order_id.523ddb6ce5"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+select
+    order_id as unique_field,
+    count(*) as n_records
+
+from analytics.fct_orders
+where order_id is not null
+group by order_id
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m01:46:30.553589 [debug] [Thread-2 (]: Spark adapter: NotImplemented: add_begin_query
+[0m01:46:30.555640 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m01:46:30.557091 [debug] [Thread-4 (]: Began executing node test.orders_dwh.unique_stg_orders_order_id.e3b841c71a
+[0m01:46:30.557745 [debug] [Thread-2 (]: Using spark connection "test.orders_dwh.unique_stg_order_items_id.1320d7aef8"
+[0m01:46:30.561779 [debug] [Thread-4 (]: Writing runtime sql for node "test.orders_dwh.unique_stg_orders_order_id.e3b841c71a"
+[0m01:46:30.569237 [debug] [Thread-2 (]: On test.orders_dwh.unique_stg_order_items_id.1320d7aef8: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "orders_dwh", "target_name": "dev", "node_id": "test.orders_dwh.unique_stg_order_items_id.1320d7aef8"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+select
+    id as unique_field,
+    count(*) as n_records
+
+from analytics.stg_order_items
+where id is not null
+group by id
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m01:46:30.571080 [debug] [Thread-1 (]: Spark adapter: Poll status: 2, query complete
+[0m01:46:30.575691 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m01:46:30.578940 [debug] [Thread-1 (]: SQL status: OK in 1.485 seconds
+[0m01:46:30.608318 [debug] [Thread-4 (]: Spark adapter: NotImplemented: add_begin_query
+[0m01:46:30.611264 [debug] [Thread-4 (]: Using spark connection "test.orders_dwh.unique_stg_orders_order_id.e3b841c71a"
+[0m01:46:30.613881 [debug] [Thread-4 (]: On test.orders_dwh.unique_stg_orders_order_id.e3b841c71a: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "orders_dwh", "target_name": "dev", "node_id": "test.orders_dwh.unique_stg_orders_order_id.e3b841c71a"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+select
+    order_id as unique_field,
+    count(*) as n_records
+
+from analytics.stg_orders
+where order_id is not null
+group by order_id
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m01:46:30.613271 [debug] [Thread-1 (]: On test.orders_dwh.accepted_values_fct_orders_status__placed__shipped__completed__returned.7d365032e1: ROLLBACK
+[0m01:46:30.617373 [debug] [Thread-1 (]: Spark adapter: NotImplemented: rollback
+[0m01:46:30.615643 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m01:46:30.618944 [debug] [Thread-1 (]: On test.orders_dwh.accepted_values_fct_orders_status__placed__shipped__completed__returned.7d365032e1: Close
+[0m01:46:30.635436 [error] [Thread-1 (]: 1 of 7 FAIL 1 accepted_values_fct_orders_status__placed__shipped__completed__returned  [[31mFAIL 1[0m in 1.62s]
+[0m01:46:30.637185 [debug] [Thread-1 (]: Finished running node test.orders_dwh.accepted_values_fct_orders_status__placed__shipped__completed__returned.7d365032e1
+[0m01:46:31.488820 [debug] [Thread-3 (]: Spark adapter: Poll status: 2, query complete
+[0m01:46:31.490999 [debug] [Thread-3 (]: SQL status: OK in 0.935 seconds
+[0m01:46:31.500129 [debug] [Thread-3 (]: On test.orders_dwh.unique_fct_orders_order_id.523ddb6ce5: ROLLBACK
+[0m01:46:31.501603 [debug] [Thread-3 (]: Spark adapter: NotImplemented: rollback
+[0m01:46:31.502718 [debug] [Thread-3 (]: On test.orders_dwh.unique_fct_orders_order_id.523ddb6ce5: Close
+[0m01:46:31.517693 [info ] [Thread-3 (]: 5 of 7 PASS unique_fct_orders_order_id ......................................... [[32mPASS[0m in 1.07s]
+[0m01:46:31.520224 [debug] [Thread-3 (]: Finished running node test.orders_dwh.unique_fct_orders_order_id.523ddb6ce5
+[0m01:46:31.755458 [debug] [Thread-4 (]: Spark adapter: Poll status: 2, query complete
+[0m01:46:31.758141 [debug] [Thread-4 (]: SQL status: OK in 1.142 seconds
+[0m01:46:31.764332 [debug] [Thread-4 (]: On test.orders_dwh.unique_stg_orders_order_id.e3b841c71a: ROLLBACK
+[0m01:46:31.765639 [debug] [Thread-4 (]: Spark adapter: NotImplemented: rollback
+[0m01:46:31.766486 [debug] [Thread-4 (]: On test.orders_dwh.unique_stg_orders_order_id.e3b841c71a: Close
+[0m01:46:31.784335 [info ] [Thread-4 (]: 7 of 7 PASS unique_stg_orders_order_id ......................................... [[32mPASS[0m in 1.28s]
+[0m01:46:31.786200 [debug] [Thread-4 (]: Finished running node test.orders_dwh.unique_stg_orders_order_id.e3b841c71a
+[0m01:46:31.809201 [debug] [Thread-2 (]: Spark adapter: Poll status: 2, query complete
+[0m01:46:31.810370 [debug] [Thread-2 (]: SQL status: OK in 1.235 seconds
+[0m01:46:31.814714 [debug] [Thread-2 (]: On test.orders_dwh.unique_stg_order_items_id.1320d7aef8: ROLLBACK
+[0m01:46:31.815830 [debug] [Thread-2 (]: Spark adapter: NotImplemented: rollback
+[0m01:46:31.816634 [debug] [Thread-2 (]: On test.orders_dwh.unique_stg_order_items_id.1320d7aef8: Close
+[0m01:46:31.822596 [info ] [Thread-2 (]: 6 of 7 PASS unique_stg_order_items_id .......................................... [[32mPASS[0m in 1.35s]
+[0m01:46:31.828774 [debug] [Thread-2 (]: Finished running node test.orders_dwh.unique_stg_order_items_id.1320d7aef8
+[0m01:46:31.831597 [debug] [MainThread]: On master: ROLLBACK
+[0m01:46:31.832374 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m01:46:31.882829 [debug] [MainThread]: Spark adapter: NotImplemented: rollback
+[0m01:46:31.883800 [debug] [MainThread]: Spark adapter: NotImplemented: add_begin_query
+[0m01:46:31.884423 [debug] [MainThread]: Spark adapter: NotImplemented: commit
+[0m01:46:31.884972 [debug] [MainThread]: On master: ROLLBACK
+[0m01:46:31.885504 [debug] [MainThread]: Spark adapter: NotImplemented: rollback
+[0m01:46:31.885946 [debug] [MainThread]: On master: Close
+[0m01:46:31.890661 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m01:46:31.891736 [debug] [MainThread]: Connection 'test.orders_dwh.accepted_values_fct_orders_status__placed__shipped__completed__returned.7d365032e1' was properly closed.
+[0m01:46:31.892315 [debug] [MainThread]: Connection 'test.orders_dwh.unique_stg_order_items_id.1320d7aef8' was properly closed.
+[0m01:46:31.892856 [debug] [MainThread]: Connection 'test.orders_dwh.unique_fct_orders_order_id.523ddb6ce5' was properly closed.
+[0m01:46:31.893279 [debug] [MainThread]: Connection 'test.orders_dwh.unique_stg_orders_order_id.e3b841c71a' was properly closed.
+[0m01:46:31.893754 [info ] [MainThread]: 
+[0m01:46:31.894415 [info ] [MainThread]: Finished running 7 data tests in 0 hours 0 minutes and 3.08 seconds (3.08s).
+[0m01:46:31.895738 [debug] [MainThread]: Command end result
+[0m01:46:31.921368 [debug] [MainThread]: Wrote artifact WritableManifest to /usr/app/dbt_project/target/manifest.json
+[0m01:46:31.926522 [debug] [MainThread]: Wrote artifact SemanticManifest to /usr/app/dbt_project/target/semantic_manifest.json
+[0m01:46:31.930741 [debug] [MainThread]: Wrote artifact OsiDocument to /usr/app/dbt_project/target/osi_document.json
+[0m01:46:31.939304 [debug] [MainThread]: Wrote artifact RunExecutionResult to /usr/app/dbt_project/target/run_results.json
+[0m01:46:31.940812 [info ] [MainThread]: 
+[0m01:46:31.942319 [info ] [MainThread]: [31mCompleted with 1 error, 0 partial successes, and 0 warnings:[0m
+[0m01:46:31.943220 [info ] [MainThread]: 
+[0m01:46:31.944045 [error] [MainThread]: [[31mERROR[0m]: in test accepted_values_fct_orders_status__placed__shipped__completed__returned (models/marts/schema.yml)
+[0m01:46:31.944886 [error] [MainThread]:   Got 1 result, configured to fail if != 0
+[0m01:46:31.945594 [info ] [MainThread]: 
+[0m01:46:31.946334 [info ] [MainThread]:   compiled code at target/compiled/orders_dwh/models/marts/schema.yml/accepted_values_fct_orders_ac63cd379c2cc7e34304918c0c72c3a9.sql
+[0m01:46:31.947032 [info ] [MainThread]: 
+[0m01:46:31.947724 [info ] [MainThread]: Done. PASS=6 WARN=0 ERROR=1 SKIP=0 NO-OP=0 REUSED=0 TOTAL=7
+[0m01:46:31.948535 [warn ] [MainThread]: [[33mWARNING[0m][DeprecationsSummary]: Deprecated functionality
+Summary of encountered deprecations:
+- ProjectFlagsMovedDeprecation: 1 occurrence
+To see all deprecation instances instead of just the first occurrence of each,
+run command again with the `--show-all-deprecations` flag. You may also need to
+run with `--no-partial-parse` as some deprecations are only encountered during
+parsing.
+[0m01:46:31.949656 [debug] [MainThread]: Resource report: {"command_name": "test", "command_success": false, "command_wall_clock_time": 3.7881224, "process_in_blocks": "1151", "process_kernel_time": 0.157592, "process_mem_max_rss": "143628", "process_out_blocks": "0", "process_user_time": 1.749682}
+[0m01:46:31.950342 [debug] [MainThread]: Command `dbt test` failed at 01:46:31.950241 after 3.79 seconds
+[0m01:46:31.950885 [debug] [MainThread]: Flushing usage events
+
+
+============================== 01:46:39.706178 | 7576085a-8a95-429c-b4e3-41098ed0ae43 ==============================
+[0m01:46:39.706178 [info ] [MainThread]: Running with dbt=1.12.0
+[0m01:46:39.709464 [debug] [MainThread]: running dbt with arguments {'write_json': 'True', 'warn_error': 'None', 'use_colors': 'True', 'maximum_seed_size_mib': '1', 'hints_enabled': 'True', 'cache_selected_only': 'False', 'log_cache_events': 'False', 'log_format': 'default', 'static_parser': 'True', 'quiet': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'partial_parse': 'True', 'no_print': 'None', 'version_check': 'True', 'empty': 'None', 'send_anonymous_usage_stats': 'False', 'fail_fast': 'False', 'profiles_dir': '/root/.dbt', 'printer_width': '80', 'log_path': '/usr/app/dbt_project/logs', 'introspect': 'True', 'invocation_command': 'dbt docs generate', 'debug': 'False', 'use_experimental_parser': 'False', 'indirect_selection': 'eager', 'target_path': 'None'}
+[0m01:46:39.710146 [warn ] [MainThread]: [[33mWARNING[0m]: Deprecated functionality
+
+User config should be moved from the 'config' key in profiles.yml to the 'flags' key in dbt_project.yml.
+[0m01:46:39.750330 [debug] [MainThread]: Spark adapter: Setting pyhive.hive logging to ERROR
+[0m01:46:39.751306 [debug] [MainThread]: Spark adapter: Setting thrift.transport logging to ERROR
+[0m01:46:39.752070 [debug] [MainThread]: Spark adapter: Setting thrift.protocol logging to ERROR
+[0m01:46:39.925453 [info ] [MainThread]: Registered adapter: spark=1.11.0
+[0m01:46:39.964787 [debug] [MainThread]: checksum: 7a7ad752a32e432a2666de9dec42887c2f87be6e7c94b3a673280801e11675b1, vars: {}, profile: orders_dwh, target: dev, version: 1.12.0
+[0m01:46:40.102389 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m01:46:40.103141 [debug] [MainThread]: Nothing changed, skipping partial parsing.
+[0m01:46:40.103669 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m01:46:40.151483 [info ] [MainThread]: Found 4 models, 2 seeds, 7 data tests, 515 macros
+[0m01:46:40.154637 [info ] [MainThread]: 
+[0m01:46:40.155724 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m01:46:40.156766 [info ] [MainThread]: 
+[0m01:46:40.158217 [debug] [MainThread]: Acquiring new spark connection 'master'
+[0m01:46:40.164175 [debug] [ThreadPool]: Acquiring new spark connection 'list_None_analytics'
+[0m01:46:40.176228 [debug] [ThreadPool]: Spark adapter: NotImplemented: add_begin_query
+[0m01:46:40.177062 [debug] [ThreadPool]: Using spark connection "list_None_analytics"
+[0m01:46:40.177662 [debug] [ThreadPool]: On list_None_analytics: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "orders_dwh", "target_name": "dev", "connection_name": "list_None_analytics"} */
+show table extended in analytics like '*'
+  
+[0m01:46:40.178142 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m01:46:40.300866 [debug] [ThreadPool]: Spark adapter: Poll status: 2, query complete
+[0m01:46:40.302092 [debug] [ThreadPool]: SQL status: OK in 0.124 seconds
+[0m01:46:40.308660 [debug] [ThreadPool]: On list_None_analytics: ROLLBACK
+[0m01:46:40.310018 [debug] [ThreadPool]: Spark adapter: NotImplemented: rollback
+[0m01:46:40.310913 [debug] [ThreadPool]: On list_None_analytics: Close
+[0m01:46:40.321182 [debug] [Thread-1 (]: Began running node seed.orders_dwh.raw_order_items
+[0m01:46:40.322413 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_None_analytics, now seed.orders_dwh.raw_order_items)
+[0m01:46:40.321637 [debug] [Thread-2 (]: Began running node seed.orders_dwh.raw_orders
+[0m01:46:40.325027 [debug] [Thread-2 (]: Acquiring new spark connection 'seed.orders_dwh.raw_orders'
+[0m01:46:40.323532 [debug] [Thread-1 (]: Began compiling node seed.orders_dwh.raw_order_items
+[0m01:46:40.330610 [debug] [Thread-1 (]: Began executing node seed.orders_dwh.raw_order_items
+[0m01:46:40.326540 [debug] [Thread-2 (]: Began compiling node seed.orders_dwh.raw_orders
+[0m01:46:40.332721 [debug] [Thread-2 (]: Began executing node seed.orders_dwh.raw_orders
+[0m01:46:40.331607 [debug] [Thread-1 (]: Finished running node seed.orders_dwh.raw_order_items
+[0m01:46:40.333504 [debug] [Thread-2 (]: Finished running node seed.orders_dwh.raw_orders
+[0m01:46:40.334430 [debug] [Thread-3 (]: Began running node model.orders_dwh.stg_order_items
+[0m01:46:40.335427 [debug] [Thread-3 (]: Acquiring new spark connection 'model.orders_dwh.stg_order_items'
+[0m01:46:40.335955 [debug] [Thread-3 (]: Began compiling node model.orders_dwh.stg_order_items
+[0m01:46:40.335002 [debug] [Thread-4 (]: Began running node model.orders_dwh.stg_orders
+[0m01:46:40.338615 [debug] [Thread-4 (]: Acquiring new spark connection 'model.orders_dwh.stg_orders'
+[0m01:46:40.337714 [debug] [Thread-3 (]: Writing injected SQL for node "model.orders_dwh.stg_order_items"
+[0m01:46:40.339139 [debug] [Thread-4 (]: Began compiling node model.orders_dwh.stg_orders
+[0m01:46:40.342387 [debug] [Thread-4 (]: Writing injected SQL for node "model.orders_dwh.stg_orders"
+[0m01:46:40.345730 [debug] [Thread-3 (]: Began executing node model.orders_dwh.stg_order_items
+[0m01:46:40.347133 [debug] [Thread-3 (]: Finished running node model.orders_dwh.stg_order_items
+[0m01:46:40.346310 [debug] [Thread-4 (]: Began executing node model.orders_dwh.stg_orders
+[0m01:46:40.349265 [debug] [Thread-4 (]: Finished running node model.orders_dwh.stg_orders
+[0m01:46:40.348546 [debug] [Thread-2 (]: Began running node test.orders_dwh.not_null_stg_order_items_id.1f392c3036
+[0m01:46:40.348786 [debug] [Thread-3 (]: Began running node test.orders_dwh.unique_stg_order_items_id.1320d7aef8
+[0m01:46:40.348262 [debug] [Thread-1 (]: Began running node model.orders_dwh.int_order_amounts
+[0m01:46:40.350082 [debug] [Thread-4 (]: Began running node test.orders_dwh.not_null_stg_orders_order_id.81cfe2fe64
+[0m01:46:40.350372 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly seed.orders_dwh.raw_orders, now test.orders_dwh.not_null_stg_order_items_id.1f392c3036)
+[0m01:46:40.350981 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly model.orders_dwh.stg_order_items, now test.orders_dwh.unique_stg_order_items_id.1320d7aef8)
+[0m01:46:40.351926 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly seed.orders_dwh.raw_order_items, now model.orders_dwh.int_order_amounts)
+[0m01:46:40.352517 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly model.orders_dwh.stg_orders, now test.orders_dwh.not_null_stg_orders_order_id.81cfe2fe64)
+[0m01:46:40.353036 [debug] [Thread-2 (]: Began compiling node test.orders_dwh.not_null_stg_order_items_id.1f392c3036
+[0m01:46:40.353514 [debug] [Thread-3 (]: Began compiling node test.orders_dwh.unique_stg_order_items_id.1320d7aef8
+[0m01:46:40.354000 [debug] [Thread-1 (]: Began compiling node model.orders_dwh.int_order_amounts
+[0m01:46:40.354485 [debug] [Thread-4 (]: Began compiling node test.orders_dwh.not_null_stg_orders_order_id.81cfe2fe64
+[0m01:46:40.365868 [debug] [Thread-2 (]: Writing injected SQL for node "test.orders_dwh.not_null_stg_order_items_id.1f392c3036"
+[0m01:46:40.372568 [debug] [Thread-3 (]: Writing injected SQL for node "test.orders_dwh.unique_stg_order_items_id.1320d7aef8"
+[0m01:46:40.374624 [debug] [Thread-1 (]: Writing injected SQL for node "model.orders_dwh.int_order_amounts"
+[0m01:46:40.380487 [debug] [Thread-4 (]: Writing injected SQL for node "test.orders_dwh.not_null_stg_orders_order_id.81cfe2fe64"
+[0m01:46:40.384725 [debug] [Thread-4 (]: Began executing node test.orders_dwh.not_null_stg_orders_order_id.81cfe2fe64
+[0m01:46:40.386332 [debug] [Thread-4 (]: Finished running node test.orders_dwh.not_null_stg_orders_order_id.81cfe2fe64
+[0m01:46:40.386983 [debug] [Thread-4 (]: Began running node test.orders_dwh.unique_stg_orders_order_id.e3b841c71a
+[0m01:46:40.387618 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.orders_dwh.not_null_stg_orders_order_id.81cfe2fe64, now test.orders_dwh.unique_stg_orders_order_id.e3b841c71a)
+[0m01:46:40.385235 [debug] [Thread-1 (]: Began executing node model.orders_dwh.int_order_amounts
+[0m01:46:40.385751 [debug] [Thread-2 (]: Began executing node test.orders_dwh.not_null_stg_order_items_id.1f392c3036
+[0m01:46:40.386602 [debug] [Thread-3 (]: Began executing node test.orders_dwh.unique_stg_order_items_id.1320d7aef8
+[0m01:46:40.388169 [debug] [Thread-4 (]: Began compiling node test.orders_dwh.unique_stg_orders_order_id.e3b841c71a
+[0m01:46:40.388926 [debug] [Thread-1 (]: Finished running node model.orders_dwh.int_order_amounts
+[0m01:46:40.389771 [debug] [Thread-2 (]: Finished running node test.orders_dwh.not_null_stg_order_items_id.1f392c3036
+[0m01:46:40.390683 [debug] [Thread-3 (]: Finished running node test.orders_dwh.unique_stg_order_items_id.1320d7aef8
+[0m01:46:40.396075 [debug] [Thread-4 (]: Writing injected SQL for node "test.orders_dwh.unique_stg_orders_order_id.e3b841c71a"
+[0m01:46:40.397812 [debug] [Thread-1 (]: Began running node model.orders_dwh.fct_orders
+[0m01:46:40.399460 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.orders_dwh.int_order_amounts, now model.orders_dwh.fct_orders)
+[0m01:46:40.400198 [debug] [Thread-1 (]: Began compiling node model.orders_dwh.fct_orders
+[0m01:46:40.402291 [debug] [Thread-1 (]: Writing injected SQL for node "model.orders_dwh.fct_orders"
+[0m01:46:40.403603 [debug] [Thread-4 (]: Began executing node test.orders_dwh.unique_stg_orders_order_id.e3b841c71a
+[0m01:46:40.404653 [debug] [Thread-4 (]: Finished running node test.orders_dwh.unique_stg_orders_order_id.e3b841c71a
+[0m01:46:40.405889 [debug] [Thread-1 (]: Began executing node model.orders_dwh.fct_orders
+[0m01:46:40.407236 [debug] [Thread-1 (]: Finished running node model.orders_dwh.fct_orders
+[0m01:46:40.409076 [debug] [Thread-4 (]: Began running node test.orders_dwh.unique_fct_orders_order_id.523ddb6ce5
+[0m01:46:40.410094 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.orders_dwh.unique_stg_orders_order_id.e3b841c71a, now test.orders_dwh.unique_fct_orders_order_id.523ddb6ce5)
+[0m01:46:40.410716 [debug] [Thread-4 (]: Began compiling node test.orders_dwh.unique_fct_orders_order_id.523ddb6ce5
+[0m01:46:40.409430 [debug] [Thread-3 (]: Began running node test.orders_dwh.not_null_fct_orders_order_id.4e687af8d0
+[0m01:46:40.409726 [debug] [Thread-2 (]: Began running node test.orders_dwh.accepted_values_fct_orders_status__placed__shipped__completed__returned.7d365032e1
+[0m01:46:40.415420 [debug] [Thread-4 (]: Writing injected SQL for node "test.orders_dwh.unique_fct_orders_order_id.523ddb6ce5"
+[0m01:46:40.416353 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.orders_dwh.unique_stg_order_items_id.1320d7aef8, now test.orders_dwh.not_null_fct_orders_order_id.4e687af8d0)
+[0m01:46:40.417985 [debug] [Thread-3 (]: Began compiling node test.orders_dwh.not_null_fct_orders_order_id.4e687af8d0
+[0m01:46:40.417029 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.orders_dwh.not_null_stg_order_items_id.1f392c3036, now test.orders_dwh.accepted_values_fct_orders_status__placed__shipped__completed__returned.7d365032e1)
+[0m01:46:40.429502 [debug] [Thread-2 (]: Began compiling node test.orders_dwh.accepted_values_fct_orders_status__placed__shipped__completed__returned.7d365032e1
+[0m01:46:40.429054 [debug] [Thread-3 (]: Writing injected SQL for node "test.orders_dwh.not_null_fct_orders_order_id.4e687af8d0"
+[0m01:46:40.448488 [debug] [Thread-2 (]: Writing injected SQL for node "test.orders_dwh.accepted_values_fct_orders_status__placed__shipped__completed__returned.7d365032e1"
+[0m01:46:40.449990 [debug] [Thread-4 (]: Began executing node test.orders_dwh.unique_fct_orders_order_id.523ddb6ce5
+[0m01:46:40.451409 [debug] [Thread-4 (]: Finished running node test.orders_dwh.unique_fct_orders_order_id.523ddb6ce5
+[0m01:46:40.450577 [debug] [Thread-3 (]: Began executing node test.orders_dwh.not_null_fct_orders_order_id.4e687af8d0
+[0m01:46:40.453100 [debug] [Thread-3 (]: Finished running node test.orders_dwh.not_null_fct_orders_order_id.4e687af8d0
+[0m01:46:40.453438 [debug] [Thread-2 (]: Began executing node test.orders_dwh.accepted_values_fct_orders_status__placed__shipped__completed__returned.7d365032e1
+[0m01:46:40.454652 [debug] [Thread-2 (]: Finished running node test.orders_dwh.accepted_values_fct_orders_status__placed__shipped__completed__returned.7d365032e1
+[0m01:46:40.456418 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m01:46:40.457365 [debug] [MainThread]: Connection 'model.orders_dwh.fct_orders' was properly closed.
+[0m01:46:40.458151 [debug] [MainThread]: Connection 'test.orders_dwh.accepted_values_fct_orders_status__placed__shipped__completed__returned.7d365032e1' was properly closed.
+[0m01:46:40.459036 [debug] [MainThread]: Connection 'test.orders_dwh.not_null_fct_orders_order_id.4e687af8d0' was properly closed.
+[0m01:46:40.459761 [debug] [MainThread]: Connection 'test.orders_dwh.unique_fct_orders_order_id.523ddb6ce5' was properly closed.
+[0m01:46:40.461434 [debug] [MainThread]: Command end result
+[0m01:46:40.537019 [debug] [MainThread]: Wrote artifact WritableManifest to /usr/app/dbt_project/target/manifest.json
+[0m01:46:40.541772 [debug] [MainThread]: Wrote artifact SemanticManifest to /usr/app/dbt_project/target/semantic_manifest.json
+[0m01:46:40.552947 [debug] [MainThread]: Wrote artifact OsiDocument to /usr/app/dbt_project/target/osi_document.json
+[0m01:46:40.561052 [debug] [MainThread]: Wrote artifact RunExecutionResult to /usr/app/dbt_project/target/run_results.json
+[0m01:46:40.578280 [debug] [MainThread]: Acquiring new spark connection 'generate_catalog'
+[0m01:46:40.579032 [info ] [MainThread]: Building catalog
+[0m01:46:40.586477 [debug] [ThreadPool]: Acquiring new spark connection 'analytics'
+[0m01:46:40.587355 [debug] [ThreadPool]: Spark adapter: Getting table schema for relation analytics.fct_orders
+[0m01:46:40.590139 [debug] [ThreadPool]: Spark adapter: Getting table schema for relation analytics.int_order_amounts
+[0m01:46:40.591166 [debug] [ThreadPool]: Spark adapter: Getting table schema for relation analytics.raw_order_items
+[0m01:46:40.592150 [debug] [ThreadPool]: Spark adapter: Getting table schema for relation analytics.raw_orders
+[0m01:46:40.592875 [debug] [ThreadPool]: Spark adapter: Getting table schema for relation analytics.stg_order_items
+[0m01:46:40.593552 [debug] [ThreadPool]: Spark adapter: Getting table schema for relation analytics.stg_orders
+[0m01:46:40.606597 [debug] [MainThread]: Wrote artifact CatalogArtifact to /usr/app/dbt_project/target/catalog.json
+[0m01:46:40.637502 [debug] [MainThread]: Wrote artifact WritableManifest to /usr/app/dbt_project/target/manifest.json
+[0m01:46:40.643565 [debug] [MainThread]: Wrote artifact SemanticManifest to /usr/app/dbt_project/target/semantic_manifest.json
+[0m01:46:40.648736 [debug] [MainThread]: Wrote artifact OsiDocument to /usr/app/dbt_project/target/osi_document.json
+[0m01:46:40.649371 [info ] [MainThread]: Catalog written to /usr/app/dbt_project/target/catalog.json
+[0m01:46:40.650266 [warn ] [MainThread]: [[33mWARNING[0m][DeprecationsSummary]: Deprecated functionality
+Summary of encountered deprecations:
+- ProjectFlagsMovedDeprecation: 1 occurrence
+To see all deprecation instances instead of just the first occurrence of each,
+run command again with the `--show-all-deprecations` flag. You may also need to
+run with `--no-partial-parse` as some deprecations are only encountered during
+parsing.
+[0m01:46:40.651498 [debug] [MainThread]: Resource report: {"command_name": "generate", "command_success": true, "command_wall_clock_time": 1.0517149, "process_in_blocks": "1151", "process_kernel_time": 0.117054, "process_mem_max_rss": "142324", "process_out_blocks": "0", "process_user_time": 1.638766}
+[0m01:46:40.652441 [debug] [MainThread]: Command `dbt docs generate` succeeded at 01:46:40.652298 after 1.05 seconds
+[0m01:46:40.653028 [debug] [MainThread]: Connection 'generate_catalog' was properly closed.
+[0m01:46:40.653513 [debug] [MainThread]: Connection 'analytics' was properly closed.
+[0m01:46:40.654019 [debug] [MainThread]: Flushing usage events
+
+
+============================== 01:48:46.257082 | f96e2d84-63e8-4405-89fd-72670ca3291e ==============================
+[0m01:48:46.257082 [info ] [MainThread]: Running with dbt=1.12.0
+[0m01:48:46.264232 [debug] [MainThread]: running dbt with arguments {'log_cache_events': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'introspect': 'True', 'warn_error': 'None', 'use_experimental_parser': 'False', 'cache_selected_only': 'False', 'quiet': 'False', 'debug': 'False', 'use_colors': 'True', 'partial_parse': 'True', 'version_check': 'True', 'indirect_selection': 'eager', 'write_json': 'True', 'log_format': 'default', 'send_anonymous_usage_stats': 'False', 'no_print': 'None', 'profiles_dir': '/root/.dbt', 'static_parser': 'True', 'printer_width': '80', 'invocation_command': 'dbt docs serve --host 0.0.0.0 --port 8080', 'target_path': 'None', 'maximum_seed_size_mib': '1', 'log_path': '/usr/app/dbt_project/logs', 'empty': 'None', 'hints_enabled': 'True', 'fail_fast': 'False'}
+[0m01:48:46.265080 [warn ] [MainThread]: [[33mWARNING[0m]: Deprecated functionality
+
+User config should be moved from the 'config' key in profiles.yml to the 'flags' key in dbt_project.yml.
+[0m01:48:46.370176 [debug] [MainThread]: Spark adapter: Setting pyhive.hive logging to ERROR
+[0m01:48:46.371295 [debug] [MainThread]: Spark adapter: Setting thrift.transport logging to ERROR
+[0m01:48:46.371980 [debug] [MainThread]: Spark adapter: Setting thrift.protocol logging to ERROR
+
+
+============================== 01:52:08.700775 | 332ea5f9-3d6a-48ef-b7fb-14155688630e ==============================
+[0m01:52:08.700775 [info ] [MainThread]: Running with dbt=1.12.0
+[0m01:52:08.704055 [debug] [MainThread]: running dbt with arguments {'quiet': 'False', 'indirect_selection': 'eager', 'use_experimental_parser': 'False', 'profiles_dir': '/root/.dbt', 'empty': 'False', 'warn_error': 'None', 'use_colors': 'True', 'no_print': 'None', 'cache_selected_only': 'False', 'printer_width': '80', 'log_path': '/usr/app/dbt_project/logs', 'send_anonymous_usage_stats': 'False', 'hints_enabled': 'True', 'invocation_command': 'dbt build', 'log_cache_events': 'False', 'log_format': 'default', 'static_parser': 'True', 'partial_parse': 'True', 'write_json': 'True', 'debug': 'False', 'version_check': 'True', 'fail_fast': 'False', 'introspect': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'maximum_seed_size_mib': '1'}
+[0m01:52:08.704675 [warn ] [MainThread]: [[33mWARNING[0m]: Deprecated functionality
+
+User config should be moved from the 'config' key in profiles.yml to the 'flags' key in dbt_project.yml.
+[0m01:52:08.743478 [debug] [MainThread]: Spark adapter: Setting pyhive.hive logging to ERROR
+[0m01:52:08.744433 [debug] [MainThread]: Spark adapter: Setting thrift.transport logging to ERROR
+[0m01:52:08.745129 [debug] [MainThread]: Spark adapter: Setting thrift.protocol logging to ERROR
+[0m01:52:08.915032 [info ] [MainThread]: Registered adapter: spark=1.11.0
+[0m01:52:08.954572 [debug] [MainThread]: checksum: 7a7ad752a32e432a2666de9dec42887c2f87be6e7c94b3a673280801e11675b1, vars: {}, profile: orders_dwh, target: dev, version: 1.12.0
+[0m01:52:09.094312 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m01:52:09.095144 [debug] [MainThread]: Nothing changed, skipping partial parsing.
+[0m01:52:09.095719 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m01:52:09.200097 [debug] [MainThread]: Wrote artifact WritableManifest to /usr/app/dbt_project/target/manifest.json
+[0m01:52:09.204716 [debug] [MainThread]: Wrote artifact SemanticManifest to /usr/app/dbt_project/target/semantic_manifest.json
+[0m01:52:09.216789 [debug] [MainThread]: Wrote artifact OsiDocument to /usr/app/dbt_project/target/osi_document.json
+[0m01:52:09.239003 [info ] [MainThread]: Found 4 models, 2 seeds, 7 data tests, 515 macros
+[0m01:52:09.243314 [info ] [MainThread]: 
+[0m01:52:09.244368 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m01:52:09.245254 [info ] [MainThread]: 
+[0m01:52:09.246258 [debug] [MainThread]: Acquiring new spark connection 'master'
+[0m01:52:09.251759 [debug] [ThreadPool]: Acquiring new spark connection 'list_schemas'
+[0m01:52:09.260843 [debug] [ThreadPool]: Using spark connection "list_schemas"
+[0m01:52:09.261671 [debug] [ThreadPool]: On list_schemas: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "orders_dwh", "target_name": "dev", "connection_name": "list_schemas"} */
+
+    show databases
+  
+[0m01:52:09.262254 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m01:52:09.328172 [debug] [ThreadPool]: Spark adapter: Poll status: 2, query complete
+[0m01:52:09.329298 [debug] [ThreadPool]: SQL status: OK in 0.067 seconds
+[0m01:52:09.333302 [debug] [ThreadPool]: On list_schemas: Close
+[0m01:52:09.338974 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_schemas, now list_None_analytics)
+[0m01:52:09.344542 [debug] [ThreadPool]: Spark adapter: NotImplemented: add_begin_query
+[0m01:52:09.345389 [debug] [ThreadPool]: Using spark connection "list_None_analytics"
+[0m01:52:09.345938 [debug] [ThreadPool]: On list_None_analytics: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "orders_dwh", "target_name": "dev", "connection_name": "list_None_analytics"} */
+show table extended in analytics like '*'
+  
+[0m01:52:09.346370 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m01:52:09.491045 [debug] [ThreadPool]: Spark adapter: Poll status: 2, query complete
+[0m01:52:09.492366 [debug] [ThreadPool]: SQL status: OK in 0.146 seconds
+[0m01:52:09.496580 [debug] [ThreadPool]: On list_None_analytics: ROLLBACK
+[0m01:52:09.497456 [debug] [ThreadPool]: Spark adapter: NotImplemented: rollback
+[0m01:52:09.498062 [debug] [ThreadPool]: On list_None_analytics: Close
+[0m01:52:09.503549 [debug] [MainThread]: Spark adapter: NotImplemented: add_begin_query
+[0m01:52:09.504311 [debug] [MainThread]: Spark adapter: NotImplemented: commit
+[0m01:52:09.506813 [debug] [Thread-1 (]: Began running node seed.orders_dwh.raw_order_items
+[0m01:52:09.507237 [debug] [Thread-2 (]: Began running node seed.orders_dwh.raw_orders
+[0m01:52:09.507793 [info ] [Thread-1 (]: 1 of 13 START seed file analytics.raw_order_items .............................. [RUN]
+[0m01:52:09.510405 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_None_analytics, now seed.orders_dwh.raw_order_items)
+[0m01:52:09.509175 [info ] [Thread-2 (]: 2 of 13 START seed file analytics.raw_orders ................................... [RUN]
+[0m01:52:09.511709 [debug] [Thread-2 (]: Acquiring new spark connection 'seed.orders_dwh.raw_orders'
+[0m01:52:09.511047 [debug] [Thread-1 (]: Began compiling node seed.orders_dwh.raw_order_items
+[0m01:52:09.513099 [debug] [Thread-1 (]: Began executing node seed.orders_dwh.raw_order_items
+[0m01:52:09.512582 [debug] [Thread-2 (]: Began compiling node seed.orders_dwh.raw_orders
+[0m01:52:09.524160 [debug] [Thread-2 (]: Began executing node seed.orders_dwh.raw_orders
+[0m01:52:09.536673 [debug] [Thread-2 (]: Using spark connection "seed.orders_dwh.raw_orders"
+[0m01:52:09.537462 [debug] [Thread-2 (]: On seed.orders_dwh.raw_orders: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "orders_dwh", "target_name": "dev", "node_id": "seed.orders_dwh.raw_orders"} */
+drop table if exists analytics.raw_orders
+[0m01:52:09.538005 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m01:52:09.537206 [debug] [Thread-1 (]: Using spark connection "seed.orders_dwh.raw_order_items"
+[0m01:52:09.538932 [debug] [Thread-1 (]: On seed.orders_dwh.raw_order_items: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "orders_dwh", "target_name": "dev", "node_id": "seed.orders_dwh.raw_order_items"} */
+drop table if exists analytics.raw_order_items
+[0m01:52:09.539527 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m01:52:10.389028 [debug] [Thread-1 (]: Spark adapter: Poll status: 2, query complete
+[0m01:52:10.390088 [debug] [Thread-1 (]: SQL status: OK in 0.851 seconds
+[0m01:52:10.422693 [debug] [Thread-1 (]: Spark adapter: NotImplemented: add_begin_query
+[0m01:52:10.424348 [debug] [Thread-1 (]: Using spark connection "seed.orders_dwh.raw_order_items"
+[0m01:52:10.426234 [debug] [Thread-1 (]: On seed.orders_dwh.raw_order_items: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "orders_dwh", "target_name": "dev", "node_id": "seed.orders_dwh.raw_order_items"} */
+
+    create table analytics.raw_order_items (`id` bigint,`order_id` bigint,`product_id` string,`price` double,`quantity` bigint)
+    
+    
+    
+    
+    
+  
+[0m01:52:10.486087 [debug] [Thread-2 (]: Spark adapter: Poll status: 2, query complete
+[0m01:52:10.487226 [debug] [Thread-2 (]: SQL status: OK in 0.949 seconds
+[0m01:52:10.489310 [debug] [Thread-2 (]: Spark adapter: NotImplemented: add_begin_query
+[0m01:52:10.489935 [debug] [Thread-2 (]: Using spark connection "seed.orders_dwh.raw_orders"
+[0m01:52:10.490712 [debug] [Thread-2 (]: On seed.orders_dwh.raw_orders: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "orders_dwh", "target_name": "dev", "node_id": "seed.orders_dwh.raw_orders"} */
+
+    create table analytics.raw_orders (`order_id` bigint,`customer_id` string,`order_date` date,`status` string)
+    
+    
+    
+    
+    
+  
+[0m01:52:10.543521 [debug] [Thread-1 (]: Spark adapter: Poll status: 2, query complete
+[0m01:52:10.544969 [debug] [Thread-1 (]: SQL status: OK in 0.117 seconds
+[0m01:52:10.583142 [debug] [Thread-1 (]: Using spark connection "seed.orders_dwh.raw_order_items"
+[0m01:52:10.584357 [debug] [Thread-1 (]: On seed.orders_dwh.raw_order_items: 
+          insert into analytics.raw_order_items values
+          (cast(%s as bigint),cast(%s as bigint),cast(%s as string),cast(%s as double),cast(%s as bigint)),(cast(%s as bigint),cast(%s as bigint),cast(%s as string),cast(%s as double),cast(%s as bigint)),(cast(%s as bigint),cast(%s as bigint),cast(%s as string),cast(%s as double),cast(%s as bigint)),(cast(%s as bigint),cast(%s as bigint),cast(%s as string),cast(%s as double),cast(%s as bigint)),(cast(%s as bigint),cast(%s as bigint),cast(%s as string),...
+[0m01:52:10.604223 [debug] [Thread-2 (]: Spark adapter: Poll status: 2, query complete
+[0m01:52:10.606071 [debug] [Thread-2 (]: SQL status: OK in 0.114 seconds
+[0m01:52:10.622284 [debug] [Thread-2 (]: Using spark connection "seed.orders_dwh.raw_orders"
+[0m01:52:10.623821 [debug] [Thread-2 (]: On seed.orders_dwh.raw_orders: 
+          insert into analytics.raw_orders values
+          (cast(%s as bigint),cast(%s as string),cast(%s as date),cast(%s as string)),(cast(%s as bigint),cast(%s as string),cast(%s as date),cast(%s as string)),(cast(%s as bigint),cast(%s as string),cast(%s as date),cast(%s as string)),(cast(%s as bigint),cast(%s as string),cast(%s as date),cast(%s as string)),(cast(%s as bigint),cast(%s as string),cast(%s as date),cast(%s as string)),(cast(%s as bigint),cast(%s as string),cast(%s as date),cast(%s as stri...
+[0m01:52:11.334502 [debug] [Thread-1 (]: Spark adapter: Poll status: 2, query complete
+[0m01:52:11.341439 [debug] [Thread-1 (]: SQL status: OK in 0.756 seconds
+[0m01:52:11.346584 [debug] [Thread-1 (]: Writing runtime SQL for node "seed.orders_dwh.raw_order_items"
+[0m01:52:11.366957 [debug] [Thread-2 (]: Spark adapter: Poll status: 2, query complete
+[0m01:52:11.367786 [debug] [Thread-2 (]: SQL status: OK in 0.743 seconds
+[0m01:52:11.368530 [debug] [Thread-2 (]: Writing runtime SQL for node "seed.orders_dwh.raw_orders"
+[0m01:52:11.367490 [debug] [Thread-1 (]: Spark adapter: NotImplemented: commit
+[0m01:52:11.370352 [debug] [Thread-1 (]: On seed.orders_dwh.raw_order_items: ROLLBACK
+[0m01:52:11.370860 [debug] [Thread-1 (]: Spark adapter: NotImplemented: rollback
+[0m01:52:11.371316 [debug] [Thread-1 (]: On seed.orders_dwh.raw_order_items: Close
+[0m01:52:11.373337 [debug] [Thread-2 (]: Spark adapter: NotImplemented: commit
+[0m01:52:11.375341 [debug] [Thread-2 (]: On seed.orders_dwh.raw_orders: ROLLBACK
+[0m01:52:11.376878 [debug] [Thread-2 (]: Spark adapter: NotImplemented: rollback
+[0m01:52:11.377566 [debug] [Thread-2 (]: On seed.orders_dwh.raw_orders: Close
+[0m01:52:11.381208 [info ] [Thread-1 (]: 1 of 13 OK loaded seed file analytics.raw_order_items .......................... [[32mINSERT 28[0m in 1.87s]
+[0m01:52:11.382561 [debug] [Thread-1 (]: Finished running node seed.orders_dwh.raw_order_items
+[0m01:52:11.383451 [info ] [Thread-2 (]: 2 of 13 OK loaded seed file analytics.raw_orders ............................... [[32mINSERT 18[0m in 1.87s]
+[0m01:52:11.385016 [debug] [Thread-2 (]: Finished running node seed.orders_dwh.raw_orders
+[0m01:52:11.384507 [debug] [Thread-3 (]: Began running node model.orders_dwh.stg_order_items
+[0m01:52:11.385888 [debug] [Thread-4 (]: Began running node model.orders_dwh.stg_orders
+[0m01:52:11.386272 [info ] [Thread-3 (]: 3 of 13 START sql view model analytics.stg_order_items ......................... [RUN]
+[0m01:52:11.387688 [debug] [Thread-3 (]: Acquiring new spark connection 'model.orders_dwh.stg_order_items'
+[0m01:52:11.388203 [debug] [Thread-3 (]: Began compiling node model.orders_dwh.stg_order_items
+[0m01:52:11.386977 [info ] [Thread-4 (]: 4 of 13 START sql view model analytics.stg_orders .............................. [RUN]
+[0m01:52:11.394906 [debug] [Thread-4 (]: Acquiring new spark connection 'model.orders_dwh.stg_orders'
+[0m01:52:11.395544 [debug] [Thread-4 (]: Began compiling node model.orders_dwh.stg_orders
+[0m01:52:11.394389 [debug] [Thread-3 (]: Writing injected SQL for node "model.orders_dwh.stg_order_items"
+[0m01:52:11.397204 [debug] [Thread-4 (]: Writing injected SQL for node "model.orders_dwh.stg_orders"
+[0m01:52:11.399764 [debug] [Thread-3 (]: Began executing node model.orders_dwh.stg_order_items
+[0m01:52:11.405704 [debug] [Thread-4 (]: Began executing node model.orders_dwh.stg_orders
+[0m01:52:11.415680 [debug] [Thread-4 (]: Writing runtime sql for node "model.orders_dwh.stg_orders"
+[0m01:52:11.416356 [debug] [Thread-3 (]: Writing runtime sql for node "model.orders_dwh.stg_order_items"
+[0m01:52:11.418937 [debug] [Thread-4 (]: Spark adapter: NotImplemented: add_begin_query
+[0m01:52:11.419856 [debug] [Thread-4 (]: Using spark connection "model.orders_dwh.stg_orders"
+[0m01:52:11.420470 [debug] [Thread-4 (]: On model.orders_dwh.stg_orders: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "orders_dwh", "target_name": "dev", "node_id": "model.orders_dwh.stg_orders"} */
+create or replace view analytics.stg_orders
+  
+  
+  as
+    -- Staging model for raw orders: casts order_date to DATE and drops rows with a missing order_id.
+select
+    order_id,
+    customer_id,
+    cast(order_date as date) as order_date,
+    status
+from analytics.raw_orders
+where order_id is not null
+
+[0m01:52:11.419530 [debug] [Thread-3 (]: Spark adapter: NotImplemented: add_begin_query
+[0m01:52:11.421509 [debug] [Thread-3 (]: Using spark connection "model.orders_dwh.stg_order_items"
+[0m01:52:11.422008 [debug] [Thread-3 (]: On model.orders_dwh.stg_order_items: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "orders_dwh", "target_name": "dev", "node_id": "model.orders_dwh.stg_order_items"} */
+create or replace view analytics.stg_order_items
+  
+  
+  as
+    -- Staging model for raw order items: casts price/quantity to numeric types and drops rows missing id or order_id.
+select
+    id,
+    order_id,
+    product_id,
+    cast(price as decimal(18, 2)) as price,
+    cast(quantity as int) as quantity
+from analytics.raw_order_items
+where id is not null
+  and order_id is not null
+
+[0m01:52:11.421007 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m01:52:11.422466 [debug] [Thread-3 (]: Opening a new connection, currently in state init
+[0m01:52:11.949079 [debug] [Thread-4 (]: Spark adapter: Poll status: 2, query complete
+[0m01:52:11.950308 [debug] [Thread-4 (]: SQL status: OK in 0.529 seconds
+[0m01:52:11.954290 [debug] [Thread-4 (]: On model.orders_dwh.stg_orders: ROLLBACK
+[0m01:52:11.955089 [debug] [Thread-4 (]: Spark adapter: NotImplemented: rollback
+[0m01:52:11.956225 [debug] [Thread-4 (]: On model.orders_dwh.stg_orders: Close
+[0m01:52:11.964681 [info ] [Thread-4 (]: 4 of 13 OK created sql view model analytics.stg_orders ......................... [[32mOK[0m in 0.57s]
+[0m01:52:11.966542 [debug] [Thread-4 (]: Finished running node model.orders_dwh.stg_orders
+[0m01:52:11.968019 [debug] [Thread-1 (]: Began running node test.orders_dwh.not_null_stg_orders_order_id.81cfe2fe64
+[0m01:52:11.968506 [debug] [Thread-2 (]: Began running node test.orders_dwh.unique_stg_orders_order_id.e3b841c71a
+[0m01:52:11.969010 [info ] [Thread-1 (]: 5 of 13 START test not_null_stg_orders_order_id ................................ [RUN]
+[0m01:52:11.970734 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly seed.orders_dwh.raw_order_items, now test.orders_dwh.not_null_stg_orders_order_id.81cfe2fe64)
+[0m01:52:11.969762 [info ] [Thread-2 (]: 6 of 13 START test unique_stg_orders_order_id .................................. [RUN]
+[0m01:52:11.972408 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly seed.orders_dwh.raw_orders, now test.orders_dwh.unique_stg_orders_order_id.e3b841c71a)
+[0m01:52:11.971494 [debug] [Thread-1 (]: Began compiling node test.orders_dwh.not_null_stg_orders_order_id.81cfe2fe64
+[0m01:52:11.973278 [debug] [Thread-2 (]: Began compiling node test.orders_dwh.unique_stg_orders_order_id.e3b841c71a
+[0m01:52:11.992922 [debug] [Thread-1 (]: Writing injected SQL for node "test.orders_dwh.not_null_stg_orders_order_id.81cfe2fe64"
+[0m01:52:11.985374 [debug] [Thread-3 (]: Spark adapter: Poll status: 2, query complete
+[0m01:52:11.994159 [debug] [Thread-3 (]: SQL status: OK in 0.572 seconds
+[0m01:52:11.993400 [debug] [Thread-2 (]: Writing injected SQL for node "test.orders_dwh.unique_stg_orders_order_id.e3b841c71a"
+[0m01:52:11.995609 [debug] [Thread-3 (]: On model.orders_dwh.stg_order_items: ROLLBACK
+[0m01:52:11.996533 [debug] [Thread-3 (]: Spark adapter: NotImplemented: rollback
+[0m01:52:11.997028 [debug] [Thread-3 (]: On model.orders_dwh.stg_order_items: Close
+[0m01:52:11.998122 [debug] [Thread-1 (]: Began executing node test.orders_dwh.not_null_stg_orders_order_id.81cfe2fe64
+[0m01:52:12.004186 [debug] [Thread-2 (]: Began executing node test.orders_dwh.unique_stg_orders_order_id.e3b841c71a
+[0m01:52:12.013713 [debug] [Thread-2 (]: Writing runtime sql for node "test.orders_dwh.unique_stg_orders_order_id.e3b841c71a"
+[0m01:52:12.014412 [info ] [Thread-3 (]: 3 of 13 OK created sql view model analytics.stg_order_items .................... [[32mOK[0m in 0.63s]
+[0m01:52:12.015884 [debug] [Thread-3 (]: Finished running node model.orders_dwh.stg_order_items
+[0m01:52:12.014946 [debug] [Thread-1 (]: Writing runtime sql for node "test.orders_dwh.not_null_stg_orders_order_id.81cfe2fe64"
+[0m01:52:12.017015 [debug] [Thread-4 (]: Began running node test.orders_dwh.not_null_stg_order_items_id.1f392c3036
+[0m01:52:12.017311 [debug] [Thread-3 (]: Began running node test.orders_dwh.unique_stg_order_items_id.1320d7aef8
+[0m01:52:12.017585 [info ] [Thread-4 (]: 7 of 13 START test not_null_stg_order_items_id ................................. [RUN]
+[0m01:52:12.019150 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly model.orders_dwh.stg_orders, now test.orders_dwh.not_null_stg_order_items_id.1f392c3036)
+[0m01:52:12.018254 [info ] [Thread-3 (]: 8 of 13 START test unique_stg_order_items_id ................................... [RUN]
+[0m01:52:12.020822 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly model.orders_dwh.stg_order_items, now test.orders_dwh.unique_stg_order_items_id.1320d7aef8)
+[0m01:52:12.020147 [debug] [Thread-4 (]: Began compiling node test.orders_dwh.not_null_stg_order_items_id.1f392c3036
+[0m01:52:12.021153 [debug] [Thread-1 (]: Spark adapter: NotImplemented: add_begin_query
+[0m01:52:12.019806 [debug] [Thread-2 (]: Spark adapter: NotImplemented: add_begin_query
+[0m01:52:12.021452 [debug] [Thread-3 (]: Began compiling node test.orders_dwh.unique_stg_order_items_id.1320d7aef8
+[0m01:52:12.029034 [debug] [Thread-4 (]: Writing injected SQL for node "test.orders_dwh.not_null_stg_order_items_id.1f392c3036"
+[0m01:52:12.029364 [debug] [Thread-1 (]: Using spark connection "test.orders_dwh.not_null_stg_orders_order_id.81cfe2fe64"
+[0m01:52:12.029926 [debug] [Thread-2 (]: Using spark connection "test.orders_dwh.unique_stg_orders_order_id.e3b841c71a"
+[0m01:52:12.034132 [debug] [Thread-3 (]: Writing injected SQL for node "test.orders_dwh.unique_stg_order_items_id.1320d7aef8"
+[0m01:52:12.035093 [debug] [Thread-1 (]: On test.orders_dwh.not_null_stg_orders_order_id.81cfe2fe64: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "orders_dwh", "target_name": "dev", "node_id": "test.orders_dwh.not_null_stg_orders_order_id.81cfe2fe64"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select order_id
+from analytics.stg_orders
+where order_id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m01:52:12.036687 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m01:52:12.035735 [debug] [Thread-2 (]: On test.orders_dwh.unique_stg_orders_order_id.e3b841c71a: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "orders_dwh", "target_name": "dev", "node_id": "test.orders_dwh.unique_stg_orders_order_id.e3b841c71a"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+select
+    order_id as unique_field,
+    count(*) as n_records
+
+from analytics.stg_orders
+where order_id is not null
+group by order_id
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m01:52:12.037601 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m01:52:12.038893 [debug] [Thread-3 (]: Began executing node test.orders_dwh.unique_stg_order_items_id.1320d7aef8
+[0m01:52:12.041493 [debug] [Thread-3 (]: Writing runtime sql for node "test.orders_dwh.unique_stg_order_items_id.1320d7aef8"
+[0m01:52:12.039578 [debug] [Thread-4 (]: Began executing node test.orders_dwh.not_null_stg_order_items_id.1f392c3036
+[0m01:52:12.044775 [debug] [Thread-4 (]: Writing runtime sql for node "test.orders_dwh.not_null_stg_order_items_id.1f392c3036"
+[0m01:52:12.048952 [debug] [Thread-4 (]: Spark adapter: NotImplemented: add_begin_query
+[0m01:52:12.050248 [debug] [Thread-4 (]: Using spark connection "test.orders_dwh.not_null_stg_order_items_id.1f392c3036"
+[0m01:52:12.050998 [debug] [Thread-4 (]: On test.orders_dwh.not_null_stg_order_items_id.1f392c3036: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "orders_dwh", "target_name": "dev", "node_id": "test.orders_dwh.not_null_stg_order_items_id.1f392c3036"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select id
+from analytics.stg_order_items
+where id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m01:52:12.049786 [debug] [Thread-3 (]: Spark adapter: NotImplemented: add_begin_query
+[0m01:52:12.052655 [debug] [Thread-3 (]: Using spark connection "test.orders_dwh.unique_stg_order_items_id.1320d7aef8"
+[0m01:52:12.051756 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m01:52:12.053719 [debug] [Thread-3 (]: On test.orders_dwh.unique_stg_order_items_id.1320d7aef8: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "orders_dwh", "target_name": "dev", "node_id": "test.orders_dwh.unique_stg_order_items_id.1320d7aef8"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+select
+    id as unique_field,
+    count(*) as n_records
+
+from analytics.stg_order_items
+where id is not null
+group by id
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m01:52:12.055073 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m01:52:12.902824 [debug] [Thread-1 (]: Spark adapter: Poll status: 2, query complete
+[0m01:52:12.905808 [debug] [Thread-1 (]: SQL status: OK in 0.869 seconds
+[0m01:52:12.922039 [debug] [Thread-1 (]: On test.orders_dwh.not_null_stg_orders_order_id.81cfe2fe64: ROLLBACK
+[0m01:52:12.923419 [debug] [Thread-1 (]: Spark adapter: NotImplemented: rollback
+[0m01:52:12.925359 [debug] [Thread-1 (]: On test.orders_dwh.not_null_stg_orders_order_id.81cfe2fe64: Close
+[0m01:52:12.932237 [info ] [Thread-1 (]: 5 of 13 PASS not_null_stg_orders_order_id ...................................... [[32mPASS[0m in 0.96s]
+[0m01:52:12.934182 [debug] [Thread-1 (]: Finished running node test.orders_dwh.not_null_stg_orders_order_id.81cfe2fe64
+[0m01:52:12.995731 [debug] [Thread-4 (]: Spark adapter: Poll status: 2, query complete
+[0m01:52:12.997542 [debug] [Thread-4 (]: SQL status: OK in 0.946 seconds
+[0m01:52:13.004982 [debug] [Thread-4 (]: On test.orders_dwh.not_null_stg_order_items_id.1f392c3036: ROLLBACK
+[0m01:52:13.006392 [debug] [Thread-4 (]: Spark adapter: NotImplemented: rollback
+[0m01:52:13.007646 [debug] [Thread-4 (]: On test.orders_dwh.not_null_stg_order_items_id.1f392c3036: Close
+[0m01:52:13.018090 [info ] [Thread-4 (]: 7 of 13 PASS not_null_stg_order_items_id ....................................... [[32mPASS[0m in 1.00s]
+[0m01:52:13.019972 [debug] [Thread-4 (]: Finished running node test.orders_dwh.not_null_stg_order_items_id.1f392c3036
+[0m01:52:13.025460 [debug] [Thread-2 (]: Spark adapter: Poll status: 2, query complete
+[0m01:52:13.027514 [debug] [Thread-2 (]: SQL status: OK in 0.990 seconds
+[0m01:52:13.026423 [debug] [Thread-3 (]: Spark adapter: Poll status: 2, query complete
+[0m01:52:13.029114 [debug] [Thread-3 (]: SQL status: OK in 0.974 seconds
+[0m01:52:13.034800 [debug] [Thread-2 (]: On test.orders_dwh.unique_stg_orders_order_id.e3b841c71a: ROLLBACK
+[0m01:52:13.036499 [debug] [Thread-2 (]: Spark adapter: NotImplemented: rollback
+[0m01:52:13.037156 [debug] [Thread-2 (]: On test.orders_dwh.unique_stg_orders_order_id.e3b841c71a: Close
+[0m01:52:13.036131 [debug] [Thread-3 (]: On test.orders_dwh.unique_stg_order_items_id.1320d7aef8: ROLLBACK
+[0m01:52:13.038207 [debug] [Thread-3 (]: Spark adapter: NotImplemented: rollback
+[0m01:52:13.038991 [debug] [Thread-3 (]: On test.orders_dwh.unique_stg_order_items_id.1320d7aef8: Close
+[0m01:52:13.044992 [info ] [Thread-2 (]: 6 of 13 PASS unique_stg_orders_order_id ........................................ [[32mPASS[0m in 1.07s]
+[0m01:52:13.047666 [debug] [Thread-2 (]: Finished running node test.orders_dwh.unique_stg_orders_order_id.e3b841c71a
+[0m01:52:13.046704 [info ] [Thread-3 (]: 8 of 13 PASS unique_stg_order_items_id ......................................... [[32mPASS[0m in 1.03s]
+[0m01:52:13.049506 [debug] [Thread-3 (]: Finished running node test.orders_dwh.unique_stg_order_items_id.1320d7aef8
+[0m01:52:13.052110 [debug] [Thread-1 (]: Began running node model.orders_dwh.int_order_amounts
+[0m01:52:13.053166 [info ] [Thread-1 (]: 9 of 13 START sql view model analytics.int_order_amounts ....................... [RUN]
+[0m01:52:13.054256 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.orders_dwh.not_null_stg_orders_order_id.81cfe2fe64, now model.orders_dwh.int_order_amounts)
+[0m01:52:13.055156 [debug] [Thread-1 (]: Began compiling node model.orders_dwh.int_order_amounts
+[0m01:52:13.058947 [debug] [Thread-1 (]: Writing injected SQL for node "model.orders_dwh.int_order_amounts"
+[0m01:52:13.064240 [debug] [Thread-1 (]: Began executing node model.orders_dwh.int_order_amounts
+[0m01:52:13.070139 [debug] [Thread-1 (]: Writing runtime sql for node "model.orders_dwh.int_order_amounts"
+[0m01:52:13.077794 [debug] [Thread-1 (]: Spark adapter: NotImplemented: add_begin_query
+[0m01:52:13.078644 [debug] [Thread-1 (]: Using spark connection "model.orders_dwh.int_order_amounts"
+[0m01:52:13.080005 [debug] [Thread-1 (]: On model.orders_dwh.int_order_amounts: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "orders_dwh", "target_name": "dev", "node_id": "model.orders_dwh.int_order_amounts"} */
+create or replace view analytics.int_order_amounts
+  
+  
+  as
+    -- Materialization choice: 'view' vs 'ephemeral'
+-- Chosen 'view' (not 'ephemeral') so this model can be queried directly in
+-- Spark for debugging/inspection and appears as its own node in dbt docs
+-- lineage with its own compiled object, instead of being inlined as a CTE
+-- inside fct_orders. Spark views are cheap to compute, so favoring
+-- inspectability over hiding the intermediate logic is the better trade-off
+-- for this assignment.
+
+
+select
+    order_id,
+    sum(total_item_price) as total_amount
+from (
+    select
+        order_id,
+        price * quantity as total_item_price
+    from analytics.stg_order_items
+) item_totals
+group by order_id
+
+[0m01:52:13.080892 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m01:52:13.290950 [debug] [Thread-1 (]: Spark adapter: Poll status: 2, query complete
+[0m01:52:13.292528 [debug] [Thread-1 (]: SQL status: OK in 0.212 seconds
+[0m01:52:13.294455 [debug] [Thread-1 (]: On model.orders_dwh.int_order_amounts: ROLLBACK
+[0m01:52:13.295148 [debug] [Thread-1 (]: Spark adapter: NotImplemented: rollback
+[0m01:52:13.295781 [debug] [Thread-1 (]: On model.orders_dwh.int_order_amounts: Close
+[0m01:52:13.300742 [info ] [Thread-1 (]: 9 of 13 OK created sql view model analytics.int_order_amounts .................. [[32mOK[0m in 0.25s]
+[0m01:52:13.302030 [debug] [Thread-1 (]: Finished running node model.orders_dwh.int_order_amounts
+[0m01:52:13.303133 [debug] [Thread-4 (]: Began running node model.orders_dwh.fct_orders
+[0m01:52:13.303813 [info ] [Thread-4 (]: 10 of 13 START sql table model analytics.fct_orders ............................ [RUN]
+[0m01:52:13.304572 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.orders_dwh.not_null_stg_order_items_id.1f392c3036, now model.orders_dwh.fct_orders)
+[0m01:52:13.305126 [debug] [Thread-4 (]: Began compiling node model.orders_dwh.fct_orders
+[0m01:52:13.307047 [debug] [Thread-4 (]: Writing injected SQL for node "model.orders_dwh.fct_orders"
+[0m01:52:13.311824 [debug] [Thread-4 (]: Began executing node model.orders_dwh.fct_orders
+[0m01:52:13.321375 [debug] [Thread-4 (]: Using spark connection "model.orders_dwh.fct_orders"
+[0m01:52:13.322064 [debug] [Thread-4 (]: On model.orders_dwh.fct_orders: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "orders_dwh", "target_name": "dev", "node_id": "model.orders_dwh.fct_orders"} */
+drop table if exists analytics.fct_orders
+[0m01:52:13.322650 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m01:52:13.417133 [debug] [Thread-4 (]: Spark adapter: Poll status: 2, query complete
+[0m01:52:13.420527 [debug] [Thread-4 (]: SQL status: OK in 0.098 seconds
+[0m01:52:13.435598 [debug] [Thread-4 (]: Writing runtime sql for node "model.orders_dwh.fct_orders"
+[0m01:52:13.439354 [debug] [Thread-4 (]: Spark adapter: NotImplemented: add_begin_query
+[0m01:52:13.440239 [debug] [Thread-4 (]: Using spark connection "model.orders_dwh.fct_orders"
+[0m01:52:13.441125 [debug] [Thread-4 (]: On model.orders_dwh.fct_orders: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "orders_dwh", "target_name": "dev", "node_id": "model.orders_dwh.fct_orders"} */
+
+  
+    
+        create table analytics.fct_orders
+      
+      
+      
+      
+      
+      
+      
+      
+
+      as
+      select
+    o.order_id,
+    o.customer_id,
+    o.order_date,
+    o.status,
+    a.total_amount
+from analytics.stg_orders o
+left join analytics.int_order_amounts a
+    on o.order_id = a.order_id
+  
+[0m01:52:14.145865 [debug] [Thread-4 (]: Spark adapter: Poll status: 2, query complete
+[0m01:52:14.146836 [debug] [Thread-4 (]: SQL status: OK in 0.704 seconds
+[0m01:52:14.151200 [debug] [Thread-4 (]: On model.orders_dwh.fct_orders: ROLLBACK
+[0m01:52:14.151883 [debug] [Thread-4 (]: Spark adapter: NotImplemented: rollback
+[0m01:52:14.152427 [debug] [Thread-4 (]: On model.orders_dwh.fct_orders: Close
+[0m01:52:14.157576 [info ] [Thread-4 (]: 10 of 13 OK created sql table model analytics.fct_orders ....................... [[32mOK[0m in 0.85s]
+[0m01:52:14.158964 [debug] [Thread-4 (]: Finished running node model.orders_dwh.fct_orders
+[0m01:52:14.161624 [debug] [Thread-2 (]: Began running node test.orders_dwh.accepted_values_fct_orders_status__placed__shipped__completed__returned.7d365032e1
+[0m01:52:14.162048 [debug] [Thread-1 (]: Began running node test.orders_dwh.unique_fct_orders_order_id.523ddb6ce5
+[0m01:52:14.162398 [debug] [Thread-3 (]: Began running node test.orders_dwh.not_null_fct_orders_order_id.4e687af8d0
+[0m01:52:14.162678 [info ] [Thread-2 (]: 11 of 13 START test accepted_values_fct_orders_status__placed__shipped__completed__returned  [RUN]
+[0m01:52:14.164659 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.orders_dwh.unique_stg_orders_order_id.e3b841c71a, now test.orders_dwh.accepted_values_fct_orders_status__placed__shipped__completed__returned.7d365032e1)
+[0m01:52:14.165256 [debug] [Thread-2 (]: Began compiling node test.orders_dwh.accepted_values_fct_orders_status__placed__shipped__completed__returned.7d365032e1
+[0m01:52:14.163308 [info ] [Thread-1 (]: 13 of 13 START test unique_fct_orders_order_id ................................. [RUN]
+[0m01:52:14.163947 [info ] [Thread-3 (]: 12 of 13 START test not_null_fct_orders_order_id ............................... [RUN]
+[0m01:52:14.176503 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.orders_dwh.int_order_amounts, now test.orders_dwh.unique_fct_orders_order_id.523ddb6ce5)
+[0m01:52:14.182762 [debug] [Thread-2 (]: Writing injected SQL for node "test.orders_dwh.accepted_values_fct_orders_status__placed__shipped__completed__returned.7d365032e1"
+[0m01:52:14.183603 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.orders_dwh.unique_stg_order_items_id.1320d7aef8, now test.orders_dwh.not_null_fct_orders_order_id.4e687af8d0)
+[0m01:52:14.185197 [debug] [Thread-3 (]: Began compiling node test.orders_dwh.not_null_fct_orders_order_id.4e687af8d0
+[0m01:52:14.184293 [debug] [Thread-1 (]: Began compiling node test.orders_dwh.unique_fct_orders_order_id.523ddb6ce5
+[0m01:52:14.189342 [debug] [Thread-3 (]: Writing injected SQL for node "test.orders_dwh.not_null_fct_orders_order_id.4e687af8d0"
+[0m01:52:14.194773 [debug] [Thread-1 (]: Writing injected SQL for node "test.orders_dwh.unique_fct_orders_order_id.523ddb6ce5"
+[0m01:52:14.196189 [debug] [Thread-2 (]: Began executing node test.orders_dwh.accepted_values_fct_orders_status__placed__shipped__completed__returned.7d365032e1
+[0m01:52:14.198245 [debug] [Thread-2 (]: Writing runtime sql for node "test.orders_dwh.accepted_values_fct_orders_status__placed__shipped__completed__returned.7d365032e1"
+[0m01:52:14.198875 [debug] [Thread-3 (]: Began executing node test.orders_dwh.not_null_fct_orders_order_id.4e687af8d0
+[0m01:52:14.200938 [debug] [Thread-3 (]: Writing runtime sql for node "test.orders_dwh.not_null_fct_orders_order_id.4e687af8d0"
+[0m01:52:14.201324 [debug] [Thread-1 (]: Began executing node test.orders_dwh.unique_fct_orders_order_id.523ddb6ce5
+[0m01:52:14.202702 [debug] [Thread-1 (]: Writing runtime sql for node "test.orders_dwh.unique_fct_orders_order_id.523ddb6ce5"
+[0m01:52:14.203720 [debug] [Thread-2 (]: Spark adapter: NotImplemented: add_begin_query
+[0m01:52:14.204508 [debug] [Thread-2 (]: Using spark connection "test.orders_dwh.accepted_values_fct_orders_status__placed__shipped__completed__returned.7d365032e1"
+[0m01:52:14.205484 [debug] [Thread-2 (]: On test.orders_dwh.accepted_values_fct_orders_status__placed__shipped__completed__returned.7d365032e1: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "orders_dwh", "target_name": "dev", "node_id": "test.orders_dwh.accepted_values_fct_orders_status__placed__shipped__completed__returned.7d365032e1"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+with all_values as (
+
+    select
+        status as value_field,
+        count(*) as n_records
+
+    from analytics.fct_orders
+    group by status
+
+)
+
+select *
+from all_values
+where value_field not in (
+    'placed','shipped','completed','returned'
+)
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m01:52:14.206163 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m01:52:14.206593 [debug] [Thread-1 (]: Spark adapter: NotImplemented: add_begin_query
+[0m01:52:14.205190 [debug] [Thread-3 (]: Spark adapter: NotImplemented: add_begin_query
+[0m01:52:14.208363 [debug] [Thread-3 (]: Using spark connection "test.orders_dwh.not_null_fct_orders_order_id.4e687af8d0"
+[0m01:52:14.207314 [debug] [Thread-1 (]: Using spark connection "test.orders_dwh.unique_fct_orders_order_id.523ddb6ce5"
+[0m01:52:14.210005 [debug] [Thread-1 (]: On test.orders_dwh.unique_fct_orders_order_id.523ddb6ce5: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "orders_dwh", "target_name": "dev", "node_id": "test.orders_dwh.unique_fct_orders_order_id.523ddb6ce5"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+select
+    order_id as unique_field,
+    count(*) as n_records
+
+from analytics.fct_orders
+where order_id is not null
+group by order_id
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m01:52:14.210575 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m01:52:14.209279 [debug] [Thread-3 (]: On test.orders_dwh.not_null_fct_orders_order_id.4e687af8d0: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "orders_dwh", "target_name": "dev", "node_id": "test.orders_dwh.not_null_fct_orders_order_id.4e687af8d0"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select order_id
+from analytics.fct_orders
+where order_id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m01:52:14.211560 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m01:52:14.716687 [debug] [Thread-3 (]: Spark adapter: Poll status: 2, query complete
+[0m01:52:14.718372 [debug] [Thread-3 (]: SQL status: OK in 0.507 seconds
+[0m01:52:14.729810 [debug] [Thread-3 (]: On test.orders_dwh.not_null_fct_orders_order_id.4e687af8d0: ROLLBACK
+[0m01:52:14.731372 [debug] [Thread-3 (]: Spark adapter: NotImplemented: rollback
+[0m01:52:14.732511 [debug] [Thread-3 (]: On test.orders_dwh.not_null_fct_orders_order_id.4e687af8d0: Close
+[0m01:52:14.749552 [info ] [Thread-3 (]: 12 of 13 PASS not_null_fct_orders_order_id ..................................... [[32mPASS[0m in 0.57s]
+[0m01:52:14.751373 [debug] [Thread-3 (]: Finished running node test.orders_dwh.not_null_fct_orders_order_id.4e687af8d0
+[0m01:52:14.769559 [debug] [Thread-2 (]: Spark adapter: Poll status: 2, query complete
+[0m01:52:14.770886 [debug] [Thread-2 (]: SQL status: OK in 0.565 seconds
+[0m01:52:14.776990 [debug] [Thread-2 (]: On test.orders_dwh.accepted_values_fct_orders_status__placed__shipped__completed__returned.7d365032e1: ROLLBACK
+[0m01:52:14.778363 [debug] [Thread-2 (]: Spark adapter: NotImplemented: rollback
+[0m01:52:14.779089 [debug] [Thread-2 (]: On test.orders_dwh.accepted_values_fct_orders_status__placed__shipped__completed__returned.7d365032e1: Close
+[0m01:52:14.784665 [error] [Thread-2 (]: 11 of 13 FAIL 1 accepted_values_fct_orders_status__placed__shipped__completed__returned  [[31mFAIL 1[0m in 0.62s]
+[0m01:52:14.786466 [debug] [Thread-2 (]: Finished running node test.orders_dwh.accepted_values_fct_orders_status__placed__shipped__completed__returned.7d365032e1
+[0m01:52:14.787670 [debug] [Thread-7 (]: Marking all children of 'test.orders_dwh.accepted_values_fct_orders_status__placed__shipped__completed__returned.7d365032e1' to be skipped because of status 'fail'.  Reason: Got 1 result, configured to fail if != 0.
+[0m01:52:14.808707 [debug] [Thread-1 (]: Spark adapter: Poll status: 2, query complete
+[0m01:52:14.812524 [debug] [Thread-1 (]: SQL status: OK in 0.602 seconds
+[0m01:52:14.816597 [debug] [Thread-1 (]: On test.orders_dwh.unique_fct_orders_order_id.523ddb6ce5: ROLLBACK
+[0m01:52:14.817527 [debug] [Thread-1 (]: Spark adapter: NotImplemented: rollback
+[0m01:52:14.818248 [debug] [Thread-1 (]: On test.orders_dwh.unique_fct_orders_order_id.523ddb6ce5: Close
+[0m01:52:14.822890 [info ] [Thread-1 (]: 13 of 13 PASS unique_fct_orders_order_id ....................................... [[32mPASS[0m in 0.65s]
+[0m01:52:14.824473 [debug] [Thread-1 (]: Finished running node test.orders_dwh.unique_fct_orders_order_id.523ddb6ce5
+[0m01:52:14.827524 [debug] [MainThread]: On master: ROLLBACK
+[0m01:52:14.828331 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m01:52:14.853658 [debug] [MainThread]: Spark adapter: NotImplemented: rollback
+[0m01:52:14.854513 [debug] [MainThread]: Spark adapter: NotImplemented: add_begin_query
+[0m01:52:14.855100 [debug] [MainThread]: Spark adapter: NotImplemented: commit
+[0m01:52:14.855618 [debug] [MainThread]: On master: ROLLBACK
+[0m01:52:14.856065 [debug] [MainThread]: Spark adapter: NotImplemented: rollback
+[0m01:52:14.856531 [debug] [MainThread]: On master: Close
+[0m01:52:14.861221 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m01:52:14.862088 [debug] [MainThread]: Connection 'test.orders_dwh.unique_fct_orders_order_id.523ddb6ce5' was properly closed.
+[0m01:52:14.862613 [debug] [MainThread]: Connection 'test.orders_dwh.accepted_values_fct_orders_status__placed__shipped__completed__returned.7d365032e1' was properly closed.
+[0m01:52:14.863086 [debug] [MainThread]: Connection 'test.orders_dwh.not_null_fct_orders_order_id.4e687af8d0' was properly closed.
+[0m01:52:14.863501 [debug] [MainThread]: Connection 'model.orders_dwh.fct_orders' was properly closed.
+[0m01:52:14.864026 [info ] [MainThread]: 
+[0m01:52:14.864575 [info ] [MainThread]: Finished running 2 seeds, 1 table model, 7 data tests, 3 view models in 0 hours 0 minutes and 5.62 seconds (5.62s).
+[0m01:52:14.866307 [debug] [MainThread]: Command end result
+[0m01:52:14.890203 [debug] [MainThread]: Wrote artifact WritableManifest to /usr/app/dbt_project/target/manifest.json
+[0m01:52:14.894831 [debug] [MainThread]: Wrote artifact SemanticManifest to /usr/app/dbt_project/target/semantic_manifest.json
+[0m01:52:14.898404 [debug] [MainThread]: Wrote artifact OsiDocument to /usr/app/dbt_project/target/osi_document.json
+[0m01:52:14.905286 [debug] [MainThread]: Wrote artifact RunExecutionResult to /usr/app/dbt_project/target/run_results.json
+[0m01:52:14.905881 [info ] [MainThread]: 
+[0m01:52:14.906598 [info ] [MainThread]: [31mCompleted with 1 error, 0 partial successes, and 0 warnings:[0m
+[0m01:52:14.907562 [info ] [MainThread]: 
+[0m01:52:14.909071 [error] [MainThread]: [[31mERROR[0m]: in test accepted_values_fct_orders_status__placed__shipped__completed__returned (models/marts/schema.yml)
+[0m01:52:14.910302 [error] [MainThread]:   Got 1 result, configured to fail if != 0
+[0m01:52:14.911178 [info ] [MainThread]: 
+[0m01:52:14.912034 [info ] [MainThread]:   compiled code at target/compiled/orders_dwh/models/marts/schema.yml/accepted_values_fct_orders_ac63cd379c2cc7e34304918c0c72c3a9.sql
+[0m01:52:14.912719 [info ] [MainThread]: 
+[0m01:52:14.913427 [info ] [MainThread]: Done. PASS=12 WARN=0 ERROR=1 SKIP=0 NO-OP=0 REUSED=0 TOTAL=13
+[0m01:52:14.914226 [warn ] [MainThread]: [[33mWARNING[0m][DeprecationsSummary]: Deprecated functionality
+Summary of encountered deprecations:
+- ProjectFlagsMovedDeprecation: 1 occurrence
+To see all deprecation instances instead of just the first occurrence of each,
+run command again with the `--show-all-deprecations` flag. You may also need to
+run with `--no-partial-parse` as some deprecations are only encountered during
+parsing.
+[0m01:52:14.915362 [debug] [MainThread]: Resource report: {"command_name": "build", "command_success": false, "command_wall_clock_time": 6.335451, "process_in_blocks": "1155", "process_kernel_time": 0.168727, "process_mem_max_rss": "145884", "process_out_blocks": "0", "process_user_time": 1.98455}
+[0m01:52:14.916035 [debug] [MainThread]: Command `dbt build` failed at 01:52:14.915888 after 6.34 seconds
+[0m01:52:14.916605 [debug] [MainThread]: Flushing usage events
